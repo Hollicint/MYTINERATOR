@@ -1,0 +1,94 @@
+/*########################## Head ############################ */
+
+/*########################## Nav Bar ############################ */
+
+/*########################## footer ############################ */
+
+
+
+/*########################## Main Body ############################ */
+.mainBody {
+    background-color: rgb(177, 173, 119);
+}
+
+
+
+/*########################## Font/Text Styles ############################ */
+
+
+/* Individual Pages */
+
+/*########################## Budget Page ############################ */
+.budgetContainer {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: black;
+    font-family: Open Sans;
+    font-size: 16px;
+    position: relative;
+    height: 100vh;
+    font-weight: 400;
+}
+
+#budgetCalTitle {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+.clearFix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.right {
+    float: right;
+  }
+
+
+.valueBudget {}
+
+.incomeBudget {}
+
+.budgetIncometext {}
+
+.budgetIncomeValue {}
+
+.budgetIncomePercentage {}
+
+.budgetExpenses {}
+
+.budgetExpensesText {}
+
+.budgetExpenseValue {}
+
+.budgetExpensesPercentages {}
+
+.calBottom {}
+
+.addBtnCal {}
+
+.calContainerAdd {}
+
+.addTypeCal {}
+
+.addDescriptionCal {}
+
+.addValueCal {}
+
+.checkmarkOutlineCal {}
+
+.containerCal {}
+
+.income {}
+
+.incomeTitle {}
+
+.incomeList {}
+
+.expenses {}
+
+.titleExpenses {}
+
+.listExpenses {}
