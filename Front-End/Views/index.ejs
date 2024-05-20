@@ -1,17 +1,16 @@
 <html lang="en">
-    <!--partial for the head tag -->
-    <%- include ("./partials/head.ejs") %>
-<body>
-    <!--partial for the header tag -->
-    <%- include ("./partials/header.ejs") %>
+<!--partial for the head tag -->
+<%- include ("./partials/head.ejs") %>
 
-    <h1> Index Page</h1>
-    
-    <!-- This is a EJS test message -->
-    <% var sMessage="Hello there from EJS !" %>
-    <%= sMessage %>
-    <!--partial for the footer tag -->
-    <%- include ("./partials/footer.ejs") %>
-</body>
+    <body class="mainBody">
+        <h1> Index Page</h1>
+        <%- include ("./partials/nav.ejs") %>
+
+            <!-- This is a EJS test message -->
+            <% var sMessage="Hello there from EJS !" %>
+                <%= sMessage %>
+                    <!--partial for the footer tag -->
+                    <%- include ("./partials/footer.ejs") %>
+    </body>
+
 </html>
-

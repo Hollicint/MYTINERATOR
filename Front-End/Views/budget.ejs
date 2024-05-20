@@ -1,10 +1,75 @@
 <html lang="en">
-    <%- include ("./partials/head.ejs") %>
-<body>
-    <%- include ("./partials/header.ejs") %>
-   <h1>Budget page</h1>
+<!-- header with ejs -->
+<%- include ("./partials/head.ejs") %>
+    <!--javaScript connection-->
+    <!--script defer src="/back-end/js/budgetCal.js"></script-->
+    <!--script src="/back-end/js/budgetCal.js"></script-->
+    <script src="/back-end/js/budgetCal.js"></script>
+    <body class="mainBody">
 
+        <h1>Budget page</h1>
+        <!-- nav with ejs -->
+        <%- include ("./partials/nav.ejs") %>
+             <!--Calculators container-->
+        <div class="budgetContainer">
+            <div class="calTop">
+                 <!--Calculators Title-->
+                <div id="budgetCalTitle">
+                    <h2> Your Budget Calculator </h2>
+                </div>
+                 <!--Calculators total Budget-->
+                <div class="budgetCal">
+                    <div class="valueBudget">+ 2,345.64</div>
+                     <!--Calculators Income display-->
+                    <div class="incomeBudget clearfix">
+                        <div class="budgetIncometext">Income</div>
+                        <div class="right">
+                            <div class="budgetIncomeValue">+4,300.00</div>
+                            <div class="budgetIncomePercentage">&nbsp;</div>
+                        </div>
+                     <!--Calculators Expenses display -->    
+                    </div>
+                    <div class="budgetExpenses clearfix">
+                        <div class="budgetExpensesText">Expenses</div>
+                        <div class="right clearfix">
+                            <div class="budgetExpenseValue">1,954.36</div>
+                            <div class="budgetExpensesPercentages">45%</div>
+                        </div>
+                    </div>
+            </div>     
+            <div class="calBottom">
+                        <div class="addBtnCal">
+                            <div class="calContainerAdd">
+                                <select class="addTypeCal">
+                                    <option value="income" selected>+</option>
+                                    <option value="expenses">-</option>
+                                </select>
+                                <input type="text" class="addDescriptionCal" placeholder="Add Description">
+                                <input type="number" class="addValueCal" placeholder="Value">
+                                <button class="addBtn"><i class="checkmarkOutlineCal"></i></button>
+                            </div>
+                        </div>
+                         <!--Calculators List for both Income and Expenses -->   
+                        <div class="containerCal clearfix">
+                            <div class="income">
+                                <h2 class="incomeTitle">Income</h2>
+                                <div class="incomeList"></div>
+                            </div>
 
-   <%- include ("./partials/footer.ejs") %>
-</body>
+                            <div class="expenses">
+                                <h2 class="titleExpenses">Expenses</h2>
+                                <div class="listExpenses"></div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <!--testing JS-->
+            <button id="sayHiBtn">Click me to say Hi</button>
+
+        </div>
+         
+            <!-- footer with ejs -->
+            <%- include ("./partials/footer.ejs") %>
+    </body>
+
 </html>
