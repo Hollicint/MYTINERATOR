@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
     <!--partial for the head tag -->
     <%- include ("./partials/head.ejs") %>
@@ -6,10 +7,13 @@
     <%- include ("./partials/header.ejs") %>
 
     <h1> Index Page</h1>
-    
+    <p id="demo"></p>
+
     <!-- This is a EJS test message -->
-    <% var sMessage="Hello there from EJS !" %>
+    <% var sMessage="Hello there from EJS" %>
     <%= sMessage %>
+
+    
     <!--partial for the footer tag -->
     <%- include ("./partials/footer.ejs") %>
 </body>
