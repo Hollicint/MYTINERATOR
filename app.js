@@ -31,6 +31,22 @@ app.get("/budgeting", (request, response) => {
 app.get("/accommodation", (request, response) => {
     response.render("accommodation", { title: "Mytinerator Accommodation", script: ['/JS/accomm.js']});
 });
+//account
+app.get("/account", (request, response) => {
+    response.render("account", { title: "Mytinerator Account", script: ['/JS/account.js']});
+});
+//Rentals page
+app.get("/rentals", (request, response) => {
+    response.render("rentals", { title: "Mytinerator Rentals", script: ['/JS/rentals.js']});
+});
+//Contact page
+app.get("/contact", (request, response) => {
+    response.render("contact", { title: "Mytinerator Contact", script: ['/JS/contact.js']});
+});
+//Destination information page
+app.get("/destination", (request, response) => {
+    response.render("destination", { title: "Mytinerator Destination", script: ['/JS/destination.js']});
+});
 //404 page
 app.use((request, response) => {
     response.render("404", { title: "Mytinerator 404 page", script: ['']});
