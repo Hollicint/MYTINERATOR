@@ -3,14 +3,25 @@
 <%- include ("./partials/head.ejs") %>
 
     <body class="mainBody">
-        <h1> Index Page</h1>
-        <%- include ("./partials/nav.ejs") %>
+        <header class="text-center py-3">
+            <div class="container">
+                <h1>MYTINERATOR</h1>
+                <%- include ("./partials/nav.ejs") %>
+            </div>
+        </header>
 
-            <!-- This is a EJS test message -->
-            <% var sMessage="Hello there from EJS !" %>
-                <%= sMessage %>
-                    <!--partial for the footer tag -->
-                    <%- include ("./partials/footer.ejs") %>
+        <!-- Main Content -->
+        <main class="container my-5">
+            <div class="row">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, explicabo soluta debitis quaerat, officia totam impedit assumenda error esse aut, iure id nesciunt quae hic nostrum accusantium alias sit porro.
+                
+            </div>
+        </main>
+
+        <%- include ("./partials/footer.ejs") %>
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 
 </html>

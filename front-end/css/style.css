@@ -1,14 +1,78 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /*########################## Head ############################ */
+header {
+    background-color: #f7b801ff;
+}
+
 
 /*########################## Nav Bar ############################ */
+nav {
+    background-color: #f35b04ff;
+    border: 3px solid #f35b04ff;
+    border-radius: 15px;
+    display: inline-block;
+    width: auto;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-size-to-content {
+    display: inline-flex;
+}
+
+nav a {
+    padding: 10px;
+    color: black;
+    margin: 2px;
+    background-color: white;
+}
+
+nav a:hover {
+    background-color: #f35b04ff;
+    overflow: hidden;
+    color: white;
+    text-decoration: none;
+}
+
+a:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+a:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
 
 /*########################## footer ############################ */
-
+footer {
+    background-color: #f7b801ff;
+}
 
 
 /*########################## Main Body ############################ */
-.mainBody {
-    background-color: rgb(177, 173, 119);
+main {
+    background-color: red;
 }
 
 
@@ -19,6 +83,14 @@
 /* Individual Pages */
 
 /*########################## Budget Page ############################ */
+
+
+
+
+
+
+
+
 .budgetContainer {
     margin: 0;
     padding: 0;
@@ -37,14 +109,16 @@
     margin-bottom: 10px;
     font-weight: 300;
 }
+
 .clearFix::after {
     content: "";
     display: table;
     clear: both;
 }
+
 .right {
     float: right;
-  }
+}
 
 
 .valueBudget {}
