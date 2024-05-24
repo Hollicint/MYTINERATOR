@@ -2,12 +2,16 @@
 <!-- header with ejs -->
 <%- include ("./partials/head.ejs") %>
 
-    <body class="mainBody">
+    <body class="mainBody">        
+        <%- include ("./partials/header.ejs") %>
 
-        <h1>Budget page</h1>
-        <!-- nav with ejs -->
-        <%- include ("./partials/nav.ejs") %>
-             <!--Calculators container-->
+
+        <!-- Main Content -->
+        <main class="container">
+            <h1>Budget page</h1>
+            <div class="row">
+                <div class="col">
+                    <!--Calculators container-->
         <div class="budgetContainer">
             <div class="calTop">
                  <!--Calculators Title-->
@@ -62,6 +66,12 @@
             </div>
             <!--testing JS-->
             <button id="sayHiBtn">Click me to say Hi</button>
+                </div>
+            </div>
+        </main>
+
+
+             
 
         </div>
          
