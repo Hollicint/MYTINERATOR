@@ -17,6 +17,9 @@ app.use(express.static(path.join(__dirname,'front-end')));
 //Directory for Back-End files
 app.use(express.static(path.join(__dirname, 'Back-End')));
 
+//Directory for Back-End files
+app.use(express.static(path.join(__dirname, 'Front-End', 'css')));
+
 //route and response
 app.get("/", (request, response) => {
     response.render("index", { title: "Mytinerator Home", script: ['/JS/index.js']});
