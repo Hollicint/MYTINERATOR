@@ -7,6 +7,29 @@
 
         <%- include ("./partials/nav.ejs") %>
 
+        <div class="weatherDiv">
+            <h1>Check the weather for any location</h1>
+            <input type="text" id="theCity"><br><br>
+            <button type="button" onclick="loadweather()">Search</button>
+        </div>
+
+        <div class="weatherCard">
+            <form action="">
+                <h2 id="city">City: </h2>
+                <p id="humidity">Humidity: </p>
+                <p id="temp">Temperature: </p>
+                <p id="feels">Feels Like: </p>
+                <p id="tempMax">Max Temperature: </p>
+                <p id="tempMin">Min Temperature: </p>
+                <p id="wind">Wind Speed: </p>
+            </form>
+        </div>
+
+        <div id="targetDiv" class="weatherCard"></div>
+             
+           
+      </div>
+
 
         <%- include ("./partials/footer.ejs") %>
     </body>
