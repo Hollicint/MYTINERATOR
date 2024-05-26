@@ -9,7 +9,7 @@ async function loadweather() {
   var data = await response.json();
   console.log(data);
 
-  var cityCard = document.getElementById('city').innerHTML = "City: ";
+  var cityCard = document.getElementById('city').innerHTML = "";
   var humidCard = document.getElementById('humidity').innerHTML= "Humidity: ";
   var tempCard = document.getElementById('temp').innerHTML= "Temperature: ";
   var feelsCard = document.getElementById('feels').innerHTML= "Feels like: ";
