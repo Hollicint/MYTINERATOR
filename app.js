@@ -2,6 +2,7 @@
 const mongoose = require("mongoose");
 
 const Itin = require('./back-end/models/itinerary');
+
 const express = require("express");
 //connection of path
 const path = require('path');
@@ -17,17 +18,17 @@ const app = express();
 //app.listen(3000);
 
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
-// app.get("/new-Intin", (request, response) => {
-//     const itin = new Itin({
-//     Trip: "Cats",
-//     shortDesc: "About cats",
-//     body: "Cats are nice"
-//     });
-//     itin.save()
-//     .then((result) => response.send(result))
-//     .catch((error) => console.log(error));
-//     });
+app.get("/new-itin", (request, response) => {
+    const itin = new Itin({
+        Location: "France",
+        Date: "18-05-2023",
+        Cost: "€800"
+    });
+    itin.save()
+        .then((result) => response.send(result))
+        .catch((error) => console.log(error));
+});
+
 
 
 //Setting for view for ejs files
@@ -78,7 +79,11 @@ app.get("/itinerary", (request, response) => {
     response.render("itinerary", { title: "Mytinerator Itinerary", script: ['/JS/itinerary.js'], style: ['/style.css'], styleTwo: ['/style.css'] });
 
 });
-
+app.get("/itinerary", (request, response) => {
+    Itin.find()
+        .then((result) => response.send(result))
+        .catch((error) => console.log(error));
+});
 //404 page
 app.use((request, response) => {
     response.render("404", { title: "Mytinerator 404 page", script: [''], style: [''], styleTwo: [''] });
