@@ -20,7 +20,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 // app.get("/new-Intin", (request, response) => {
 //     const itin = new Itin({
-//     title: "Cats",
+//     Trip: "Cats",
 //     shortDesc: "About cats",
 //     body: "Cats are nice"
 //     });
@@ -76,12 +76,6 @@ app.get("/destination", (request, response) => {
 //itinerary information page
 app.get("/itinerary", (request, response) => {
     response.render("itinerary", { title: "Mytinerator Itinerary", script: ['/JS/itinerary.js'], style: ['/style.css'], styleTwo: ['/style.css'] });
-    // Itin.find().sort({ createdAt: -1 })
-    //     .then((result) => response.render("itinerary", {
-    //         title:
-    //             "itinerary", itin: result
-    //     }))
-    //     .catch((error) => console.log(error));
 
 });
 
