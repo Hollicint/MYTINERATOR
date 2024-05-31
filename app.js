@@ -36,7 +36,7 @@ app.get("/accommodation", (request, response) => {
 });
 //account
 app.get("/account", (request, response) => {
-    response.render("account", { title: "Mytinerator Account", script: ['/JS/account.js'], style: ['/style.css'], styleTwo: ['']});
+    response.render("account", { title: "Mytinerator Account", script: ['/JS/account.js'], style: ['/style.css'], styleTwo: ['loginStyle.css']});
 });
 //Rentals page
 app.get("/rentals", (request, response) => {
