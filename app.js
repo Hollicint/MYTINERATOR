@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'Front-End', 'css')));
 
 //route and response
 app.get("/", (request, response) => {
-    response.render("index", { title: "Mytinerator Home", script: ['/JS/index.js'], style: ['/style.css'], styleTwo: ['']});
+    response.render("index", { title: "Mytinerator Home", script: ['/JS/index.js'], style: ['/style.css'], styleTwo: ['loginStyle.css']});
 });
 app.get("/budget", (request, response) => {
     response.render("Budget", { title: "Mytinerator Budget Page", script: ['/JS/budgetCal.js'], style: ['/style.css'], styleTwo: ['']});
@@ -36,7 +36,7 @@ app.get("/accommodation", (request, response) => {
 });
 //account
 app.get("/account", (request, response) => {
-    response.render("account", { title: "Mytinerator Account", script: ['/JS/account.js'], style: ['/style.css'], styleTwo: ['loginStyle.css']});
+    response.render("account", { title: "Mytinerator Account", script: ['/JS/account.js'], style: ['/style.css'], styleTwo: ['']});
 });
 //Rentals page
 app.get("/rentals", (request, response) => {

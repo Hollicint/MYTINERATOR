@@ -6,11 +6,35 @@
         <h1> Index Page</h1>
         <%- include ("./partials/nav.ejs") %>
 
-            <!-- This is a EJS test message -->
-            <% var sMessage="Hello there from EJS !" %>
-                <%= sMessage %>
-                    <!--partial for the footer tag -->
-                    <%- include ("./partials/footer.ejs") %>
+        <!-- This is a EJS test message -->
+        <% var sMessage="Hello there from EJS !" %>
+        <%= sMessage %>
+
+        <div class="container">
+            <div class="regForm" id="regForm">
+                <h1>Register</h1>
+                <form action="">
+                    <input type="text" placeholder="Name" id="nameReg">
+                    <input type="email" placeholder="Email" id="emailReg">
+                    <input type="text" placeholder="Password" id="pwordReg">
+                </form>
+                <button id="submitRegBtn">Register</button>
+                <a href="#" id="logLink">Login</a>
+          </div>
+          <div class="logForm" id="logForm">
+            <h1>Login</h1>
+            <form action="">
+                <input type="email" placeholder="Email" id="emailLogin">
+                <input type="text" placeholder="Password" id="pwordLogin">
+            </form>
+            <button id="submitLoginBtn">Login</button>
+            <a href="#" id="regLink">Register</a>
+        </div>
+        </div>
+
+
+        <!--partial for the footer tag -->
+        <%- include ("./partials/footer.ejs") %>
     </body>
 
 </html>
