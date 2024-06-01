@@ -8,31 +8,44 @@ body {
     background-color: #7678edff !important;
 }
 
+* {
+    font-family: "Arimo", sans-serif;
+  }
+
 /*########################## Head ############################ */
 header {
     background-color: #f7b801ff;
 }
 
+h1 a, h1 a:hover{
+    text-decoration: none;
+    color:black;
+}
+
+
+
 
 /*########################## Nav Bar ############################ */
 .navbar-nav {
     display: flex;
-    flex-wrap: nowrap; /* Prevents items from wrapping */
+    flex-wrap: nowrap;
     justify-content: space-between !important;
 }
 .nav-item {
-    flex: 0 0 auto; /* Prevents flex items from growing */
+    flex: 0 0 auto; 
 }
 .nav-link {
-    white-space: nowrap; /* Prevents breaking words in links */
+    white-space: nowrap;
 }
 
 .container-fluid {
     margin-right: 0;
 }
 nav {
-    background-color: #f35b04ff !important;
+    background-color: #f5a623;
     padding: 2px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 3px grey;
 }
 
 .nav-link {
@@ -40,14 +53,15 @@ nav {
 }
 
 .nav-item {
-    background-color: white;
     margin: 2px;
-    border-radius: 3px;
+    border-radius: 20px;
+    color: black;
+    font-weight: 900;
 }
 
 .nav-item a:hover, .nav-item a:active {
-    background-color: #f7b801ff;
-    border-radius: 3px;
+    background-color: #d69601;
+    border-radius: 20px;
     color: white !important;
 }
 
