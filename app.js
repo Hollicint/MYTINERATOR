@@ -1,11 +1,10 @@
 //mongoose connection
 const mongoose = require("mongoose");
-
 const Itin = require('./back-end/models/itinerary');
-
 const express = require("express");
 //connection of path
 const path = require('path');
+const methodOverride = require('method-override');
 //connection of DB
 const dbURI = "mongodb+srv://Group6:pQHbMkTRY2pdRq6G@mytin.hyrbvla.mongodb.net/MytinApp?retryWrites=true&w=majority&appName=mytin";
 mongoose.connect(dbURI)
@@ -14,24 +13,19 @@ mongoose.connect(dbURI)
 
 //create the Express app
 const app = express();
-//listen for incoming requests
-//app.listen(3000);
-
 app.use(express.static("public"));
 //retieve data from server
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 
 //Setting for view for ejs files
 app.set("view engine", "ejs");
-
 //Directory for EJS files
 app.set('views', path.join(__dirname, 'Front-End', 'Views'));
 app.use(express.static(path.join(__dirname, 'front-end')));
-
 //Directory for Back-End files
 app.use(express.static(path.join(__dirname, 'Back-End')));
-
 //Directory for Back-End files
 app.use(express.static(path.join(__dirname, 'Front-End', 'css')));
 
@@ -70,47 +64,34 @@ app.get("/destination", (request, response) => {
 // //itinerary  page
 
 app.get("/itinerary", (request, response) => {
-    Itin.find()
-        .then((result) => {
-            response.render("itinerary", {
-                title: "Mytinerator Itinerary",
-                script: ['/JS/itinerary.js'],
-                style: ['/style.css'],
-                styleTwo: ['/style.css'],
-                Itin: result  // Pass the fetched data to the template
-            });
-        })
+    Itin.find().then((result) => { response.render("itinerary", { title: "Mytinerator Itinerary", script: ['/JS/itinerary.js'], style: ['/style.css'], styleTwo: ['/style.css'], Itin: result }); })
         .catch((error) => console.log(error));
 });
-app.get("/createItinerary", (request, response) => {
-    response.render("createItinerary", { title: "Create Itinerary" });
-});
-app.get("/:id", (request, response) => {
+
+app.get("/itinerary/:id", (request, response) => {
     const id = request.params.id;
     Itin.findById(id)
-        .then(result => response.render("itin", {
-            itin: result, title:
-                "Single Itinerary details"
-        }))
+        .then(result => response.render("singleItinerary", { itin: result, title: "Single Itinerary details",script: ['/JS/singleItinerary.js'], style: ['/style.css'], styleTwo: ['/style.css']  }))
         .catch((error) => console.log(error));
 });
 
-// app.delete("/:id", (request, response) => {
-//     const id = request.params.id;
-//     Review.findByIdAndDelete(id)
-//     .then((result) => { response.json({ redirect: "/itinerary" }) })
-//     .catch((error) => console.log(error));
-// })
-
-app.post("/itinerary", (request, response) => {
-    //retrieve the new blog details
-    const itin = new Itin(request.body);
+app.delete("/itinerary/:id", (request, response) => {
+    const id = request.params.id;
+    Itin.findByIdAndDelete(id).then((result) => { response.json({ redirect: "/itinerary" }) })
+        .catch((error) => console.log(error));
+})
+app.put("/itinerary/:id", (req, res) => {
+    const id = req.params.id;
+    Itin.findByIdAndUpdate(id, req.body, { new: true })
+        .then(result => res.redirect(`/itinerary`))
+        .catch(error => console.log(error));
+});
+app.post("/itinerary", (req, res) => {
+    const itin = new Itin(req.body);
     itin.save()
-        .then((result) => { response.redirect("/itinerary") })
-        .catch((error) => console.log(error));
-
+        .then(result => res.redirect("/itinerary"))
+        .catch(error => console.log(error));
 });
-
 
 
 //404 page
