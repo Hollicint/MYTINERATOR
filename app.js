@@ -18,17 +18,8 @@ const app = express();
 //app.listen(3000);
 
 app.use(express.static("public"));
-app.get("/new-itin", (request, response) => {
-    const itin = new Itin({
-        Location: "France",
-        Date: "18-05-2023",
-        Cost: "€800"
-    });
-    itin.save()
-        .then((result) => response.send(result))
-        .catch((error) => console.log(error));
-});
-
+//retieve data from server
+app.use(express.urlencoded({ extended: true }));
 
 
 //Setting for view for ejs files
@@ -74,16 +65,54 @@ app.get("/contact", (request, response) => {
 app.get("/destination", (request, response) => {
     response.render("destination", { title: "Mytinerator Destination", script: ['/JS/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'] });
 });
-//itinerary information page
-app.get("/itinerary", (request, response) => {
-    response.render("itinerary", { title: "Mytinerator Itinerary", script: ['/JS/itinerary.js'], style: ['/style.css'], styleTwo: ['/style.css'] });
 
-});
+
+// //itinerary  page
+
 app.get("/itinerary", (request, response) => {
     Itin.find()
-        .then((result) => response.send(result))
+        .then((result) => {
+            response.render("itinerary", {
+                title: "Mytinerator Itinerary",
+                script: ['/JS/itinerary.js'],
+                style: ['/style.css'],
+                styleTwo: ['/style.css'],
+                Itin: result  // Pass the fetched data to the template
+            });
+        })
         .catch((error) => console.log(error));
 });
+app.get("/createItinerary", (request, response) => {
+    response.render("createItinerary", { title: "Create Itinerary" });
+});
+app.get("/:id", (request, response) => {
+    const id = request.params.id;
+    Itin.findById(id)
+        .then(result => response.render("itin", {
+            itin: result, title:
+                "Single Itinerary details"
+        }))
+        .catch((error) => console.log(error));
+});
+
+// app.delete("/:id", (request, response) => {
+//     const id = request.params.id;
+//     Review.findByIdAndDelete(id)
+//     .then((result) => { response.json({ redirect: "/itinerary" }) })
+//     .catch((error) => console.log(error));
+// })
+
+app.post("/itinerary", (request, response) => {
+    //retrieve the new blog details
+    const itin = new Itin(request.body);
+    itin.save()
+        .then((result) => { response.redirect("/itinerary") })
+        .catch((error) => console.log(error));
+
+});
+
+
+
 //404 page
 app.use((request, response) => {
     response.render("404", { title: "Mytinerator 404 page", script: [''], style: [''], styleTwo: [''] });

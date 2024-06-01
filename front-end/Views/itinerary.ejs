@@ -3,22 +3,66 @@
 
     <body class="mainBody">
 
-        <h1>Itinerary page</h1>
+        <h1>Itinerary page</h1><br>
         <!--Nav bar-->
         <%- include ("./partials/nav.ejs") %>
 
 
-        <div class="itin_mainBody">
+            <div id="itineraryInfo">
 
-            
-        </div>
+                <h3> Itinerary</h3>
+
+                <div class="itinInfo">
+                    <% if (Itin.length) { %>
+                        <% Itin.forEach(item=> { %>
+                            <a href="/<%= item._id %>">
+                        <h2>Location: <%= item.Location %>
+                                </h2>
+                            </a>
+                            <p>Date: <%= item.Date %>
+                            </p>
+                            <p>Cost: <%= item.Cost %>
+                            </p>
+                            <p>Accommodation: <%= item.Accommodation %>
+                            </p>
+                            <p>Rental: <%= item.Rental %>
+                            </p>
+                            <% }) %>
+                                <% } else { %>
+                                    <p>Sorry, there are no itineraries yet...</p>
+                                    <% } %>
+
+      
+                </div>
+
+                <div id="editItin" >
+                    <h3>Edit Itinerary</h3>
+                    <form action="/:id" method="POST">
+
+                        <br> <label>Location</label><br>
+                        <input type="text" required name="Location"><br>
+                        <label>Date</label><br>
+                        <input type="text" required name="Date"><br>
+                        <label>Cost</label><br>
+                        <input type="text" required name="Cost"><br>
+                        <label>Accommodation</label><br>
+                        <input type="text" required name="Accommodation"><br>
+                        <label>Rental</label><br>
+                        <input type="text" required name="Rental"><br>
+                        <br>
+                        <button id="saveBtn">Save Review</button>
+                    </form>
+
+
+                </div>
 
 
 
+            </div>
 
+            <!--Footer bar-->
+            <%- include ("./partials/footer.ejs") %>
 
-         <!--Footer bar-->
-        <%- include ("./partials/footer.ejs") %>
     </body>
 
 </html>

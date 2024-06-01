@@ -14,6 +14,14 @@ const itinSchema = new Schema({
         type: String,
         required: true
     },
+    Accommodation: {
+        type: String,
+        required: true
+    },
+    Rental: {
+        type: String,
+        required: true
+    },
 }, { timestamps: true });
 
 const Itin = mongoose.model("itin", itinSchema);

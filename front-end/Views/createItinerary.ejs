@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+    <!--Nav bar-->
+    <%- include ("./partials/nav.ejs") %>
+
+        <body class="mainBody">
+            <h1>Create Itinerary</h1>
+
+
+            <h3>Please Enter Your Itinerary Below: </h3>
+            <form action="/itinerary" method="POST">
+
+                <br> <label>Location</label><br>
+                <input type="text" required name="Location"><br>
+                <label>Date</label><br>
+                <input type="text" required name="Date"><br>
+                <label>Cost</label><br>
+                <input type="text" required name="Cost"><br>
+                <label>Accommodation</label><br>
+                <input type="text" required name="Accommodation"><br>
+                <label>Rental</label><br>
+                <input type="text" required name="Rental"><br>
+
+                <br><button>Create Itinerary</button>
+            </form>
+
+            <!--Footer bar-->
+            <%- include ("./partials/footer.ejs") %>
+        </body>
+
+</html>
