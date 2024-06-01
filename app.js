@@ -31,7 +31,10 @@ app.use(express.static(path.join(__dirname, 'Front-End', 'css')));
 
 //route and response
 app.get("/", (request, response) => {
+Feature/itinerary_Page_&_DB-Connection
     response.render("index", { title: "Mytinerator Home", script: ['/JS/index.js'], style: ['/style.css'], styleTwo: [''] });
+    response.render("index", { title: "Mytinerator Home", script: ['/JS/index.js'], style: ['/style.css'], styleTwo: ['loginStyle.css']});
+ main
 });
 app.get("/budget", (request, response) => {
     response.render("Budget", { title: "Mytinerator Budget Page", script: ['/JS/budgetCal.js'], style: ['/style.css'], styleTwo: [''] });
