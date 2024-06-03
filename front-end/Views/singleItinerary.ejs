@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<!--     
+    
+    orignal singleitinerary.ejs
+    
+    
+    
+    <!DOCTYPE html>
 <html lang="en">
 <%- include("./partials/head.ejs", { script: script }) %>
     <%- include("./partials/nav.ejs") %>
@@ -39,5 +45,63 @@
             <%- include("./partials/footer.ejs") %>
                 <script src="/back-end/js/itineraryJS.js"></script>
         </body>
+
+</html>-->
+
+
+<html lang="en">
+<!--partial for the head tag -->
+<%- include ("./partials/head.ejs") %>
+
+    <body>
+
+        <%- include ("./partials/header.ejs") %>
+
+        <!-- Main Content -->
+        <main class="container">
+            <div class="row">
+                <div class="col">
+                    <div id="singleIntinerary">
+                        <h1>
+                            <%= itin.Location %> - Itinerary Details
+                        </h1>
+                        <p>Date: <%= itin.Date %>
+                        </p>
+                        <p>Cost: <%= itin.Cost %>
+                        </p>
+                        <p>Accommodation: <%= itin.Accommodation %>
+                        </p>
+                        <p>Rental: <%= itin.Rental %>
+                        </p>
+                        <button id="deleteBtn" data-id="<%= itin._id %>">Delete Itinerary</button>
+                        <button id="editBtn" data-id="<%= itin._id %>">Edit Itinerary</button>
+                        <button id="backBtn">Back to Itinerary</button>
+                    </div>
+                    <div id="editItin" hidden>
+                        <h3>Edit Itinerary</h3>
+                        <form method="POST" action="/itinerary/<%= itin._id %>?_method=PUT">
+                            <label>Location</label><br>
+                            <input type="text" required name="Location" value="<%= itin.Location %>"><br>
+                            <label>Date</label><br>
+                            <input type="text" required name="Date" value="<%= itin.Date %>"><br>
+                            <label>Cost</label><br>
+                            <input type="text" required name="Cost" value="<%= itin.Cost %>"><br>
+                            <label>Accommodation</label><br>
+                            <input type="text" required name="Accommodation" value="<%= itin.Accommodation %>"><br>
+                            <label>Rental</label><br>
+                            <input type="text" required name="Rental" value="<%= itin.Rental %>"><br>
+                            <button id="saveBtn">Save Itinerary</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <%- include ("./partials/footer.ejs") %>
+        <%- include ("./partials/scriptCollection.ejs") %>
+        <script src="/back-end/js/itineraryJS.js"></script>
+            
+            
+    </body>
 
 </html>

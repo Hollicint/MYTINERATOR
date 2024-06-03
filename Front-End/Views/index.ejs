@@ -2,39 +2,41 @@
 <!--partial for the head tag -->
 <%- include ("./partials/head.ejs") %>
 
-    <body class="mainBody">
-        <h1> Index Page</h1>
-        <%- include ("./partials/nav.ejs") %>
+    <body>
 
-        <!-- This is a EJS test message -->
-        <% var sMessage="Hello there from EJS !" %>
-        <%= sMessage %>
+        <%- include ("./partials/header.ejs") %>
 
-        <div class="container">
-            <div class="regForm" id="regForm">
-                <h1>Register</h1>
-                <form action="">
-                    <input type="text" placeholder="Name" id="nameReg">
-                    <input type="email" placeholder="Email" id="emailReg">
-                    <input type="text" placeholder="Password" id="pwordReg">
-                </form>
-                <button id="submitRegBtn">Register</button>
-                <a href="#" id="logLink">Login</a>
-          </div>
-          <div class="logForm" id="logForm">
-            <h1>Login</h1>
-            <form action="">
-                <input type="email" placeholder="Email" id="emailLogin">
-                <input type="text" placeholder="Password" id="pwordLogin">
-            </form>
-            <button id="submitLoginBtn">Login</button>
-            <a href="#" id="regLink">Register</a>
-        </div>
-        </div>
+            <!-- Main Content -->
+            <main class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="regForm" id="regForm">
+                            <h1>Register</h1>
+                            <form action="">
+                                <input type="text" placeholder="Name" id="nameReg">
+                                <input type="email" placeholder="Email" id="emailReg">
+                                <input type="text" placeholder="Password" id="pwordReg">
+                            </form>
+                            <button id="submitRegBtn">Register</button>
+                            <a href="#" id="logLink">Login</a>
+                        </div>
+                        <div class="logForm" id="logForm">
+                            <h1>Login</h1>
+                            <form action="">
+                                <input type="email" placeholder="Email" id="emailLogin">
+                                <input type="text" placeholder="Password" id="pwordLogin">
+                            </form>
+                            <button id="submitLoginBtn">Login</button>
+                            <a href="#" id="regLink">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <%- include ("./partials/footer.ejs") %>
+                <%- include ("./partials/scriptCollection.ejs") %>
 
 
-        <!--partial for the footer tag -->
-        <%- include ("./partials/footer.ejs") %>
     </body>
 
 </html>

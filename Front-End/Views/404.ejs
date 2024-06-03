@@ -1,13 +1,25 @@
 <html lang="en">
+<!--partial for the head tag -->
 <%- include ("./partials/head.ejs") %>
 
-    <body class="mainBody">
-        <%- include ("./partials/nav.ejs") %>
-            <h1>Ooops</h1>
-            <h2>404 - This Page couldn't be found</h2>
+    <body>
 
+        <%- include ("./partials/header.ejs") %>
 
-            <%- include ("./partials/footer.ejs") %>
+        <!-- Main Content -->
+        <main class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>Ooops</h1>
+                    <h2>404 - This Page couldn't be found</h2>
+                </div>
+            </div>
+        </main>
+
+        <%- include ("./partials/footer.ejs") %>
+        <%- include ("./partials/scriptCollection.ejs") %>
+            
+            
     </body>
 
 </html>
