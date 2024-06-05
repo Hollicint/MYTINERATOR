@@ -10,13 +10,14 @@
         <main class="container">
             <div class="row">
                 <div class="col">
-                    <div class="weatherDiv">            
-                        <input type="text" id="theCity" placeholder="Enter your location"><br><br>
-                        <button type="button" onclick="loadweather()">Search</button>
+                    <div class="weatherDiv">
+                        <h1>Search weather for any location</h1>            
+                        <input type="text" id="location" placeholder="Enter your location"><br><br>
+                        <button type="button" id='weatherBtn' onclick="loadweather()">Search</button>
                     </div>
                         <div class="weatherCard">
                             <form action="">
-                                <h1 id="city"></h2>
+                                <h1 id="place"></h2>
                                 <p id="humidity">Humidity: </p>
                                 <p id="temp">Temperature: </p>
                                 <p id="feels">Feels Like: </p>
