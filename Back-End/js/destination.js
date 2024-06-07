@@ -1,3 +1,26 @@
+async function loadFlight() {
+
+    var API = "https://my.api.mockaroo.com/flight_data.json?key=fca6fb30";
+
+    try {
+      const response = await fetch(API);
+
+      if(response.status === 404) {
+        alert("Not a place, please try again.");
+        return;
+      } else {
+        var data = await response.json();
+        alert("added to console.");
+
+        console.log(data);
+    
+      }      
+    } catch (error) {
+      console.log(error);
+    }  
+  }
+
+
 async function loadweather() {
 
   var APIKey = 'c856238063b4ed114f381f40450bf743';

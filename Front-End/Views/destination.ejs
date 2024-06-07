@@ -8,18 +8,20 @@
 
         <!-- Main Content -->
         <main class="container">
+
             <div class="row">
                 <div class="col">
-                    <div class="weatherDiv">
-                        <h1>Search weather for any location</h1>            
-                        <input type="text" id="location" placeholder="Enter your location"><br><br>
-                        <button type="button" id='weatherBtn' onclick="loadweather()">Search</button>
-                    </div>
-                        <div class="weatherCard">
+                    <div class="destDiv">
+                        <h1>Search weather for any location</h1>  
+                        <div class="searchBox">
+                            <input type="text" id="location" placeholder="Enter your location"><br><br>
+                            <button type="button" id='destBtn' onclick="loadweather()">Search</button>
+                        </div>          
+                        <div class="infoCard">
                             <form action="">
                                 <h1 id="place"></h2>
                                 <img id="weatherImg" src="/images/weather/Base.png" alt="">
-                                <p id="sky">Overview: </p>
+                                <h5 id="sky">Overview: </h5>
                                 <p id="humidity">Humidity: </p>
                                 <p id="temp">Temperature: </p>
                                 <p id="feels">Feels Like: </p>
@@ -31,6 +33,29 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="destDiv">
+                        <h1>Search flights</h1>  
+                        <div class="searchBox">
+                            <input type="text" id="location" placeholder="Enter your location"><br><br>
+                            <button type="button" id='destBtn' onclick="loadFlight()">Load</button>
+                        </div>          
+                        <div class="infoCard">
+                            <form action="">
+                                <h1 id="airline"></h2>
+                                <p id="arrival_time">arrival_time: </p>
+                                <p id="departure_time">departure_time: </p>
+                                <p id="destination">destination: </p>
+                                <p id="origin">origin: </p>
+                                <p id="price">price: </p>
+                                <p id="status">status: </p>
+                            </form>
+                        </div>
+                    </div>                   
+                </div>
+            </div>   
         </main>
 
         <%- include ("./partials/footer.ejs") %>
