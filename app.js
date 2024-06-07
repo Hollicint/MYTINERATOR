@@ -38,31 +38,30 @@ Feature/itinerary_Page_&_DB-Connection
 commented this line out because was giving problems with the connection
 
 */
-    response.render("index", { title: "Mytinerator Home", script: ['/JS/index.js'], style: ['/style.css'], styleTwo: [''] });
-    response.render("index", { title: "Mytinerator Home", script: ['/JS/index.js'], style: ['/style.css'], styleTwo: ['loginStyle.css']});
+response.render("index", { title: "Mytinerator Home", script: ['/JS/index.js'], style: ['/style.css']});
  main
 });
 app.get("/budget", (request, response) => {
-    response.render("Budget", { title: "Mytinerator Budget Page", script: ['/JS/budgetCal.js'], style: ['/style.css'], styleTwo: [''] });
+    response.render("Budget", { title: "Mytinerator Budget Page", script: ['/JS/budgetCal.js'], style: ['/style.css']});
 });
 //redirect
 app.get("/budgeting", (request, response) => {
-    response.render("Budget", { title: "Mytinerator Budget page", script: ['/JS/budgetCal.js'], style: ['/style.css'], styleTwo: [''] });
+    response.render("Budget", { title: "Mytinerator Budget page", script: ['/JS/budgetCal.js'], style: ['/style.css']});
 });
 app.get("/accommodation", (request, response) => {
-    response.render("accommodation", { title: "Mytinerator Accommodation", script: ['/JS/accomm.js'], style: ['/style.css'], styleTwo: [''] });
+    response.render("accommodation", { title: "Mytinerator Accommodation", script: ['/JS/accomm.js'], style: ['/style.css']});
 });
 //account
 app.get("/account", (request, response) => {
-    response.render("account", { title: "Mytinerator Account", script: ['/JS/account.js'], style: ['/style.css'], styleTwo: [''] });
+    response.render("account", { title: "Mytinerator Account", script: ['/JS/account.js'], style: ['/style.css']});
 });
 //Rentals page
 app.get("/rentals", (request, response) => {
-    response.render("rentals", { title: "Mytinerator Rentals", script: ['/JS/rentals.js'], style: ['/style.css'], styleTwo: [''] });
+    response.render("rentals", { title: "Mytinerator Rentals", script: ['/JS/rentals.js'], style: ['/style.css']});
 });
 //Contact page
 app.get("/contact", (request, response) => {
-    response.render("contact", { title: "Mytinerator Contact", script: ['/JS/contact.js'], style: ['/style.css'], styleTwo: [''] });
+    response.render("contact", { title: "Mytinerator Contact", script: ['/JS/contact.js'], style: ['/style.css']});
 });
 //Destination information page
 app.get("/destination", (request, response) => {
@@ -73,7 +72,7 @@ app.get("/destination", (request, response) => {
 // //itinerary  page
 
 app.get("/itinerary", (request, response) => {
-    Itin.find().then((result) => { response.render("itinerary", { title: "Mytinerator Itinerary", script: ['/JS/itinerary.js'], style: ['/style.css'], styleTwo: ['/style.css'], Itin: result }); })
+    Itin.find().then((result) => { response.render("itinerary", { title: "Mytinerator Itinerary", script: ['/JS/itineraryJS.js'], style: ['/style.css'], styleTwo: ['/style.css'], Itin: result }); })
         .catch((error) => console.log(error));
 });
 

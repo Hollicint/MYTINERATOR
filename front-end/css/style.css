@@ -90,6 +90,51 @@ main {
 
 /* Individual Pages */
 
+/*########################## Index Page ############################ */
+
+.regForm{
+    display:inline;  
+    display: none;
+  }
+.loginForm {
+    display:inline;    ;
+    align-items:center;
+  }
+.regBtn {
+    border: none;
+    color: black;
+    background-color: none;
+  }
+    
+input {
+    margin:10px;
+    border: 1px solid;
+  }
+    
+button {
+    margin: 10px;
+    background: rgb(29, 184, 11);
+    color:black;
+    width: 25%;
+    border:2px solid black;
+    border-radius: 1px;
+    font-weight: bold;
+  }
+button:hover {
+    font-weight: bold;
+    background: rgb(39, 294, 20);
+    cursor: pointer;
+}
+.changeForm {
+    flex-direction: row;
+}
+  
+a {
+    text-decoration:none;
+    color: green;
+}
+
+
 /*########################## Budget Page ############################ */
 .budgetContainer {
     margin: 0;
