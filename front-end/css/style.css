@@ -107,7 +107,7 @@ main {
   }
     
 input {
-    margin:10px;
+    margin-right:10px;
     border: 1px solid;
   }
     
@@ -115,7 +115,6 @@ button {
     margin: 10px;
     background: rgb(29, 184, 11);
     color:black;
-    width: 25%;
     border:2px solid black;
     border-radius: 1px;
     font-weight: bold;
@@ -209,3 +208,6 @@ a {
 .titleExpenses {}
 
 .listExpenses {}
+
+/*########################## Destination Page ############################ */
+

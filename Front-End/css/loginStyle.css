@@ -28,20 +28,7 @@
     border: 1px solid;
   }
     
-  button {
-    margin: 10px;
-    background: rgb(29, 184, 11);
-    color:black;
-    width: 25%;
-    border:2px solid black;
-    border-radius: 1px;
-    font-weight: bold;
-  }
-  button:hover {
-    font-weight: bold;
-    background: rgb(39, 294, 20);
-    cursor: pointer;
-  }
+
   .changeForm {
     flex-direction: row;
   }
