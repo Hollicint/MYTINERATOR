@@ -10,7 +10,7 @@
             <main class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="regForm" id="regForm">
+                        <!--<div class="regForm" id="regForm">
                             <h1>Register</h1>
                             <form action="">
                                 <input type="text" placeholder="Name" id="nameReg">
@@ -19,8 +19,34 @@
                             </form>
                             <button id="submitRegBtn">Register</button>
                             <a href="#" id="logLink">Login</a>
+                        </div>-->
+                        
+                        <div class="regForm" id="regForm">
+                            <div class="regStyle">
+                            <h1 class="text-center">Register</h1>
+                            <form action="">
+                                <div class="form-group">
+                                    <label for="nameReg">Name</label>
+                                    <input type="email" class="form-control" placeholder="Name" id="nameReg" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="emailReg">Email</label>
+                                    <input type="email" class="form-control" placeholder="Password" id="emailReg" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwordReg">Password</label>
+                                    <input type="password" class="form-control" placeholder="Password" id="pwordReg" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block" id="submitRegBtn">Register</button>
+                            </form>
+                            <div class="text-center mt-3">
+                                <a href="#" id="logLink">Login</a>
+                            </div>
                         </div>
-                        <div class="logForm" id="logForm">
+                        </div>
+                        
+                        
+                        <!--<div class="logForm" id="logForm">
                             <h1>Login</h1>
                             <form action="">
                                 <input type="email" placeholder="Email" id="emailLogin">
@@ -28,6 +54,23 @@
                             </form>
                             <button id="submitLoginBtn">Login</button>
                             <a href="#" id="regLink">Register</a>
+                        </div>-->
+                        <div class="logForm" id="logForm">
+                            <h1 class="text-center">Login</h1>
+                            <form action="">
+                                <div class="form-group">
+                                    <label for="emailLogin">Email</label>
+                                    <input type="email" class="form-control" placeholder="Email" id="emailLogin" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwordLogin">Password</label>
+                                    <input type="password" class="form-control" placeholder="Password" id="pwordLogin" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block" id="submitLoginBtn">Login</button>
+                            </form>
+                            <div class="text-center mt-3">
+                            <a href="#" id="regLink">Register</a>
+                            </div>
                         </div>
                     </div>
                 </div>

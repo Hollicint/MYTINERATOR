@@ -39,7 +39,7 @@ commented this line out because was giving problems with the connection
 
 */
 response.render("index", { title: "Mytinerator Home", script: ['/JS/index.js'], style: ['/style.css']});
- main
+ /*main*/
 });
 app.get("/budget", (request, response) => {
     response.render("Budget", { title: "Mytinerator Budget Page", script: ['/JS/budgetCal.js'], style: ['/style.css']});

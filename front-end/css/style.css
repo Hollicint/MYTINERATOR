@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -16,19 +17,23 @@ header {
     background-color: #f7b801ff;
 }
 
-h1 a, h1 a:hover{
+h1 a,
+h1 a:hover {
     text-decoration: none;
-    color:black;
+    color: black;
 }
+
 /*########################## Nav Bar ############################ */
 .navbar-nav {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between !important;
 }
+
 .nav-item {
-    flex: 0 0 auto; 
+    flex: 0 0 auto;
 }
+
 .nav-link {
     white-space: nowrap;
 }
@@ -36,6 +41,7 @@ h1 a, h1 a:hover{
 .container-fluid {
     margin-right: 0;
 }
+
 nav {
     background-color: #f5a623;
     padding: 2px;
@@ -54,7 +60,8 @@ nav {
     font-weight: 900;
 }
 
-.nav-item a:hover, .nav-item a:active {
+.nav-item a:hover,
+.nav-item a:active {
     background-color: #d69601;
     border-radius: 20px;
     color: white !important;
@@ -86,51 +93,61 @@ main {
 /*########################## Font/Text Styles ############################ */
 * {
     font-family: "Arimo", sans-serif;
-  }
+}
 
 /* Individual Pages */
 
 /*########################## Index Page ############################ */
 
-.regForm{
-    display:inline;  
+.regForm {
+    display: inline;
     display: none;
-  }
+}
+
 .loginForm {
-    display:inline;    ;
-    align-items:center;
-  }
+    display: flex;
+  justify-content: center;
+}
+
 .regBtn {
     border: none;
     color: black;
     background-color: none;
-  }
-    
+}
+
 input {
-    margin-right:10px;
+    margin-right: 10px;
     border: 1px solid;
-  }
-    
+}
+
+.logForm, .regStyle {
+    padding: 10px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 3px rgb(212, 212, 212);
+}
+/* styled by bootstrap inline 
 button {
     margin: 10px;
     background: rgb(29, 184, 11);
-    color:black;
-    border:2px solid black;
+    color: black;
+    border: 2px solid black;
     border-radius: 1px;
     font-weight: bold;
-  }
+}
+
 button:hover {
     font-weight: bold;
     background: rgb(39, 294, 20);
     cursor: pointer;
 }
+
 .changeForm {
     flex-direction: row;
 }
-  
+*/
 a {
-    text-decoration:none;
-    color: green;
+    text-decoration: none;
+    /*color: green;*/
 }
 
 
@@ -153,14 +170,16 @@ a {
     margin-bottom: 10px;
     font-weight: 300;
 }
+
 .clearFix::after {
     content: "";
     display: table;
     clear: both;
 }
+
 .right {
     float: right;
-  }
+}
 
 
 .valueBudget {}
@@ -210,4 +229,3 @@ a {
 .listExpenses {}
 
 /*########################## Destination Page ############################ */
-
