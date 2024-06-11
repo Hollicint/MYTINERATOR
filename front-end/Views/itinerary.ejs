@@ -1,60 +1,4 @@
-<!--
-    #############
 
-Original itinerary.ejs
-
-    
-    <!DOCTYPE html>
-<html lang="en">
-<%- include("./partials/head.ejs", { script: script }) %>
-    <%- include("./partials/nav.ejs") %>
-
-        <body class="mainBody">
-
-            <div id="editItin">
-                <h3>Create Itinerary</h3>
-                <form method="POST">
-                    <label>Location</label><br>
-                    <input type="text" required name="Location"><br>
-                    <label>Date</label><br>
-                    <input type="text" required name="Date"><br>
-                    <label>Cost</label><br>
-                    <input type="text" required name="Cost"><br>
-                    <label>Accommodation</label><br>
-                    <input type="text" required name="Accommodation"><br>
-                    <label>Rental</label><br>
-                    <input type="text" required name="Rental"><br><br>
-                    <button id="saveBtn">Save Itinerary</button>
-                </form>
-            </div>
-            <div id="showItin" class="itinInfo">
-                <% if (Itin.length) { %>
-                    <% Itin.forEach(item=> { %>
-                        <a href="/itinerary/<%= item._id %>">
-                            <h2>Location: <%= item.Location %>
-                            </h2>
-                        </a>
-                        <p>Date: <%= item.Date %>
-                        </p>
-                        <p>Cost: <%= item.Cost %>
-                        </p>
-                        <p>Accommodation: <%= item.Accommodation %>
-                        </p>
-                        <p>Rental: <%= item.Rental %>
-                        </p>
-
-                        <% }) %>
-                            <% } else { %>
-                                <p>Sorry, there are no itineraries yet...</p>
-                                <% } %>
-            </div>
-
-
-            <%- include("./partials/footer.ejs") %>
-                <script src="/back-end/js/itineraryJS.js"></script>
-        </body>
-
-</html>-->
 <html lang="en">
 <!--partial for the head tag -->
 <%- include ("./partials/head.ejs") %>
@@ -72,41 +16,78 @@ Original itinerary.ejs
                         <h3 class="text-center">Create Itinerary</h3>
                         <form method="POST">
                             <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <input type="text" class="form-control" placeholder="Location" required name="Location">
+                                <div class="form-group col-md-3">
+                                    <input type="text" class="form-control" placeholder="Destination" required name="Destination">
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <input type="text" class="form-control" placeholder="Date" required name="Date">
+                                <div class="form-group col-md-3">
+                                    <input type="date" class="form-control" placeholder="Date" required name="Date">
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <input type="text" class="form-control" placeholder="Cost" required name="Cost">
+                                <div class="form-group col-md-3">
+                                    <select required name="LengthOfStay" class="form-control">
+                                        <% for (let i = 1; i <= 30; i++) { %>
+                                            <option value="<%= i %>"><%= i %> days</option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <div class="currency-input">
+                                        <span class="currency-symbol">€</span>
+                                        <input type="text" class="form-control" placeholder="Total Cost" required name="TotalCost">
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" placeholder="Accommodation" required name="Accommodation">
+                                <div class="form-group col-md-4">
+                                    <input type="text" class="form-control" placeholder="Accommodation Type" required name="AccommodationType">
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" placeholder="Rental" required name="Rental">
+                                <div class="form-group col-md-4">
+                                    <input type="text" class="form-control" placeholder="Accommodation Name" required name="AccommodationName">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <div class="currency-input">
+                                        <span class="currency-symbol">€</span>
+                                        <input type="text" class="form-control" placeholder="Accommodation Cost" required name="AccommodationCost">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <!--input type="text" class="form-control" placeholder="Rental" required name="Rental"-->
+                                    <label>Did you Rental Transport?</label><br>
+                                    <input type="radio" id="rentalYes" name="Rental" value="Yes"> Yes
+                                    <input type="radio" id="rentalNo" name="Rental" value="No"> No
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input type="text" class="form-control" placeholder="Rental Type" required name="RentalType" id="rentalType">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <div class="currency-input">
+                                        <span class="currency-symbol">€</span>
+                                        <input type="text" class="form-control" placeholder="Rental Cost" required name="RentalCost" id="rentalCost">
+                                    </div>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-block" id="saveBtn">Save Itinerary</button>
                         </form>
                     </div>
+                    <div id="bodyText">
+
+                        <h3>Click on a Destination name to find out more about these Itineraries</h3>
+                        <p>You will be able to Edit and Delete</p>
+                    </div>
+
                     <div id="showItin" class="itinInfo">
                         <% if (Itin.length) { %>
                             <div class="row">
                                 <% Itin.forEach(item => { %>
-                                    <div class="col-md-6 col-lg-4">
+                                    <div class="col-md-6 col-lg-5">
                                         <div class="card itin-card">
                                             <div class="card-body">
                                                 <a href="/itinerary/<%= item._id %>">
-                                                    <h2 class="card-title">Location: <%= item.Location %></h2>
+                                                    <h2 class="card-title">Destination: <%= item.Destination %></h2>
                                                 </a>
-                                                <p class="card-text">Date: <%= item.Date %></p>
-                                                <p class="card-text">Cost: <%= item.Cost %></p>
-                                                <p class="card-text">Accommodation: <%= item.Accommodation %></p>
-                                                <p class="card-text">Rental: <%= item.Rental %></p>
+                                                <p class="card-text">Date: <%= item.Date %> | Total Cost: <%= item.TotalCost %></p>
+
                                             </div>
                                         </div>
                                     </div>

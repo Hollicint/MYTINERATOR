@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     editBtn.addEventListener("click", (e) => {
-        document.getElementById('editItin').style.display = "block";
+        console.log("Edit button clicked");
+        document.getElementById('singleIntinerary').hidden = true;
+        document.getElementById('editItin').hidden = false;
     });
 
     backBtn.addEventListener("click", (e) => {
@@ -22,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const saveBtn = document.getElementById("saveBtn");
     saveBtn.addEventListener("click", (e) => {
-        document.getElementById('editItin').style.display = "none";
+        console.log("Save button clicked");
+        document.getElementById('editItin').hidden = true;
+        document.getElementById('singleIntinerary').hidden = false;
     });
 });

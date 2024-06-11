@@ -1,54 +1,3 @@
-<!--     
-    
-    orignal singleitinerary.ejs
-    
-    
-    
-    <!DOCTYPE html>
-<html lang="en">
-<%- include("./partials/head.ejs", { script: script }) %>
-    <%- include("./partials/nav.ejs") %>
-
-        <body class="mainBody">
-            <div id="singleIntinerary">
-                <h1>
-                    <%= itin.Location %> - Itinerary Details
-                </h1>
-                <p>Date: <%= itin.Date %>
-                </p>
-                <p>Cost: <%= itin.Cost %>
-                </p>
-                <p>Accommodation: <%= itin.Accommodation %>
-                </p>
-                <p>Rental: <%= itin.Rental %>
-                </p>
-                <button id="deleteBtn" data-id="<%= itin._id %>">Delete Itinerary</button>
-                <button id="editBtn" data-id="<%= itin._id %>">Edit Itinerary</button>
-                <button id="backBtn">Back to Itinerary</button>
-            </div>
-            <div id="editItin" hidden>
-                <h3>Edit Itinerary</h3>
-                <form method="POST" action="/itinerary/<%= itin._id %>?_method=PUT">
-                    <label>Location</label><br>
-                    <input type="text" required name="Location" value="<%= itin.Location %>"><br>
-                    <label>Date</label><br>
-                    <input type="text" required name="Date" value="<%= itin.Date %>"><br>
-                    <label>Cost</label><br>
-                    <input type="text" required name="Cost" value="<%= itin.Cost %>"><br>
-                    <label>Accommodation</label><br>
-                    <input type="text" required name="Accommodation" value="<%= itin.Accommodation %>"><br>
-                    <label>Rental</label><br>
-                    <input type="text" required name="Rental" value="<%= itin.Rental %>"><br>
-                    <button id="saveBtn">Save Itinerary</button>
-                </form>
-            </div>
-            <%- include("./partials/footer.ejs") %>
-                <script src="/back-end/js/itineraryJS.js"></script>
-        </body>
-
-</html>-->
-
-
 <html lang="en">
 <!--partial for the head tag -->
 <%- include ("./partials/head.ejs") %>
@@ -63,15 +12,25 @@
                 <div class="col">
                     <div id="singleIntinerary">
                         <h1>
-                            <%= itin.Location %> - Itinerary Details
+                            <%= itin.Destination %> - Itinerary Details
                         </h1>
                         <p>Date: <%= itin.Date %>
                         </p>
-                        <p>Cost: <%= itin.Cost %>
+                        <p>Length Of Stay: <%= itin.LengthOfStay %>
                         </p>
-                        <p>Accommodation: <%= itin.Accommodation %>
+                        <p>Total Cost: <%= itin.TotalCost %>
+                        </p>
+                        <p>Accommodation Type: <%= itin.AccommodationType %>
+                        </p>
+                        <p>Accommodation Name: <%= itin.AccommodationName %>
+                        </p>
+                        <p>Accommodation Cost: <%= itin.AccommodationCost %>
                         </p>
                         <p>Rental: <%= itin.Rental %>
+                        </p>
+                        <p>Rental Type: <%= itin.RentalType %>
+                        </p>
+                        <p>Rental Cost: <%= itin.RentalCost %>
                         </p>
                         <button id="deleteBtn" data-id="<%= itin._id %>">Delete Itinerary</button>
                         <button id="editBtn" data-id="<%= itin._id %>">Edit Itinerary</button>
@@ -80,16 +39,41 @@
                     <div id="editItin" hidden>
                         <h3>Edit Itinerary</h3>
                         <form method="POST" action="/itinerary/<%= itin._id %>?_method=PUT">
-                            <label>Location</label><br>
-                            <input type="text" required name="Location" value="<%= itin.Location %>"><br>
+                            <label>Destination</label><br>
+                            <input type="text" required name="Destination" value="<%= itin.Destination %>"><br>
                             <label>Date</label><br>
-                            <input type="text" required name="Date" value="<%= itin.Date %>"><br>
-                            <label>Cost</label><br>
-                            <input type="text" required name="Cost" value="<%= itin.Cost %>"><br>
-                            <label>Accommodation</label><br>
-                            <input type="text" required name="Accommodation" value="<%= itin.Accommodation %>"><br>
+                            <input type="date" required name="Date" value="<%= itin.Date %>"><br>
+                            <label>Length Of Stay</label><br>
+                            <select required name="LengthOfStay">
+                                <% for (let i = 1; i <= 30; i++) { %>
+                                    <option value="<%= i %>" <%= itin.LengthOfStay == i ? 'selected' : '' %>><%= i %> days</option>
+                                <% } %>
+                            </select><br>
+                            <label>Total Cost</label><br>
+                            <div class="currency-input">
+                                <span class="currency-symbol">€</span>
+                                <input type="text" required name="TotalCost" value="<%= itin.TotalCost %>">
+                            </div><br>
+                            <label>Accommodation Type</label><br>
+                            <input type="text" required name="AccommodationType" value="<%= itin.AccommodationType %>"><br>
+                            <label>Accommodation Name</label><br>
+                            <input type="text" required name="AccommodationName" value="<%= itin.AccommodationName %>"><br>
+                            <label>Accommodation Cost</label><br>
+                            <div class="currency-input">
+                                <span class="currency-symbol">€</span>
+                                <input type="text" required name="AccommodationCost" value="<%= itin.AccommodationCost %>">
+                            </div><br>
                             <label>Rental</label><br>
-                            <input type="text" required name="Rental" value="<%= itin.Rental %>"><br>
+                            <!--input type="text" required name="Rental" value="<%= itin.Rental %>"><br-->
+                            <input type="radio" id="rentalYes" name="Rental" value="Yes" <%= itin.Rental === 'Yes' ? 'checked' : '' %>> Yes
+                            <input type="radio" id="rentalNo" name="Rental" value="No" <%= itin.Rental === 'No' ? 'checked' : '' %>> No<br>
+                            <label>Rental Type</label><br>
+                            <input type="text" class="form-control" placeholder="Rental Type" required name="RentalType" id="rentalType">
+                            <label>Rental Cost</label><br>
+                            <div class="currency-input">
+                                <span class="currency-symbol">€</span>
+                                <input type="text" class="form-control" placeholder="Rental Cost" required name="RentalCost" id="rentalCost">
+                            </div><br>
                             <button id="saveBtn">Save Itinerary</button>
                         </form>
                     </div>
@@ -100,7 +84,6 @@
         <%- include ("./partials/footer.ejs") %>
         <%- include ("./partials/scriptCollection.ejs") %>
         <script src="/back-end/js/itineraryJS.js"></script>
-            
             
     </body>
 
