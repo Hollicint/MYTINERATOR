@@ -8,16 +8,14 @@
 
         <!-- Main Content -->
         <main class="container">
-
             <div class="row">
                 <div class="col">
-                    <div class="destDiv">
                         <h1>Search weather for any location</h1>  
-                        <div class="searchBox">
+                        <div id="searchBox">
                             <input type="text" id="location" placeholder="Enter your location"><br><br>
                             <button type="button" id='destBtn' onclick="loadweather()">Search</button>
                         </div>          
-                        <div class="infoCard">
+                        <div id="infoCard">
                             <form action="">
                                 <h1 id="place"></h2>
                                 <img id="weatherImg" src="/images/weather/Base.png" alt="">
@@ -30,32 +28,90 @@
                                 <p id="wind">Wind Speed: </p>
                             </form>
                         </div>
-                    </div>
                 </div>
             </div>
+            <!-- -->
+            <div id="flightOptions" class="row">
+                <h1>Search Flights</h1>
+                <button id="returnBtn" onclick="dateCheck()">Submit</button>
+                <button id="oneWayBtn" onclick="loadOneWayFLight()">Submit</button>
+                <div class="col">
+                    <label>return</label>
+                    <input type="radio" onclick="loadReturn()" id="returnRadio" name="fav_language" value="HTML">
+                    <label for="">One way</label>
+                    <input type="radio"  onclick="loadOneWay()" id="oneWayRadio" name="fav_language" value="HTML">
+                </div>
+            </div>
+            <!-- -->
 
             <div class="row">
-                <div class="col">
-                    <div class="destDiv">
-                        <h1>Search flights</h1>  
-                        <div class="searchBox">
-                            <input type="text" id="location" placeholder="Enter your location"><br><br>
-                            <button type="button" id='destBtn' onclick="loadFlight()">Load</button>
-                        </div>          
-                        <div class="infoCard">
-                            <form action="">
-                                <h1 id="airline"></h2>
-                                <p id="arrival_time">arrival_time: </p>
-                                <p id="departure_time">departure_time: </p>
-                                <p id="destination">destination: </p>
-                                <p id="origin">origin: </p>
-                                <p id="price">price: </p>
-                                <p id="status">status: </p>
-                            </form>
+                <div class="col" id="searchBox">
+                    <form class="row" action="" id="searchReturn">
+                        <div class="col">
+                            <label>Depart from</label>
+                            <input type="text" id="RTDepart" placeholder="City"/>
                         </div>
-                    </div>                   
-                </div>
-            </div>   
+                        <div class="col">
+                            <label>Return to</label>
+                            <input type="text" id="RTReturn" placeholder="City"/>
+                        </div>
+                        <div class="col">
+                            <label>Depart Date</label>
+                            <input type="date" id="RTDepartDate" placeholder=""/>
+                        </div>
+                        <div class="col">
+                            <label>Return Date</label>
+                            <input type="date" id="RTReturnDate" placeholder=""/>
+                        </div>
+                    </form>
+                </div>                                        
+            </div>
+            <!-- -->
+
+            <ul id="flightList"></ul>
+
+            <div class="row">
+                <div class="col" id="searchBox">
+                    <form class="row" action="" id="searchOneWay">
+                        <div class="col">
+                            <label>Depart from</label>
+                            <input type="text" id="departLocation" placeholder="City"/>
+                        </div>
+                        <div class="col">
+                            <label>Destination</label>
+                            <input type="text" id="destination" placeholder=""/>
+                        </div>
+                        <div class="col">
+                            <label>Depart Date</label>
+                            <input type="date" id="departDate" placeholder=""/>
+                        </div>
+                    </form>
+                </div>                                        
+            </div>
+
+            <!-- -->
+
+
+            <div class="row" id="flightDiv">
+                <div id="flightCard">
+                    <h1 id="airline"></h2>
+                    <p id="departureDate">departure_date: </p>
+                    <p id="destination">destination: </p>
+                    <p id="Departure">From: </p>
+                    <p id="flightId">Flight ID: </p>
+                    <p id="price">price: </p>
+                    <p id="status">status: </p>
+                    </div>
+            </div>  
+            <!-- 
+            airline
+            departure
+            departure_date
+            destination
+            flight_ID
+            price
+            status
+            --> 
         </main>
 
         <%- include ("./partials/footer.ejs") %>
