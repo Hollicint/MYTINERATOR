@@ -149,7 +149,26 @@ a {
     text-decoration: none;
     /*color: green;*/
 }
+.currency-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
+.currency-symbol {
+    position: absolute;
+    left: 10px;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.currency-input input {
+    padding-left: 25px; /* Adjust the padding to ensure the text doesn't overlap with the currency symbol */
+}
+
+.input-error {
+    border-color: red;
+}
 
 /*########################## Budget Page ############################ */
 .budgetContainer {

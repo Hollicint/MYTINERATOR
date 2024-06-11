@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const itinSchema = new Schema({
-    Location: {
+    Destination: {
         type: String,
         required: true
     },
@@ -10,15 +10,35 @@ const itinSchema = new Schema({
         type: String,
         required: true
     },
-    Cost: {
+    LengthOfStay: {
         type: String,
         required: true
     },
-    Accommodation: {
+    TotalCost: {
+        type: String,
+        required: true
+    },
+    AccommodationType: {
+        type: String,
+        required: true
+    },
+    AccommodationName: {
+        type: String,
+        required: true
+    },
+    AccommodationCost: {
         type: String,
         required: true
     },
     Rental: {
+        type: String,
+        required: true
+    },
+    RentalType: {
+        type: String,
+        required: true
+    },
+    RentalCost: {
         type: String,
         required: true
     },
