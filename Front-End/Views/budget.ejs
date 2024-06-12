@@ -1,10 +1,10 @@
 <html lang="en">
 <!--partial for the head tag -->
 <%- include ("./partials/head.ejs") %>
+<!--link rel="stylesheet" href="../css/budgetCal.css"-->
+<body>
 
-    <body>
-
-        <%- include ("./partials/header.ejs") %>
+    <%- include ("./partials/header.ejs") %>
 
         <!-- Main Content -->
         <main class="container">
@@ -12,68 +12,73 @@
                 <div class="col">
                     <div class="budgetContainer">
                         <div class="calTop">
-                             <!--Calculators Title-->
+                            <!--Calculators Title-->
                             <div id="budgetCalTitle">
                                 <h2> Your Budget Calculator </h2>
                             </div>
-                             <!--Calculators total Budget-->
-                            <div class="budgetCal">
-                                <div class="valueBudget">+ 2,345.64</div>
-                                 <!--Calculators Income display-->
-                                <div class="incomeBudget clearfix">
-                                    <div class="budgetIncometext">Income</div>
-                                    <div class="right">
-                                        <div class="budgetIncomeValue">+4,300.00</div>
-                                        <div class="budgetIncomePercentage">&nbsp;</div>
+                            <div class="topOfCal">
+                                <div class="budget">
+                                    <div class="budgetHeader">
+                                        Available Budget in <span class="budgetHeaderMonth">%Month%</span>:
                                     </div>
-                                 <!--Calculators Expenses display -->    
+
+                                    <div class="budgetValue">+ <span class="budgetSetLimit">0.00</span></div>
+
+                                    <div class="budgetComingIn clearfix">
+                                        <div class="budgetComingInTxt">Income</div>
+                                        <div class="rightSide">
+                                            <div class="budgetComingInValue">+ 4,300.00</div>
+                                            <div class="budgetComingInPercentage">&nbsp;</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="budgetExpenditure clearfix">
+                                        <div class="bExpenditureTxt">Expenses</div>
+                                        <div class="rightSide clearfix">
+                                            <div class="budgetExpenditureInValue">- 1,954.36</div>
+                                            <div class="budgetExpenditurePercentage">45%</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="budgetExpenses clearfix">
-                                    <div class="budgetExpensesText">Expenses</div>
-                                    <div class="right clearfix">
-                                        <div class="budgetExpenseValue">1,954.36</div>
-                                        <div class="budgetExpensesPercentages">45%</div>
+                            </div>
+
+                            <div class="bottomOfCal">
+                                <div class="add">
+                                    <div class="addContainer">
+                                        <select class="addType">
+                                            <option value="inc" selected>+</option>
+                                            <option value="exp">-</option>
+                                        </select>
+                                        <input type="text" class="addDetails" placeholder="Add description">
+                                        <input type="number" class="addCost" placeholder="Value">
+                                        <button class="addBtn"><i class="ion-ios-checkmark-outline"></i></button>
                                     </div>
                                 </div>
-                        </div>     
-                        <div class="calBottom">
-                                    <div class="addBtnCal">
-                                        <div class="calContainerAdd">
-                                            <select class="addTypeCal">
-                                                <option value="income" selected>+</option>
-                                                <option value="expenses">-</option>
-                                            </select>
-                                            <input type="text" class="addDescriptionCal" placeholder="Add Description">
-                                            <input type="number" class="addValueCal" placeholder="Value">
-                                            <button class="addBtn"><i class="checkmarkOutlineCal"></i></button>
-                                        </div>
+                            
+                                <div class="container clearfix">
+                                    <div class="income">
+                                        <h2 class="incomeHeader">Income</h2>
+                                        <div class="incomeList"></div>
                                     </div>
-                                     <!--Calculators List for both Income and Expenses -->   
-                                    <div class="containerCal clearfix">
-                                        <div class="income">
-                                            <h2 class="incomeTitle">Income</h2>
-                                            <div class="incomeList"></div>
-                                        </div>
-            
-                                        <div class="expenses">
-                                            <h2 class="titleExpenses">Expenses</h2>
-                                            <div class="listExpenses"></div>
-                                        </div>
+                                
+                                    <div class="expenditure">
+                                        <h2 class="expenditureHeadr">Expenses</h2>
+                                        <div class="expenditurelist"></div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="budgetLimit">
+                                <input type="number" class="budgetLimitAdd" placeholder="Set Budget Limit">
+                                <button class="budgetLimitBtn">Set Limit</button>
                             </div>
                         </div>
-                        <!--testing JS-->
-                        <button id="sayHiBtn">Click me to say Hi</button>
-            
                     </div>
                 </div>
-            </div>
         </main>
 
         <%- include ("./partials/footer.ejs") %>
         <%- include ("./partials/scriptCollection.ejs") %>
-            
-            
-    </body>
-
+         <script src="/back-end/js/budgetCal.js"></script>
+        
+</body>
 </html>
