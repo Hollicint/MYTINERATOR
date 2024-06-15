@@ -106,13 +106,6 @@ main {
 
 .loginForm {
     display: flex;
-  justify-content: center;
-}
-
-.regBtn {
-    border: none;
-    color: black;
-    background-color: none;
 }
 
 input {
