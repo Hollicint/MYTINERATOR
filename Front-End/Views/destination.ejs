@@ -11,7 +11,7 @@
                 <!-- Weather Search Section -->
                 <div class="row ">
                     <div class="col ">
-                        <h1>Weather forecasting for your destination</h1>
+                        <h1 class="text-center">Weather forecasting for your destination</h1>
 
                         <div id="infoCard" class="card p-3 mx-auto">
                             <div class="input-group mb-3">
@@ -43,63 +43,57 @@
                     </div>
                 </div>
 
-                <div id="flightOptions" class="row">
-                    <h1>Search Flights</h1>
-                    <button id="returnBtn" onclick="dateCheck()">Submit</button>
-                    <button id="oneWayBtn" onclick="loadOneWayFLight()">Submit</button>
-                    <div class="col">
-                        <label>return</label>
-                        <input type="radio" onclick="loadReturn()" id="returnRadio" name="fav_language" value="HTML">
-                        <label for="">One way</label>
-                        <input type="radio"  onclick="loadOneWay()" id="oneWayRadio" name="fav_language" value="HTML">
+                <div class="card p-3 mx-auto">
+                    <!-- -->
+                    <h3 class="text-center">Search flights</h3>
+                    <form method="POST" id="searchOneWay">
+                        <div class="form-row">
+                            <div class="form-group col-md-30">
+                                <input type="text" class="form-control" id="departLocation" placeholder="City" required name="City" id="">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="text" class="form-control" id="destination" placeholder="destination" required name="destination">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="date" id="departDate" class="form-control">
+                            </div>
+                        </div> 
+                    </form>
+                    <form method="POST" id="searchReturn" class="col-md-7">
+                        <div class="form-row">
+                            <div class="form-group col-md-30">
+                                <input type="text" class="form-control" id="RTDepart" placeholder="depart" required name="depart" id="">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="date" class="form-control" id="RTDepartDate" placeholder="" required name="">
+                            </div>
+                            <div class="form-group col-md-30">
+                                <input type="text" class="form-control" id="RTReturn" placeholder="return" required name="return" id="">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="date" class="form-control" id="RTReturnDate" placeholder="" required name="">
+                            </div>
+                        </div>   
+                    </form>
+                    <div id="flightOptions" class="col">
+                        <div class="col-md-8">
+                            <label>Return</label>
+                            <input type="radio" onclick="loadReturn()" id="returnRadio" name="fav_language" value="HTML">
+                            <label for="">One way</label>
+                            <input type="radio"  onclick="loadOneWay()" id="oneWayRadio" name="fav_language" value="HTML">
+                            <div class="input-group-append">
+                                <button id="returnBtn" class="btn btn-primary" onclick="dateCheck()">Submit</button>
+                                <button id="oneWayBtn" class="btn btn-primary" onclick="loadOneWayFLight()">Submit</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- -->
-    
-                <div class="row">
-                    <div class="col" id="searchBox">
-                        <form class="row" action="" id="searchReturn">
-                            <div class="col">
-                                <label>Depart from</label>
-                                <input type="text" id="RTDepart" placeholder="City"/>
-                            </div>
-                            <div class="col">
-                                <label>Return to</label>
-                                <input type="text" id="RTReturn" placeholder="City"/>
-                            </div>
-                            <div class="col">
-                                <label>Depart Date</label>
-                                <input type="date" id="RTDepartDate" placeholder=""/>
-                            </div>
-                            <div class="col">
-                                <label>Return Date</label>
-                                <input type="date" id="RTReturnDate" placeholder=""/>
-                            </div>
-                        </form>
-                    </div>                                        
-                </div>
+                
+
                 <!-- -->
     
                 <ul id="flightList"></ul>
-    
-                <div class="row">
-                    <div class="col" id="searchBox">
-                        <form class="row" action="" id="searchOneWay">
-                            <div class="col">
-                                <label>Depart from</label>
-                                <input type="text" id="departLocation" placeholder="City"/>
-                            </div>
-                            <div class="col">
-                                <label>Destination</label>
-                                <input type="text" id="destination" placeholder=""/>
-                            </div>
-                            <div class="col">
-                                <label>Depart Date</label>
-                                <input type="date" id="departDate" placeholder=""/>
-                            </div>
-                        </form>
-                    </div>                                        
-                </div>
+
     
                 <!-- -->
     
