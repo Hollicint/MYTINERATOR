@@ -1,3 +1,13 @@
+const oneWayBtn = document.getElementById("oneWayBtn");
+
+oneWayBtn.addEventListener("click", (e) => {
+  const departLocation = document.getElementById("departLocation").value;
+  const departDate = document.getElementById("departDate").value;
+  const destination = document.getElementById("destination").value;
+
+
+})
+
 async function loadFlight() {
 
   var API = "https://my.api.mockaroo.com/flight_data.json?key=fca6fb30";

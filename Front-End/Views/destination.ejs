@@ -96,28 +96,33 @@
 
     
                 <!-- -->
-    
-    
-                <div class="row" id="flightDiv">
-                    <div id="flightCard">
-                        <h1 id="airline"></h2>
-                        <p id="departureDate">departure_date: </p>
-                        <p id="destination">destination: </p>
-                        <p id="Departure">From: </p>
-                        <p id="flightId">Flight ID: </p>
-                        <p id="price">price: </p>
-                        <p id="status">status: </p>
+
+                <div id="flightInfo" class="flightInfo">
+                    <% if (Flight.length) { %>
+                        <div class="row">
+                            <% Flight.forEach(item => { %>
+                                <div class="col-md-6">
+                                    <div class="card flight-card">
+                                        <div class="card-body">
+                                            <a href="/destination/<%= item.flight_ID %>">
+                                                <h2 class="card-title"><%= item.airline %></h2>
+                                            </a>
+                                            <p class="card-text">Destination:  <%= item.destination %></p>
+                                            <p class="card-text">Depart: <%= item.departure %></p>
+                                            <p class="card-text">Departure Date: <%= item.departure_date %></p>
+                                            <p class="card-text">Flight ID: <%= item.flight_ID %></p>
+                                            <p class="card-text">Price: <%= item.price %></p>
+                                            <p class="card-text">Status: <%= item.status %></p>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
-                </div>  
-                <!-- 
-                airline
-                departure
-                departure_date
-                destination
-                flight_ID
-                price
-                status
-                --> 
+                        <% }) %>
+
+                </div>
+                <% } else { %>
+                    <p>Sorry, there are no itineraries yet...</p>
+                <% } %>
             </main>
 
             <%- include ("./partials/footer.ejs") %>

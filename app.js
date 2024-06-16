@@ -1,6 +1,7 @@
 //mongoose connection
 const mongoose = require("mongoose");
 const Itin = require('./back-end/models/itinerary');
+const Flight = require('./back-end/models/flights');
 const express = require("express");
 //connection of path
 const path = require('path');
@@ -63,9 +64,10 @@ app.get("/rentals", (request, response) => {
 app.get("/contact", (request, response) => {
     response.render("contact", { title: "Mytinerator Contact", script: ['/JS/contact.js'], style: ['/style.css']});
 });
+
 //Destination information page
 app.get("/destination", (request, response) => {
-    response.render("destination", { title: "Mytinerator Destination", script: ['/JS/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'] });
+    Flight.find().then((result) => { response.render("destination", { title: "Mytinerator Destination", script: ['/JS/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'], Flight: result }) });
 });
 
 
