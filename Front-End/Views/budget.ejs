@@ -1,10 +1,10 @@
 <html lang="en">
 <!--partial for the head tag -->
 <%- include ("./partials/head.ejs") %>
+<!--link rel="stylesheet" href="../css/budgetCal.css"-->
+<body>
 
-    <body>
-
-        <%- include ("./partials/header.ejs") %>
+    <%- include ("./partials/header.ejs") %>
 
         <!-- Main Content -->
         <main class="container">
@@ -12,68 +12,41 @@
                 <div class="col">
                     <div class="budgetContainer">
                         <div class="calTop">
-                             <!--Calculators Title-->
+                            <!--Calculators Title-->
                             <div id="budgetCalTitle">
                                 <h2> Your Budget Calculator </h2>
+                                <p> A help tool for updating your Itinerary information with the correct costing</p>
                             </div>
-                             <!--Calculators total Budget-->
-                            <div class="budgetCal">
-                                <div class="valueBudget">+ 2,345.64</div>
-                                 <!--Calculators Income display-->
-                                <div class="incomeBudget clearfix">
-                                    <div class="budgetIncometext">Income</div>
-                                    <div class="right">
-                                        <div class="budgetIncomeValue">+4,300.00</div>
-                                        <div class="budgetIncomePercentage">&nbsp;</div>
-                                    </div>
-                                 <!--Calculators Expenses display -->    
-                                </div>
-                                <div class="budgetExpenses clearfix">
-                                    <div class="budgetExpensesText">Expenses</div>
-                                    <div class="right clearfix">
-                                        <div class="budgetExpenseValue">1,954.36</div>
-                                        <div class="budgetExpensesPercentages">45%</div>
-                                    </div>
-                                </div>
-                        </div>     
-                        <div class="calBottom">
-                                    <div class="addBtnCal">
-                                        <div class="calContainerAdd">
-                                            <select class="addTypeCal">
-                                                <option value="income" selected>+</option>
-                                                <option value="expenses">-</option>
-                                            </select>
-                                            <input type="text" class="addDescriptionCal" placeholder="Add Description">
-                                            <input type="number" class="addValueCal" placeholder="Value">
-                                            <button class="addBtn"><i class="checkmarkOutlineCal"></i></button>
-                                        </div>
-                                    </div>
-                                     <!--Calculators List for both Income and Expenses -->   
-                                    <div class="containerCal clearfix">
-                                        <div class="income">
-                                            <h2 class="incomeTitle">Income</h2>
-                                            <div class="incomeList"></div>
-                                        </div>
-            
-                                        <div class="expenses">
-                                            <h2 class="titleExpenses">Expenses</h2>
-                                            <div class="listExpenses"></div>
-                                        </div>
-                                    </div>
+                            <div class="input-group">
+                                <label for="limitAmount">Set Limit: </label>
+                                <input type="number" id="limitAmountId" placeholder="Enter limit amount">
                             </div>
+                            <div class="input-group">
+                                <label for="detailsLabel">Details: </label>
+                                <input type="text" id="detailsId" placeholder="Enter details">
+                            </div>
+                            <p>Please make sure to add a (-) subtraction sign when adding in an expenditure cost</p>
+                            <div class="input-group">
+                                <label for="costInput">Cost: </label> 
+                                <input type="number" id="costInputAmount" placeholder="Enter cost amount">
+                            </div>
+                           
+                            <button onclick="addTransaction()">Add +</button><br><br>
+                            <button onclick="subtractTransaction()">Subtract -</button>
+                            <br><br>
+                            <h2>Remaining Amount: <span id="remainingAmount">€ 0</span></h2>
+                            <ul id="transactionList"></ul>
+
+                      
+
                         </div>
-                        <!--testing JS-->
-                        <button id="sayHiBtn">Click me to say Hi</button>
-            
                     </div>
                 </div>
-            </div>
         </main>
 
         <%- include ("./partials/footer.ejs") %>
         <%- include ("./partials/scriptCollection.ejs") %>
-            
-            
-    </body>
-
+         <script src="/back-end/js/budgetCal.js"></script>
+        
+</body>
 </html>
