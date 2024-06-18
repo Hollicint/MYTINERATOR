@@ -15,62 +15,29 @@
                             <!--Calculators Title-->
                             <div id="budgetCalTitle">
                                 <h2> Your Budget Calculator </h2>
+                                <p> A help tool for updating your Itinerary information with the correct costing</p>
                             </div>
-                            <div class="budgetLimit">
-                                <input type="number" class="budgetLimitAdd" placeholder="Set Budget Limit">
-                                <button class="budgetLimitBtn">Set Limit</button>
+                            <div class="input-group">
+                                <label for="limitAmount">Set Limit: </label>
+                                <input type="number" id="limitAmountId" placeholder="Enter limit amount">
                             </div>
-                            <div class="topOfCal">
-                                <div class="budget">
-                                    <!--div class="budgetHeader">
-                                        Available Budget in <span class="budgetHeaderMonth">%Month%</span>:
-                                    </div>
-
-                                    <div class="budgetValue">+ <span class="budgetSetLimit">0.00</span></div>
-
-                                    <div class="budgetComingIn clearfix">
-                                        <div class="budgetComingInTxt">Income</div>
-                                        <div class="rightSide">
-                                            <div class="budgetComingInValue">+ 4,300.00</div>
-                                            <div class="budgetComingInPercentage">&nbsp;</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="budgetExpenditure clearfix">
-                                        <div class="bExpenditureTxt">Expenses</div>
-                                        <div class="rightSide clearfix">
-                                            <div class="budgetExpenditureInValue">- 1,954.36</div>
-                                            <div class="budgetExpenditurePercentage">45%</div>
-                                        </div>
-                                    </div-->
-                                </div>
+                            <div class="input-group">
+                                <label for="detailsLabel">Details: </label>
+                                <input type="text" id="detailsId" placeholder="Enter details">
                             </div>
+                            <p>Please make sure to add a (-) subtraction sign when adding in an expenditure cost</p>
+                            <div class="input-group">
+                                <label for="costInput">Cost: </label> 
+                                <input type="number" id="costInputAmount" placeholder="Enter cost amount">
+                            </div>
+                           
+                            <button onclick="addTransaction()">Add +</button><br><br>
+                            <button onclick="subtractTransaction()">Subtract -</button>
+                            <br><br>
+                            <h2>Remaining Amount: <span id="remainingAmount">€ 0</span></h2>
+                            <ul id="transactionList"></ul>
 
-                            <div class="bottomOfCal">
-                                <div class="add">
-                                    <div class="addContainer">
-                                        <select class="addType">
-                                            <option value="inc" selected>+</option>
-                                            <option value="exp">-</option>
-                                        </select>
-                                        <input type="text" class="addDetails" placeholder="Add description">
-                                        <input type="number" class="addCost" placeholder="Value">
-                                        <button class="addBtn"><i class="ion-ios-checkmark-outline"></i></button>
-                                    </div>
-                                </div>
-                            
-                                <!--div class="container clearfix">
-                                    <div class="income">
-                                        <h2 class="incomeHeader">Income</h2>
-                                        <div class="incomeList"></div>
-                                    </div>
-                                
-                                    <div class="expenditure">
-                                        <h2 class="expenditureHeadr">Expenses</h2>
-                                        <div class="expenditurelist"></div>
-                                    </div>
-                                </div>
-                            </div-->
+                      
 
                         </div>
                     </div>

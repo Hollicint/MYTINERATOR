@@ -1,152 +1,63 @@
-// Ensure this script runs only after the DOM is fully loaded
-//document.addEventListener('DOMContentLoaded', function() {
-//    // Select the button
-//    var sayHiBtn = document.getElementById('sayHiBtn');
-//
-//    // Add an event listener to the button
-//    sayHiBtn.addEventListener('click', function() {
-//        // Display an alert saying "Hi"
-//        alert('Hi');
-//    });
-//});
-// BUDGET CONTROLLER
+let limit = 0;
+let remainingAmount = 0;
+// When the limit is add it will display on screen and the user will have to enter a - sign to show expenditure cost
+function updateRemainingAmount() {
+    const remainingElement = document.getElementById('remainingAmount');
+    const formattedAmount = remainingAmount.toFixed(2);
 
+    if (remainingAmount < 0) {
+        remainingElement.innerText = `- €${Math.abs(formattedAmount)}`;
+        remainingElement.style.color = 'red';
+    } else {
+        remainingElement.innerText = `€${formattedAmount}`;
+        remainingElement.style.color = 'black';
+    }
+}
 
-var budgetController = (function() {
-    
-    var Expense = function(id, description, value) {
-        this.id = id;
-        this.description = description;
-        this.value = value;
-        this.percentage = -1;
-    };
-    
-    Expense.prototype.calcPercentage = function(totalIncome) {
-        if (totalIncome > 0) {
-            this.percentage = Math.round((this.value / totalIncome) * 100);
-        } else {
-            this.percentage = -1;
-        }
-    };
-    
-    Expense.prototype.getPercentage = function() {
-        return this.percentage;
-    };
-    
-    var Income = function(id, description, value) {
-        this.id = id;
-        this.description = description;
-        this.value = value;
-    };
-    
-    var calculateTotal = function(type) {
-        var sum = 0;
-        data.allItems[type].forEach(function(cur) {
-            sum += cur.value;
-        });
-        data.totals[type] = sum;
-    };
-    
-    var data = {
-        allItems: {
-            exp: [],
-            inc: []
-        },
-        totals: {
-            exp: 0,
-            inc: 0
-        },
-        budget: 0,
-        percentage: -1,
-        budgetLimit: 0 // Add budget limit
-    };
-    
-    return {
-        addItem: function(type, des, val) {
-            var newItem, ID;
-            
-            // Create new ID
-            if (data.allItems[type].length > 0) {
-                ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
-            } else {
-                ID = 0;
-            }
-            
-            // Create new item based on 'inc' or 'exp' type
-            if (type === 'exp') {
-                newItem = new Expense(ID, des, val);
-            } else if (type === 'inc') {
-                newItem = new Income(ID, des, val);
-            }
-            
-            // Push it into our data structure
-            data.allItems[type].push(newItem);
-            
-            // Return the new element
-            return newItem;
-        },
-        
-        deleteItem: function(type, id) {
-            var ids, index;
-            
-            ids = data.allItems[type].map(function(current) {
-                return current.id;
-            });
+function addTransaction() {
+    const details = document.getElementById('detailsId').value;
+    const cost = parseFloat(document.getElementById('costInputAmount').value);
 
-            index = ids.indexOf(id);
+    if (!details || isNaN(cost)) {
+        alert("Please enter valid details and cost.");
+        return;
+    }
 
-            if (index !== -1) {
-                data.allItems[type].splice(index, 1);
-            }
-        },
-        
-        calculateBudget: function() {
-            // calculate total income and expenses
-            calculateTotal('exp');
-            calculateTotal('inc');
-            
-            // Calculate the budget: income - expenses
-            data.budget = data.totals.inc - data.totals.exp;
-            
-            // calculate the percentage of income that we spent
-            if (data.totals.inc > 0) {
-                data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100);
-            } else {
-                data.percentage = -1;
-            }            
-        },
-        
-        calculatePercentages: function() {
-            data.allItems.exp.forEach(function(cur) {
-               cur.calcPercentage(data.totals.inc);
-            });
-        },
-        
-        getPercentages: function() {
-            var allPerc = data.allItems.exp.map(function(cur) {
-                return cur.getPercentage();
-            });
-            return allPerc;
-        },
-        
-        getBudget: function() {
-            return {
-                budget: data.budget,
-                totalInc: data.totals.inc,
-                totalExp: data.totals.exp,
-                percentage: data.percentage,
-                budgetLimit: data.budgetLimit
-            };
-        },
+    remainingAmount -= cost;
+    updateRemainingAmount();
 
-        setBudgetLimit: function(limit) {
-            data.budgetLimit = limit;
-        },
+    const transactionList = document.getElementById('transactionList');
+    const listItem = document.createElement('li');
+    listItem.textContent = `Added: ${details} - €${cost.toFixed(2)}`;
+    transactionList.appendChild(listItem);
 
-        testing: function() {
-            console.log(data);
-        }
-    };
-    
-})();
+    document.getElementById('detailsId').value = '';
+    document.getElementById('costInputAmount').value = '';
+}
 
+function subtractTransaction() {
+    const details = document.getElementById('detailsId').value;
+    const cost = parseFloat(document.getElementById('costInputAmount').value);
+
+    if (!details || isNaN(cost)) {
+        alert("Please enter valid details and cost.");
+        return;
+    }
+
+    remainingAmount += cost;
+    updateRemainingAmount();
+
+    const transactionList = document.getElementById('transactionList');
+    const listItem = document.createElement('li');
+    listItem.textContent = `Subtracted: ${details} - €${cost.toFixed(2)}`;
+    transactionList.appendChild(listItem);
+
+    document.getElementById('detailsId').value = '';
+    document.getElementById('costInputAmount').value = '';
+}
+
+document.getElementById('limitAmountId').addEventListener('input', function() {
+    limit = parseFloat(this.value);
+    remainingAmount = limit;  
+    updateRemainingAmount();
+});
