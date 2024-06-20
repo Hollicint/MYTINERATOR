@@ -71,8 +71,9 @@ nav {
 /*########################## footer ############################ */
 footer {
     background-color: #f7b801ff;
+    padding: 1rem;
+    text-align: center;
 }
-
 
 
 /*########################## Main Body ############################ */
@@ -162,6 +163,23 @@ a {
 .input-error {
     border-color: red;
 }
+
+.columnIndex{
+    float: auto;
+  
+}
+
+.columnSubLeft{
+    text-align: left;
+  
+}
+
+.columnSubRigh{
+   text-align: right;
+   
+}
+
+
 
 /*########################## Budget Page ############################ */
 .budgetContainer {
