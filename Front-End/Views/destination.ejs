@@ -17,8 +17,7 @@
                             <div class="input-group mb-3">
                                 <input type="text" id="location" class="form-control" placeholder="Enter your location">
                                 <div class="input-group-append">
-                                    <button type="button" id="destBtn" class="btn btn-primary"
-                                        onclick="loadweather()">Search</button>
+                                    <button type="button" id="destBtn" class="btn btn-primary">Search</button>
                                 </div>
                             </div>
                             <div class="row">
@@ -46,20 +45,22 @@
                 <div class="card p-3 mx-auto">
                     <!-- -->
                     <h3 class="text-center">Search flights</h3>
-                    <form method="POST" id="searchOneWay">
+                    <form action="/" id="searchOneWay">
                         <div class="form-row">
                             <div class="form-group col-md-30">
-                                <input type="text" class="form-control" id="departLocation" placeholder="City" required name="City" id="">
+                                <input type="text" class="form-control" id="departLocation" placeholder="City" required name="departLocation" id="">
                             </div>
                             <div class="form-group col-md-3">
                                 <input type="text" class="form-control" id="destination" placeholder="destination" required name="destination">
                             </div>
                             <div class="form-group col-md-3">
-                                <input type="date" id="departDate" class="form-control">
+                                <input type="date" id="departDate" class="form-control" required name ="departDate">
                             </div>
                         </div> 
+                        <p class="searchQuery" id="searchQuery"></p>
+
                     </form>
-                    <form method="POST" id="searchReturn" class="col-md-7">
+                    <form method="GET" id="searchReturn" class="col-md-7">
                         <div class="form-row">
                             <div class="form-group col-md-30">
                                 <input type="text" class="form-control" id="RTDepart" placeholder="depart" required name="depart" id="">
@@ -78,12 +79,12 @@
                     <div id="flightOptions" class="col">
                         <div class="col-md-8">
                             <label>Return</label>
-                            <input type="radio" onclick="loadReturn()" id="returnRadio" name="fav_language" value="HTML">
+                            <input type="radio" id="returnRadio" name="fav_language" value="HTML">
                             <label for="">One way</label>
-                            <input type="radio"  onclick="loadOneWay()" id="oneWayRadio" name="fav_language" value="HTML">
+                            <input type="radio" id="oneWayRadio" name="fav_language" value="HTML">
                             <div class="input-group-append">
-                                <button id="returnBtn" class="btn btn-primary" onclick="dateCheck()">Submit</button>
-                                <button id="oneWayBtn" class="btn btn-primary" onclick="loadOneWayFLight()">Submit</button>
+                                <button id="returnBtn" class="btn btn-primary">Submit</button>
+                                <button id="oneWayBtn" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -100,33 +101,35 @@
                 <div id="flightInfo" class="flightInfo">
                     <% if (Flight.length) { %>
                         <div class="row">
-                            <% Flight.forEach(item => { %>
+                            <% Flight.forEach(flight => { %>
                                 <div class="col-md-6">
                                     <div class="card flight-card">
                                         <div class="card-body">
-                                            <a href="/destination/<%= item.flight_ID %>">
-                                                <h2 class="card-title"><%= item.airline %></h2>
+                                            <a href="/destination/<%= flight.flight_ID %>">
+                                                <h2 class="card-title"><%= flight.airline %></h2>
                                             </a>
-                                            <p class="card-text">Destination:  <%= item.destination %></p>
-                                            <p class="card-text">Depart: <%= item.departure %></p>
-                                            <p class="card-text">Departure Date: <%= item.departure_date %></p>
-                                            <p class="card-text">Flight ID: <%= item.flight_ID %></p>
-                                            <p class="card-text">Price: <%= item.price %></p>
-                                            <p class="card-text">Status: <%= item.status %></p>
+                                            <p class="card-text">Destination:  <%= flight.destination %></p>
+                                            <p class="card-text">Depart: <%= flight.departure %></p>
+                                            <p class="card-text">Departure Date: <%= flight.departure_date %></p>
+                                            <p class="card-text">Flight ID: <%= flight.flight_ID %></p>
+                                            <p class="card-text">Price: <%= flight.price %></p>
+                                            <p class="card-text">Status: <%= flight.status %></p>
                                         </div>
                                     </div>
                                 </div>
                         </div>
                         <% }) %>
 
+
+
                 </div>
                 <% } else { %>
-                    <p>Sorry, there are no itineraries yet...</p>
+                    <p>no itineraries</p>
                 <% } %>
             </main>
 
             <%- include ("./partials/footer.ejs") %>
-                <%- include ("./partials/scriptCollection.ejs") %>
+            <%- include ("./partials/scriptCollection.ejs") %>
     </body>
 
 </html>

@@ -67,7 +67,15 @@ app.get("/contact", (request, response) => {
 
 //Destination information page
 app.get("/destination", (request, response) => {
-    Flight.find().then((result) => { response.render("destination", { title: "Mytinerator Destination", script: ['/JS/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'], Flight: result }) });
+    response.render("destination", { title: "Mytinerator Destination", script: ['/JS/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'], Flight: '' });
+});
+
+app.post("/destination/${queryString}", (request, response) => {
+    const searchquery = request.params.queryString;
+    Flight.find(searchquery)
+    .then((result) => response.send(result))
+    //.then((result) => { response.json({ redirect: "/destination" })
+    .catch((error) => console.log(error));
 });
 
 
