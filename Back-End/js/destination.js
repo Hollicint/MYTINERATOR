@@ -8,19 +8,26 @@ document.addEventListener('DOMContentLoaded', () => {
     */
 
     const oneWayBtn = document.getElementById("oneWayBtn");
-    oneWayBtn.addEventListener("click",  (e) => {
+    oneWayBtn.addEventListener("click",  async (e) => {
       const departLocation = document.getElementById("departLocation").value;
       const departDate = document.getElementById("departDate").value;
       const destination = document.getElementById("destination").value;
-      
+      try {
+
       let query = [];
       if (departLocation) query.push(`departure=${departLocation}`);
       if (departDate) query.push(`departure_date=${departDate}`);
       if (destination) query.push(`destination=${destination}`);
       const queryString = query.length ? `?${query.join('&')}` : '';
       console.log(queryString);
-      document.getElementById("searchQuery").innerHTML = queryString;
+        const backEndPoint = `/destination/flight/${queryString}`;
+        const response = await fetch(backEndPoint);
+      } catch (error) {
+        console.log("Did not get a query.");
+      }
+      
   });
+
     
     //******************** */
 

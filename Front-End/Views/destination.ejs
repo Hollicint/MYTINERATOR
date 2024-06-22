@@ -45,7 +45,7 @@
                 <div class="card p-3 mx-auto">
                     <!-- -->
                     <h3 class="text-center">Search flights</h3>
-                    <form action="/" id="searchOneWay">
+                    <form method="POST" id="searchOneWay">
                         <div class="form-row">
                             <div class="form-group col-md-30">
                                 <input type="text" class="form-control" id="departLocation" placeholder="City" required name="departLocation" id="">
@@ -93,27 +93,26 @@
 
                 <!-- -->
     
-                <ul id="flightList"></ul>
-
+                <div class="flightsDiv" id="flightsDiv"></div>
     
                 <!-- -->
 
                 <div id="flightInfo" class="flightInfo">
                     <% if (Flight.length) { %>
                         <div class="row">
-                            <% Flight.forEach(flight => { %>
+                            <% Flight.forEach(item => { %>
                                 <div class="col-md-6">
                                     <div class="card flight-card">
                                         <div class="card-body">
                                             <a href="/destination/<%= flight.flight_ID %>">
-                                                <h2 class="card-title"><%= flight.airline %></h2>
+                                                <h2 class="card-title"><%= item.airline %></h2>
                                             </a>
-                                            <p class="card-text">Destination:  <%= flight.destination %></p>
-                                            <p class="card-text">Depart: <%= flight.departure %></p>
-                                            <p class="card-text">Departure Date: <%= flight.departure_date %></p>
-                                            <p class="card-text">Flight ID: <%= flight.flight_ID %></p>
-                                            <p class="card-text">Price: <%= flight.price %></p>
-                                            <p class="card-text">Status: <%= flight.status %></p>
+                                            <p class="card-text">Destination:  <%= item.destination %></p>
+                                            <p class="card-text">Depart: <%= item.departure %></p>
+                                            <p class="card-text">Departure Date: <%= item.departure_date %></p>
+                                            <p class="card-text">Flight ID: <%= item.flight_ID %></p>
+                                            <p class="card-text">Price: <%= item.price %></p>
+                                            <p class="card-text">Status: <%= item.status %></p>
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +123,7 @@
 
                 </div>
                 <% } else { %>
-                    <p>no itineraries</p>
+                    <p>no flights</p>
                 <% } %>
             </main>
 
