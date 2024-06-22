@@ -70,12 +70,15 @@ app.get("/destination", (request, response) => {
     response.render("destination", { title: "Mytinerator Destination", script: ['/JS/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'], Flight: '' });
 });
 
-app.post("/destination/${queryString}", (request, response) => {
-    const searchquery = request.params.queryString;
-    Flight.find(searchquery)
-    .then((result) => response.send(result))
-    //.then((result) => { response.json({ redirect: "/destination" })
-    .catch((error) => console.log(error));
+app.get("/destination/flight/:query", async (request, response) => {
+        
+        const query = request.params.query;
+        console.log(query);
+        const flights = Flight.find(query)
+        console.log(flights)
+        response.json(flights)
+        .then((result) => response.render("destination", {Flight: result, title: "Mytinerator Destination", script: ['/JS/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'] }) )
+        .catch((error) => console.log(error));
 });
 
 
