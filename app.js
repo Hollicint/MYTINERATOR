@@ -19,6 +19,40 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
+/*
+//Swagger
+const swaggerJsDoc = require("swagger-jsdoc");
+app.use("/destination", require("./routes/destination"));
+//app.use("/users", require("./routes/user"));
+const options = {
+    definition: {
+      openapi: "3.0.0",
+      info: {
+        title: "Destination API",
+        version: "1.0.0",
+        description: "A simple Express destination API",
+      },
+      servers: [
+        {
+          url: "http://localhost:3000/",
+        },
+        {
+          url: "https://localhost:3000",
+        },
+      ],
+    },
+    apis: ["./routes/*.js"],
+  };
+const swaggerUI = require("swagger-ui-express");
+const specs = swaggerJsDoc(options);
+app.use(
+    "/api-docs",
+    swaggerUI.serve,
+    swaggerUI.setup(specs, { explorer: true })
+  );
+
+*/
+
 
 //Setting for view for ejs files
 app.set("view engine", "ejs");
