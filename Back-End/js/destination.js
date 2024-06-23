@@ -1,26 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => { 
-      /*
-    var airline = document.getElementById("airline").value;
-    var departureDate = document.getElementById("departDate").value;
-    var departure = document.getElementById("departLocation").value;
-    var Price = document.getElementById("price").value;
-    var Status = document.getElementById("status").value;
-    */
 
-    const oneWayBtn = document.getElementById("oneWayBtn");
-    oneWayBtn.addEventListener("click",  (e) => {
-      const departLocation = document.getElementById("departLocation").value;
-      const departDate = document.getElementById("departDate").value;
+    const searchOneWay = document.getElementById("searchOneWay");
+    searchOneWay.addEventListener("submit",  async (e) => {
+      const departure = document.getElementById("departure").value;
+      const departure_date = document.getElementById("departure_date").value;
       const destination = document.getElementById("destination").value;
+
+        const backEndPoint = `/destination/flights`;
+
       
-      let query = [];
-      if (departLocation) query.push(`departure=${departLocation}`);
-      if (departDate) query.push(`departure_date=${departDate}`);
-      if (destination) query.push(`destination=${destination}`);
-      const queryString = query.length ? `?${query.join('&')}` : '';
-      console.log(queryString);
-      document.getElementById("searchQuery").innerHTML = queryString;
-  });
+     try {
+        const response = await fetch(backEndPoint, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ departure: departure, departure_date: departure_date, destination: destination}),
+        });
+        console.log(departure, departure_date, destination);
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Error: ${response.status} - ${errorText}`);
+      }
+        const flights = await response.json();
+        console.log(flights);
+      }catch(error){
+        console.log(error);
+      }
+
+});
+
     
     //******************** */
 
