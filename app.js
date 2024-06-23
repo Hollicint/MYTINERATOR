@@ -19,6 +19,9 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
+
+
+
 /*
 //Swagger
 const swaggerJsDoc = require("swagger-jsdoc");
@@ -57,12 +60,13 @@ app.use(
 //Setting for view for ejs files
 app.set("view engine", "ejs");
 //Directory for EJS files
-app.set('views', path.join(__dirname, 'Front-End', 'Views'));
+app.set('views', path.join(__dirname, 'front-end', 'Views'));
+
 app.use(express.static(path.join(__dirname, 'front-end')));
-//Directory for Back-End files
-app.use(express.static(path.join(__dirname, 'Back-End')));
-//Directory for Back-End files
-app.use(express.static(path.join(__dirname, 'Front-End', 'css')));
+//Directory for back-end files
+app.use(express.static(path.join(__dirname, 'back-end')));
+//Directory for back-end files
+app.use(express.static(path.join(__dirname, 'front-end', 'css')));
 
 //route and response
 app.get("/", (request, response) => {
@@ -116,9 +120,14 @@ app.post("/destination/${queryString}", (request, response) => {
 // //itinerary  page
 
 app.get("/itinerary", (request, response) => {
-    Itin.find().then((result) => { response.render("itinerary", { title: "Mytinerator Itinerary", script: ['/JS/itineraryJS.js'], style: ['/style.css'], styleTwo: ['/style.css'], Itin: result }); })
-        .catch((error) => console.log(error));
+   // console.log("Request received for /itinerary");
+    Itin.find()
+        .then(result => {
+            response.render("itinerary", { title: "Mytinerator Itinerary", script: ['/JS/itineraryJS.js'], style: ['/style.css'], styleTwo: ['/style.css'], Itin: result });
+        })
+        .catch(error => console.log(error));
 });
+
 
 app.get("/itinerary/:id", (request, response) => {
     const id = request.params.id;

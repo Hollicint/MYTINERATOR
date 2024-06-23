@@ -23,21 +23,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const saveBtnElement = document.getElementById("saveBtn");
-    saveBtnElement.addEventListener("click", (e) => {
-        if (!validateForm('editForm')) {
-            e.preventDefault();
-            alert("Please fill in all the fields.");
+    document.addEventListener('DOMContentLoaded', function() {
+        const saveBtnElement = document.getElementById("saveBtn");
+        if (saveBtnElement) {
+            saveBtnElement.addEventListener("click", function(e) {
+                if (!validateForm('editForm')) {
+                    e.preventDefault();
+                    alert("Please fill in all the fields.");
+                }
+            });
+        } else {
+            console.error("Element with ID 'saveBtn' not found.");
+        }
+    
+        const createSaveBtn = document.getElementById("createSaveBtn");
+        if (createSaveBtn) {
+            createSaveBtn.addEventListener("click", function(e) {
+                if (!validateForm('createForm')) {
+                    e.preventDefault();
+                    alert("Please fill in all the fields.");
+                }
+            });
+        } else {
+            console.error("Element with ID 'createSaveBtn' not found.");
         }
     });
-
-    const createSaveBtn = document.getElementById("createSaveBtn");
-    createSaveBtn.addEventListener("click", (e) => {
-        if (!validateForm('createForm')) {
-            e.preventDefault();
-            alert("Please fill in all the fields.");
-        }
-    });
+    
 
     // Function to validate form
     function validateForm(formId) {
