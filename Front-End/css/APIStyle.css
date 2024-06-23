@@ -36,13 +36,13 @@
   display: flex;
   padding-left: 5px;
   margin-left: 20px;
-  width: 10%;
+  width: 90%;
 }
 #oneWayBtn {
   display: none;
   padding-left: 5px;
   margin-left: 20px;
-  width: 10%;
+  width: 90%;
 }
 input {
   margin: 4px;

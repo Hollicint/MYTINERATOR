@@ -45,22 +45,25 @@
                 <div class="card p-3 mx-auto">
                     <!-- -->
                     <h3 class="text-center">Search flights</h3>
-                    <form method="POST" id="searchOneWay">
+                    <form id="searchOneWay" method="POST" action="/destination/flights">
                         <div class="form-row">
                             <div class="form-group col-md-30">
-                                <input type="text" class="form-control" id="departLocation" placeholder="City" required name="departLocation" id="">
+                                <input type="text" class="form-control" id="departure" placeholder="City" name="departure" required>
                             </div>
                             <div class="form-group col-md-3">
-                                <input type="text" class="form-control" id="destination" placeholder="destination" required name="destination">
+                                <input type="text" class="form-control" id="destination" placeholder="destination" name="destination" required>
                             </div>
                             <div class="form-group col-md-3">
-                                <input type="date" id="departDate" class="form-control" required name ="departDate">
+                                <input type="date" id="departure_date" class="form-control" name ="departure_date" required>
                             </div>
-                        </div> 
+                            <div class="input-group-append">
+                                <button id="oneWayBtn" class="btn btn-primary"><a href="/destination/flights"></a>Submit</button>
+                            </div>
+                        </div>
                         <p class="searchQuery" id="searchQuery"></p>
 
                     </form>
-                    <form method="GET" id="searchReturn" class="col-md-7">
+                    <form id="searchReturn" class="col-md-7">
                         <div class="form-row">
                             <div class="form-group col-md-30">
                                 <input type="text" class="form-control" id="RTDepart" placeholder="depart" required name="depart" id="">
@@ -74,18 +77,18 @@
                             <div class="form-group col-md-3">
                                 <input type="date" class="form-control" id="RTReturnDate" placeholder="" required name="">
                             </div>
-                        </div>   
+                            <div class="input-group-append">
+                                <button id="returnBtn" class="btn btn-primary">Submit</button>
+                            </div>  
+                        </div> 
                     </form>
                     <div id="flightOptions" class="col">
                         <div class="col-md-8">
                             <label>Return</label>
                             <input type="radio" id="returnRadio" name="fav_language" value="HTML">
-                            <label for="">One way</label>
+                            <label>One way</label>
                             <input type="radio" id="oneWayRadio" name="fav_language" value="HTML">
-                            <div class="input-group-append">
-                                <button id="returnBtn" class="btn btn-primary">Submit</button>
-                                <button id="oneWayBtn" class="btn btn-primary">Submit</button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -96,7 +99,6 @@
                 <div class="flightsDiv" id="flightsDiv"></div>
     
                 <!-- -->
-
                 <div id="flightInfo" class="flightInfo">
                     <% if (Flight.length) { %>
                         <div class="row">
@@ -104,7 +106,7 @@
                                 <div class="col-md-6">
                                     <div class="card flight-card">
                                         <div class="card-body">
-                                            <a href="/destination/<%= flight.flight_ID %>">
+                                            <a>
                                                 <h2 class="card-title"><%= item.airline %></h2>
                                             </a>
                                             <p class="card-text">Destination:  <%= item.destination %></p>
@@ -117,14 +119,16 @@
                                     </div>
                                 </div>
                         </div>
+                </div>
                         <% }) %>
 
 
-
+                        <div id="results"></div>
                 </div>
                 <% } else { %>
                     <p>no flights</p>
                 <% } %>
+                
             </main>
 
             <%- include ("./partials/footer.ejs") %>
