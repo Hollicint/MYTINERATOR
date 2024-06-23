@@ -17,6 +17,8 @@
     "mongo": "^0.1.0",
     "mongodb": "^6.7.0",
     "mongoose": "^8.4.3",
-    "save-dev": "^0.0.1-security"
+    "save-dev": "^0.0.1-security",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   }
 }
