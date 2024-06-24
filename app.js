@@ -120,14 +120,26 @@ app.get("/destination", (request, response) => {
     .catch(error => console.log(error));
 });
 
-app.post("/destination/flights", async (request, response) => {
-    try {
+app.post("/destination/flights", (request, response) => {
     const { destination, departure, departure_date } = request.body;
-     Flight.find({ destination: destination, departure: departure, departure_date: departure_date })
-    .then((result) => response.render("destination", { title: "Mytinerator Destination", script: ['js/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'], Flight: result }))
-
-    response.render("destination", { title: "Mytinerator Destination", script: ['/js/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'], Flight: '' });
+    Flight.find({ destination, departure, departure_date })
+        .then((result) => {
+            response.render("destination", { 
+                title: "Mytinerator Destination", 
+                script: ['js/destination.js'], 
+                style: ['/APIStyle.css'], 
+                styleTwo: ['/style.css'], 
+                Flight: result 
+            });
+        })
+        .catch((error) => {
+            console.error("Error fetching flights:", error);
+            response.status(500).send("Error fetching flights");
+        });
 });
+
+
+
 
 app.post("/destination/flights", async (request, response) => {
 
