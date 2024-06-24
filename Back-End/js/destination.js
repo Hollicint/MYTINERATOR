@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const departure = document.getElementById("departure").value;
       const departure_date = document.getElementById("departure_date").value;
       const destination = document.getElementById("destination").value;
+      //console.log(departure, departure_date,  destination)
 
         const backEndPoint = `/destination/flights`;
 
@@ -13,18 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const response = await fetch(backEndPoint, {
             method: 'POST',
             headers: {
-                Accept: 'application/json',
+                //Accept: 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ departure: departure, departure_date: departure_date, destination: destination}),
         });
-        console.log(departure, departure_date, destination);
+        //console.log(departure, departure_date, destination);
         if (!response.ok) {
           const errorText = await response.text();
           throw new Error(`Error: ${response.status} - ${errorText}`);
       }
-        const flights = await response.json();
-        console.log(flights);
+        //const flights = await response.json();
+        //console.log(flights);
       }catch(error){
         console.log(error);
       }

@@ -111,17 +111,19 @@ app.get("/contact", (request, response) => {
 
 //Destination information page
 app.get("/destination", (request, response) => {
-    Flight.find()
-    .then(result =>response.render("destination", { title: "Mytinerator Destination", script: ['/js/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'], Flight: '' }))
-    .catch(error => console.log(error));
+    response.render("destination", { title: "Mytinerator Destination", script: ['/js/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'], Flight: '' });
 });
 
 app.post("/destination/flights", async (request, response) => {
-    try {
-    const { destination, departure, departure_date } = request.body;
-     Flight.find({ destination: destination, departure: departure, departure_date: departure_date })
-    .then((result) => response.render("destination", { title: "Mytinerator Destination", script: ['/js/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'], Flight: result }))
     
+    try {
+        let flights = {}
+        const { destination, departure, departure_date } = request.body;
+        flights = await Flight.find({ destination: destination, departure: departure, departure_date: departure_date })
+        .then(toString(flights))
+        .then((result) => response.render("destination", { Flight: flights, title: "Mytinerator Destination", script: ['/js/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'] }))
+        .then(console.log(departure, departure_date,  destination))
+        .then(console.log(flights))
     } catch (error) {
         console.log(error)
     }
