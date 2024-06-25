@@ -47,7 +47,7 @@
                     <form id="searchOneWay" method="POST" action="/destination/flights">
                         <div class="form-row">
                             <div class="form-group col-md-30">
-                                <input type="text" class="form-control" id="departure" placeholder="City" name="departure" required>
+                                <input type="text" class="form-control" id="departure" placeholder="departure" name="departure" required>
                             </div>
                             <div class="form-group col-md-3">
                                 <input type="text" class="form-control" id="destination" placeholder="destination" name="destination" required>
@@ -65,7 +65,7 @@
                     <form id="searchReturn" class="col-md-7">
                         <div class="form-row">
                             <div class="form-group col-md-30">
-                                <input type="text" class="form-control" id="RTDepart" placeholder="depart" required name="depart" id="">
+                                <input type="text" class="form-control" id="RTDepart" placeholder="departure" required name="depart" id="">
                             </div>
                             <div class="form-group col-md-3">
                                 <input type="date" class="form-control" id="RTDepartDate" placeholder="" required name="">
@@ -97,37 +97,32 @@
     
                 <div class="flightsDiv" id="flightsDiv"></div>
     
+
                 <!-- -->
-                <div id="flightInfo" class="flightInfo">
-                    <% if (Flight.length) { %>
-                        <div class="row">
+
+                        <div class="row flight-card">
+                            <% if (Flight.length) { %>
+
                             <%  Flight.forEach(item => { %>
-                                <div class="col-md-6">
-                                    <div class="card flight-card">
-                                        <div class="card-body">
-                                            <a>
-                                                <h2 class="card-title"><%= item.airline %></h2>
-                                            </a>
-                                            <p class="card-text">Destination:  <%= item.destination %></p>
-                                            <p class="card-text">Depart: <%= item.departure %></p>
-                                            <p class="card-text">Departure Date: <%= item.departure_date %></p>
-                                            <p class="card-text">Flight ID: <%= item.flight_ID %></p>
-                                            <p class="card-text">Price: <%= item.price %></p>
-                                            <p class="card-text">Status: <%= item.status %></p>
+                                <div class="row" id="flightOption">
+                                    <div class="row-md-6">
+                                        <div class="card-body">                                            
+                                            <p class="card-text"><strong>Airline:  </strong><%= item.airline %></p>
+                                            <p class="card-text"><strong>Destination:</strong>  <%= item.destination %></p>        
+                                            <p class="card-text"><strong>Depart: </strong><%= item.departure %></p>
+                                            <p class="card-text"><strong>Departure Date: </strong><%= item.departure_date %></p>
+                                            <p class="card-text"><strong>Flight ID: </strong><%= item.flight_ID %></p>
+                                            <p class="card-text"><strong>Price: </strong><%= item.price %></p>
+                                            <p class="card-text"><strong>Status: </strong><%= item.status %></p>
                                         </div>
                                     </div>
                                 </div>
-                        </div>
-                </div>
-                        <% }) %>
+                                <% }) %>
+                                <% } else { %>
+                                    <p></p>
+                                <% } %>  
+                        </div>                 
 
-
-                        <div id="results"></div>
-                </div>
-                <% } else { %>
-                    <p>no flights</p>
-                <% } %>
-                
             </main>
 
             <%- include ("./partials/footer.ejs") %>

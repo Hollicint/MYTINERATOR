@@ -121,8 +121,10 @@ app.get("/destination", (request, response) => {
 });
 
 app.post("/destination/flights", (request, response) => {
-    const { destination, departure, departure_date } = request.body;
-    Flight.find({ destination, departure, departure_date })
+    const flights = { destination, departure, departure_date } = request.body;
+    console.log("Should be date only:" )
+    console.log("Request.body: ", flights)
+    Flight.find({ destination, departure })
         .then((result) => {
             response.render("destination", { 
                 title: "Mytinerator Destination", 
@@ -137,26 +139,6 @@ app.post("/destination/flights", (request, response) => {
             response.status(500).send("Error fetching flights");
         });
 });
-
-
-
-
-app.post("/destination/flights", async (request, response) => {
-
-    
-    try {
-        let flights = {}
-        const { destination, departure, departure_date } = request.body;
-        flights = await Flight.find({ destination: destination, departure: departure, departure_date: departure_date })
-        .then(toString(flights))
-        .then((result) => response.render("destination", { Flight: flights, title: "Mytinerator Destination", script: ['/js/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'] }))
-        .then(console.log(departure, departure_date,  destination))
-        .then(console.log(flights))
-    } catch (error) {
-        console.log(error)
-    }
-});
-
 
 // //itinerary  pageS
 
