@@ -109,7 +109,8 @@ app.get("/rentals", (request, response) => {
 });
 //Contact page
 app.get("/contact", (request, response) => {
-    response.render("contact", { title: "Mytinerator Contact", script: ['js/contact.js'], style: ['/style.css']});
+    response.render("contact", { title: "Mytinerator Contact", script: ['js/contact.js'], style: ['/style.css']}); 
+    //response.render("contact", { title: "Mytinerator Contact", style: ['/style.css']});   
 });
 
 //Destination information page
