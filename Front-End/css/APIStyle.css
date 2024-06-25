@@ -33,13 +33,13 @@
 
 
 #returnBtn {
-  display: flex;
+  display: none;
   padding-left: 5px;
   margin-left: 20px;
   width: 90%;
 }
 #oneWayBtn {
-  display: none;
+  display: flex;
   padding-left: 5px;
   margin-left: 20px;
   width: 90%;
@@ -49,11 +49,12 @@ input {
   padding: 5px;
   cursor: pointer;
 }
-#searchReturn {
+#searchOneWay {
   display: flex;
   flex-wrap: nowrap;
 }
-#searchOneWay{
+
+#searchReturn{
   display: flex;
   display: none;
 }

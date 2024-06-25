@@ -33,24 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
     
-    //******************** */
+    //******************** */ returnRadio
 
-    const oneWayRadio = document.getElementById("oneWayRadio");
-    oneWayRadio.addEventListener("click", (e) => {
+    const returnRadio = document.getElementById("returnRadio");
+    returnRadio.addEventListener("click", (e) => {
       console.log('clicked one way radio');
-      document.getElementById("searchReturn").style.display='none';
-      document.getElementById("searchOneWay").style.display='flex';
-      document.getElementById("returnBtn").style.display='none';
-      document.getElementById("oneWayBtn").style.display='flex';
+      document.getElementById("searchReturn").style.display='flex';
+      document.getElementById("searchOneWay").style.display='none';
+      document.getElementById("returnBtn").style.display='flex';
+      document.getElementById("oneWayBtn").style.display='none';
     });
     
     //********************** */
-    const returnRadio = document.getElementById("returnRadio");
-    returnRadio.addEventListener("click", (e) => {
-      document.getElementById("searchReturn").style.display='flex';
-      document.getElementById("searchOneWay").style.display='none';
-      document.getElementById("oneWayBtn").style.display='none';
-      document.getElementById("returnBtn").style.display='flex';
+    const oneWayRadio = document.getElementById("oneWayRadio");
+    oneWayRadio.addEventListener("click", (e) => {
+      document.getElementById("searchReturn").style.display='none';
+      document.getElementById("searchOneWay").style.display='flex';
+      document.getElementById("oneWayBtn").style.display='flex';
+      document.getElementById("returnBtn").style.display='none';
     });
     
     //********************* */

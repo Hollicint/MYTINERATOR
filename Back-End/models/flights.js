@@ -14,7 +14,7 @@ const flightSchema = new Schema({
         required: true
     },
     departure_date: {
-        type: Date,
+        type: String,
         required: true
     },
     price: {
