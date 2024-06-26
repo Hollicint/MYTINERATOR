@@ -1,99 +1,92 @@
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    background-color: #7678edff !important;
+  display: flex;
+  flex-direction: column;
+  background-color: #7678edff !important;
 }
-
-
-
 
 /*########################## Head ############################ */
 header {
-    background-color: #f7b801ff;
+  background-color: #f7b801ff;
 }
 
 h1 a,
 h1 a:hover {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 /*########################## Nav Bar ############################ */
 .navbar-nav {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between !important;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between !important;
 }
 
 .nav-item {
-    flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 .nav-link {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 .container-fluid {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 nav {
-    background-color: #f5a623;
-    padding: 2px;
-    border-radius: 30px;
-    box-shadow: 0px 0px 3px grey;
+  background-color: #f5a623;
+  padding: 2px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 3px grey;
 }
 
 .nav-link {
-    flex: 1;
+  flex: 1;
 }
 
 .nav-item {
-    margin: 2px;
-    border-radius: 20px;
-    color: black;
-    font-weight: 900;
+  margin: 2px;
+  border-radius: 20px;
+  color: black;
+  font-weight: 900;
 }
 
 .nav-item a:hover,
 .nav-item a:active {
-    background-color: #d69601;
-    border-radius: 20px;
-    color: white !important;
+  background-color: #d69601;
+  border-radius: 20px;
+  color: white !important;
 }
-
 
 /*########################## footer ############################ */
 footer {
-    background-color: #f7b801ff;
-    padding: 1rem;
-    text-align: center;
+  background-color: #f7b801ff;
+  padding: 1rem;
+  text-align: center;
 }
-
 
 /*########################## Main Body ############################ */
 main {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background-color: white;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: white;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-
 
 /*########################## Font/Text Styles ############################ */
 * {
-    font-family: "Arimo", sans-serif;
+  font-family: "Arimo", sans-serif;
 }
 
 /* Individual Pages */
@@ -101,23 +94,24 @@ main {
 /*########################## Index Page ############################ */
 
 .regForm {
-    display: inline;
-    display: none;
+  display: inline;
+  display: none;
 }
 
 .loginForm {
-    display: flex;
+  display: flex;
 }
 
 input {
-    margin-right: 10px;
-    border: 1px solid;
+  margin-right: 10px;
+  border: 1px solid;
 }
 
-.logForm, .regStyle {
-    padding: 10px;
-    border-radius: 30px;
-    box-shadow: 0px 0px 3px rgb(212, 212, 212);
+.logForm,
+.regStyle {
+  padding: 10px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 3px rgb(212, 212, 212);
 }
 /* styled by bootstrap inline 
 button {
@@ -140,175 +134,195 @@ button:hover {
 }
 */
 a {
-    text-decoration: none;
-    /*color: green;*/
+  text-decoration: none;
+  /*color: green;*/
 }
 .currency-input {
-    position: relative;
-    display: flex;
-    align-items: center;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .currency-symbol {
-    position: absolute;
-    left: 10px;
-    font-size: 16px;
-    pointer-events: none;
+  position: absolute;
+  left: 10px;
+  font-size: 16px;
+  pointer-events: none;
 }
 
 .currency-input input {
-    padding-left: 25px; /* Adjust the padding to ensure the text doesn't overlap with the currency symbol */
+  padding-left: 25px; /* Adjust the padding to ensure the text doesn't overlap with the currency symbol */
 }
 
 .input-error {
-    border-color: red;
+  border-color: red;
 }
 
-.columnIndex{
-    float: auto;
-  
+.columnIndex {
+  float: auto;
 }
 
-.columnSubLeft{
-    text-align: left;
-  
+.columnSubLeft {
+  text-align: left;
 }
 
-.columnSubRigh{
-   text-align: right;
-   
+.columnSubRigh {
+  text-align: right;
 }
-
-
 
 /*########################## Budget Page ############################ */
 .budgetContainer {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: black;
-    font-family: Open Sans;
-    font-size: 16px;
-    position: relative;
-    height: 100vh;
-    font-weight: 400;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: black;
+  font-family: Open Sans;
+  font-size: 16px;
+  position: relative;
+  height: 100vh;
+  font-weight: 400;
 }
 
 #budgetCalTitle {
-    font-size: 18px;
-    text-align: center;
-    margin-bottom: 10px;
-    font-weight: 300;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 300;
 }
 
 .clearFix::after {
-    content: "";
-    display: table;
-    clear: both;
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .right {
-    float: right;
+  float: right;
 }
 
 /*########################## Itinerary Page ############################ */
 #editItin {
-    max-width: 100%;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 #editItin h3 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .itinInfo {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .itin-card {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .itin-card a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 .itin-card a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .card {
-    border-radius: 5px;
-    box-shadow: 0px 0px 3px rgb(212, 212, 212);
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px rgb(212, 212, 212);
 }
 
+.valueBudget {
+}
 
+.incomeBudget {
+}
 
+.budgetIncometext {
+}
 
-.valueBudget {}
+.budgetIncomeValue {
+}
 
-.incomeBudget {}
+.budgetIncomePercentage {
+}
 
-.budgetIncometext {}
+.budgetExpenses {
+}
 
-.budgetIncomeValue {}
+.budgetExpensesText {
+}
 
-.budgetIncomePercentage {}
+.budgetExpenseValue {
+}
 
-.budgetExpenses {}
+.budgetExpensesPercentages {
+}
 
-.budgetExpensesText {}
+.calBottom {
+}
 
-.budgetExpenseValue {}
+.addBtnCal {
+}
 
-.budgetExpensesPercentages {}
+.calContainerAdd {
+}
 
-.calBottom {}
+.addTypeCal {
+}
 
-.addBtnCal {}
+.addDescriptionCal {
+}
 
-.calContainerAdd {}
+.addValueCal {
+}
 
-.addTypeCal {}
+.checkmarkOutlineCal {
+}
 
-.addDescriptionCal {}
+.containerCal {
+}
 
-.addValueCal {}
+.income {
+}
 
-.checkmarkOutlineCal {}
+.incomeTitle {
+}
 
-.containerCal {}
+.incomeList {
+}
 
-.income {}
+.expenses {
+}
 
-.incomeTitle {}
+.titleExpenses {
+}
 
-.incomeList {}
-
-.expenses {}
-
-.titleExpenses {}
-
-.listExpenses {}
+.listExpenses {
+}
 
 /*########################## Destination Page ############################ */
 #flightOption {
-    
+  display: flex;
+  flex: 40%;
+  justify-content: space-around;
+}
+
+#flightOption:hover{
     display: flex;
     flex: 30%;
     justify-content: space-around;
-}
+  }
 
 #flight-card a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 #flight-card a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 #card {
-    border-radius: 5px;
-    box-shadow: 0px 0px 3px rgb(212, 212, 212);
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px rgb(212, 212, 212);
 }

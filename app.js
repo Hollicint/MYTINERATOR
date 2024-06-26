@@ -117,19 +117,19 @@ app.get("/contact", (request, response) => {
 app.get("/destination", (request, response) => {
 
     Flight.find()
-    .then(result =>response.render("destination", { title: "Mytinerator Destination", script: ['js/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'], Flight: '' }))
+    .then(result =>response.render("destination", { title: "Mytinerator Destination", script: ['/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'], Flight: '' }))
     .catch(error => console.log(error));
 });
 
 app.post("/destination/flights", (request, response) => {
+    let mongoFLight = '';
     const flights = { destination, departure, departure_date } = request.body;
-    console.log("Should be date only:" )
-    console.log("Request.body: ", flights)
-    Flight.find({ destination, departure })
+    const newDate = departure_date.split('T')[0];
+    Flight.find({ destination, departure})
         .then((result) => {
             response.render("destination", { 
                 title: "Mytinerator Destination", 
-                script: ['js/destination.js'], 
+                script: ['/destination.js'], 
                 style: ['/APIStyle.css'], 
                 styleTwo: ['/style.css'], 
                 Flight: result 

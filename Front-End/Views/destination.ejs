@@ -44,9 +44,9 @@
                 <div class="card p-3 mx-auto">
                     <!-- -->
                     <h3 class="text-center">Search flights</h3>
-                    <form id="searchOneWay" method="POST" action="/destination/flights">
+                    <form id="searchOneWay" method="POST" name="searchOne" action="/destination/flights">
                         <div class="form-row">
-                            <div class="form-group col-md-30">
+                            <div class="form-group col-md-30" id="oneWayForm">
                                 <input type="text" class="form-control" id="departure" placeholder="departure" name="departure" required>
                             </div>
                             <div class="form-group col-md-3">
@@ -62,7 +62,7 @@
                         <p class="searchQuery" id="searchQuery"></p>
 
                     </form>
-                    <form id="searchReturn" class="col-md-7">
+                    <form id="searchReturn" class="col-md-7" style="display: none ;">
                         <div class="form-row">
                             <div class="form-group col-md-30">
                                 <input type="text" class="form-control" id="RTDepart" placeholder="departure" required name="depart" id="">
@@ -119,7 +119,7 @@
                                 </div>
                                 <% }) %>
                                 <% } else { %>
-                                    <p></p>
+                                    <p> </p>
                                 <% } %>  
                         </div>                 
 
