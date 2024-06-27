@@ -113,26 +113,7 @@ input {
   border-radius: 30px;
   box-shadow: 0px 0px 3px rgb(212, 212, 212);
 }
-/* styled by bootstrap inline 
-button {
-    margin: 10px;
-    background: rgb(29, 184, 11);
-    color: black;
-    border: 2px solid black;
-    border-radius: 1px;
-    font-weight: bold;
-}
 
-button:hover {
-    font-weight: bold;
-    background: rgb(39, 294, 20);
-    cursor: pointer;
-}
-
-.changeForm {
-    flex-direction: row;
-}
-*/
 a {
   text-decoration: none;
   /*color: green;*/
