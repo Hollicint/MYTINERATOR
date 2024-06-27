@@ -1,17 +1,17 @@
 $(document).ready(function () {
+
   const searchOneWay = document.getElementById("searchOneWay");
   searchOneWay.addEventListener("submit", async (e) => {
     const departure = document.getElementById("departure").value;
     const departure_date = document.getElementById("departure_date").value;
     const destination = document.getElementById("destination").value;
-    //document.getElementById('oneWayForm').action = `/destination/flights?_method=PUT`;
     const backEndPoint = `/destination/flights`;
 
     try {
       const response = await fetch(backEndPoint, {
         method: "POST",
         headers: {
-          //Accept: 'application/json',
+          Accept: 'application/json',
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -20,39 +20,15 @@ $(document).ready(function () {
           destination: destination,
         }),
       });
-      //console.log(departure, departure_date, destination);
       if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Error: ${response.status} - ${errorText}`);
+        const error = await response.text();
+        throw new Error(`Error: ${error}`);
       }
     } catch (error) {
       console.log(error);
     }
   });
 
-  //******************** */ returnRadio
-
-  const returnRadio = document.getElementById("returnRadio");
-  returnRadio.addEventListener("click", (e) => {
-    console.log("clicked one way radio");
-    document.getElementById("searchReturn").style.display = "flex";
-    document.getElementById("searchOneWay").style.display = "none";
-    document.getElementById("returnBtn").style.display = "flex";
-    document.getElementById("oneWayBtn").style.display = "none";
-  });
-
-  //********************** */
-  const oneWayRadio = document.getElementById("oneWayRadio");
-  oneWayRadio.addEventListener("click", (e) => {
-    document.getElementById("searchReturn").style.display = "none";
-    document.getElementById("searchOneWay").style.display = "flex";
-    document.getElementById("oneWayBtn").style.display = "flex";
-    document.getElementById("returnBtn").style.display = "none";
-  });
-
-  //********************* */
-  const returnBtn = document.getElementById("returnBtn");
-  returnBtn.addEventListener("click", (e) => {});
 
   //********************** */
   const destBtn = document.getElementById("destBtn");
