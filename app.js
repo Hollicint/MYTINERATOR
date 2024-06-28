@@ -124,13 +124,21 @@ app.get("/destination", (request, response) => {
 
 app.post("/destination/flights", (request, response) => {
     let mongoFlight = [];
+    let query = '';
     const flights = { destination, departure, departure_date } = request.body;
     let newDate= departure_date.toString();
-    const query = {
-                destination: destination, 
-                departure: departure, 
-                departure_date: newDate
-            };
+    if(departure_date === ''){
+        query = {
+            destination: destination, 
+            departure: departure, 
+        };
+    } else {
+        query = {
+            destination: destination, 
+            departure: departure, 
+            departure_date: newDate
+        };
+    }
 
     Flight.find(query)
     .then((result) => response.render("destination", { 
@@ -145,42 +153,7 @@ app.post("/destination/flights", (request, response) => {
             response.status(500).send("Error fetching flights");
         });
 });
-/*
-app.post("/destination/flightsReturn", (request, response) => {
-    let mongoFlight = [];
-    const flights = { RTdeparture, RTdeparture_date, RTdestination, RTReturnDate } = request.body;
-    let newDepDate= RTdeparture_date.toString();
-    let newRetDate= RTReturnDate.toString();
 
-    const query1 = {
-        departure: RTdeparture,
-        departure_date: newDepDate,
-        destination: RTdestination,
-            };
-    const query2 = {
-        departure: RTdestination,
-        departure_date: newRetDate,
-        destination: RTdeparture_date
-
-    }
-
-    Flight.find(query1)
-    .then(result => mongoFlight.push(result))
-    .then(Flight.find(query2))
-    .then(result => mongoFlight.push(result))
-    .then((result) => response.render("destination", { 
-        title: "Mytinerator Destination", 
-        script: ['/destination.js'], 
-        style: ['/APIStyle.css'], 
-        styleTwo: ['/style.css'], 
-        Flight: mongoFlight        
-}))
-        .catch((error) => {
-            console.error("Error fetching flights:", error);
-            response.status(500).send("Error fetching flights");
-        });
-});
-*/
 
 // //itinerary  pageS
 
