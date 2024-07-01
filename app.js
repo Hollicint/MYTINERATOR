@@ -168,7 +168,7 @@ app.get("/itinerary", (request, response) => {
 app.get("/itinerary/:id", (request, response) => {
     const id = request.params.id;
     Itin.findById(id)
-        .then(result => response.render("singleitinerary", { itin: result, title: "Single itinerary details",script: ['.js/singleitinerary.js'], style: ['/style.css'], styleTwo: ['/style.css']  }))
+        .then(result => response.render("singleitinerary", { itin: result, title: "Single itinerary details",script: ['.js/singleItinerary.js'], style: ['/style.css'], styleTwo: ['/style.css']  }))
         .catch((error) => console.log(error));
 });
 
