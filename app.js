@@ -84,8 +84,6 @@ app.get("/", (request, response) => {
 
 Feature/itinerary_Page_&_DB-Connection
 
-commented this line out because was giving problems with the connection
-
 */
 response.render("index", { title: "Mytinerator Home", script: ['js/index.js'], style: ['/style.css']});
  /*main*/

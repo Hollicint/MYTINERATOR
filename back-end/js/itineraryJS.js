@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   editBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      const id = e.target.getAttribute("data-id")S;
+      const id = e.target.getAttribute("data-id");
       document.getElementById("showItin").style.display = "none";
       document.getElementById("editItin").style.display = "block";
       document.getElementById(
