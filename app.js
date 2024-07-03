@@ -124,7 +124,8 @@ app.get("/destination", (request, response) => {
 app.post("/destination/flights", (request, response) => {
     let mongoFLight = '';
     const flights = { destination, departure, departure_date } = request.body;
-    const newDate = departure_date.split('T')[0];
+    /*const newDate = departure_date.split('T')[0];*/
+    const newDate = departure_date;
     Flight.find({ destination, departure})
         .then((result) => {
             response.render("destination", { 
