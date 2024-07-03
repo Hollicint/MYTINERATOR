@@ -132,19 +132,9 @@ button {
     font-weight: bold;
 }
 
-button:hover {
-    font-weight: bold;
-    background: rgb(39, 294, 20);
-    cursor: pointer;
-}
-
-.changeForm {
-    flex-direction: row;
-}
-*/
 a {
   text-decoration: none;
-  /*color: green;*/
+  color: green;
 }
 .currency-input {
   position: relative;
@@ -157,7 +147,7 @@ a {
   left: 10px;
   font-size: 16px;
   pointer-events: none;
-}
+}*/
 
 .currency-input input {
   padding-left: 25px; /* Adjust the padding to ensure the text doesn't overlap with the currency symbol */
@@ -316,12 +306,6 @@ a {
   flex: 40%;
   justify-content: space-around;
 }
-
-#flightOption:hover{
-    display: flex;
-    flex: 30%;
-    justify-content: space-around;
-  }
 
 #flight-card a {
   color: inherit;

@@ -5,6 +5,7 @@ const Flight = require('./back-end/models/flights');
 const express = require("express");
 const bodyParser = require('body-parser');
 
+
 //connection of path
 const path = require('path');
 const methodOverride = require('method-override');
@@ -122,8 +123,10 @@ app.get("/destination", (request, response) => {
 });
 
 app.post("/destination/flights", (request, response) => {
-    let mongoFLight = '';
+    let mongoFlight = [];
+    let query = '';
     const flights = { destination, departure, departure_date } = request.body;
+<<<<<<< HEAD
     /*const newDate = departure_date.split('T')[0];*/
     const newDate = departure_date;
     Flight.find({ destination, departure})
@@ -136,11 +139,36 @@ app.post("/destination/flights", (request, response) => {
                 Flight: result 
             });
         })
+=======
+    let newDate= departure_date.toString();
+    if(departure_date === ''){
+        query = {
+            destination: destination, 
+            departure: departure, 
+        };
+    } else {
+        query = {
+            destination: destination, 
+            departure: departure, 
+            departure_date: newDate
+        };
+    }
+
+    Flight.find(query)
+    .then((result) => response.render("destination", { 
+        title: "Mytinerator Destination", 
+        script: ['/destination.js'], 
+        style: ['/APIStyle.css'], 
+        styleTwo: ['/style.css'], 
+        Flight: result        
+}))
+>>>>>>> 311031b8bdf549c7ad0d9ceb5af67f7cb0fcd278
         .catch((error) => {
             console.error("Error fetching flights:", error);
             response.status(500).send("Error fetching flights");
         });
 });
+
 
 // //itinerary  pageS
 

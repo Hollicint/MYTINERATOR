@@ -53,51 +53,16 @@
                                 <input type="text" class="form-control" id="destination" placeholder="destination" name="destination" required>
                             </div>
                             <div class="form-group col-md-3">
-                                <input type="date" id="departure_date" class="form-control" name ="departure_date" required>
+                                <input type="date" id="departure_date" class="form-control" name ="departure_date">
                             </div>
                             <div class="input-group-append">
                                 <button id="oneWayBtn" class="btn btn-primary"><a href="/destination/flights"></a>Submit</button>
                             </div>
                         </div>
-                        <p class="searchQuery" id="searchQuery"></p>
 
                     </form>
-                    <form id="searchReturn" class="col-md-7" style="display: none ;">
-                        <div class="form-row">
-                            <div class="form-group col-md-30">
-                                <input type="text" class="form-control" id="RTDepart" placeholder="departure" required name="depart" id="">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <input type="date" class="form-control" id="RTDepartDate" placeholder="" required name="">
-                            </div>
-                            <div class="form-group col-md-30">
-                                <input type="text" class="form-control" id="RTReturn" placeholder="return" required name="return" id="">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <input type="date" class="form-control" id="RTReturnDate" placeholder="" required name="">
-                            </div>
-                            <div class="input-group-append">
-                                <button id="returnBtn" class="btn btn-primary">Submit</button>
-                            </div>  
-                        </div> 
-                    </form>
-                    <div id="flightOptions" class="col">
-                        <div class="col-md-8">
-                            <label>Return</label>
-                            <input type="radio" id="returnRadio" name="fav_language" value="HTML">
-                            <label>One way</label>
-                            <input type="radio" id="oneWayRadio" name="fav_language" value="HTML">
-
-                        </div>
-                    </div>
                 </div>
-                
-
-                <!-- -->
-    
-                <div class="flightsDiv" id="flightsDiv"></div>
-    
-
+            
                 <!-- -->
 
                         <div class="row flight-card">
