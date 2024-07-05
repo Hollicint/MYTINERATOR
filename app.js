@@ -1,16 +1,16 @@
 //mongoose connection
-const mongoose = require("mongoose");
-const Itin = require('./back-end/models/itinerary');
-const Flight = require('./back-end/models/flights');
 const express = require("express");
-const bodyParser = require('body-parser');
-
-
+const mongoose = require("mongoose");
 //connection of path
 const path = require('path');
 const methodOverride = require('method-override');
+const Itin = require('./back-end/models/itinerary');
+const Flight = require('./back-end/models/flights');
+const bodyParser = require('body-parser');
+
 //create the Express app
 const app = express();
+
 const { ConnectionPoolClosedEvent } = require("mongodb");
 //connection of DB
 const dbURI = "mongodb+srv://Group6:pQHbMkTRY2pdRq6G@mytin.hyrbvla.mongodb.net/MytinApp?retryWrites=true&w=majority&appName=mytin";
@@ -19,18 +19,14 @@ mongoose.connect(dbURI)
     .catch((error) => console.log(error));
 
 
-
+app.use(express.static(path.join(__dirname,'public')));
 app.use(bodyParser.json());
-
+/*app.use(express.static(path.join(__dirname, 'public'),{maxAge: 'id', etag:false}));
 //app.use(express.static("public"));
-app.use(express.static(path.join(__dirname, 'back-end', 'js')));
-
+*/
 //retieve data from server
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-
-
-
 
 /*
 //Swagger
@@ -74,19 +70,13 @@ app.set('views', path.join(__dirname, 'front-end', 'Views'));
 
 app.use(express.static(path.join(__dirname, 'front-end')));
 //Directory for back-end files
-app.use(express.static(path.join(__dirname, 'back-end')));
+//app.use(express.static(path.join(__dirname, 'back-end')));
+app.use(express.static(path.join(__dirname, 'back-end', 'js')));
 //Directory for back-end files
 app.use(express.static(path.join(__dirname, 'front-end', 'css')));
 
 //route and response
 app.get("/", (request, response) => {
-/*#####################
-
-Feature/itinerary_Page_&_DB-Connection
-
-commented this line out because was giving problems with the connection
-
-*/
 response.render("index", { title: "Mytinerator Home", script: ['js/index.js'], style: ['/style.css']});
  /*main*/
 });
@@ -185,8 +175,8 @@ app.get("/itinerary", (request, response) => {
 app.get("/itinerary/:id", (request, response) => {
     const id = request.params.id;
     Itin.findById(id)
-        .then(result => response.render("singleitinerary", { itin: result, title: "Single itinerary details",script: ['.js/singleitinerary.js'], style: ['/style.css'], styleTwo: ['/style.css']  }))
-        .catch((error) => console.log(error));
+        .then(result => { response.set('Cache-Control', 'no-store'); response.render("singleItinerary", { itin: result, title: "Single Itinerary Details", script: ['js/singleItinerary.js'], style: ['/style.css'], styleTwo: ['/style.css']  });})
+            .catch((error) => console.log(error));
 });
 
 app.delete("/itinerary/:id", (request, response) => {
@@ -197,13 +187,13 @@ app.delete("/itinerary/:id", (request, response) => {
 app.put("/itinerary/:id", (req, res) => {
     const id = req.params.id;
     Itin.findByIdAndUpdate(id, req.body, { new: true })
-        .then(result => res.redirect(`/itinerary`))
+        .then(result => res.redirect('/itinerary'))
         .catch(error => console.log(error));
 });
 app.post("/itinerary", (req, res) => {
     const itin = new Itin(req.body);
     itin.save()
-        .then(result => res.redirect("/itinerary"))
+        .then(result => res.redirect('/itinerary'))
         .catch(error => console.log(error));
 });
 
