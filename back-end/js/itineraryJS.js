@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const deleteBtns = document.querySelectorAll("#deleteBtn");
-  const editBtns = document.querySelectorAll("#editBtn");
+  const deleteBtns = document.querySelectorAll(".deleteBtn");
+  const editBtns = document.querySelectorAll(".editBtn");
   const backBtn = document.getElementById("backBtn");
 
   deleteBtns.forEach((btn) => {
@@ -82,4 +82,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return isValid;
   }
-});
+}); 

@@ -1,6 +1,7 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const deleteBtn = document.querySelectorAll("deleteBtn");
-    const editBtn = document.querySelectorAll("editBtn");
+document.addEventListener('DOMContentLoaded', () => 
+{
+    const deleteBtns = document.querySelectorAll(".deleteBtn");
+    const editBtns = document.querySelectorAll(".editBtn");
     const backBtn = document.getElementById("backBtn");
     
 
@@ -35,6 +36,4 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('singleIntinerary').hidden = false;
     });
 
-
-    })
-});
+})});    
