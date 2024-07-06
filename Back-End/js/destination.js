@@ -3,7 +3,8 @@ $(document).ready(function () {
   const searchOneWay = document.getElementById("searchOneWay");
   searchOneWay.addEventListener("submit", async (e) => {
     const departure = document.getElementById("departure").value;
-    const departure_date = document.getElementById("departure_date").value;
+    const departureDate = document.getElementById("departure_date").value;
+    const departure_date = departureDate.split('T')[0];
     const destination = document.getElementById("destination").value;
     const backEndPoint = `/destination/flights`;
 
