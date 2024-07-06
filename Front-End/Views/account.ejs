@@ -5,19 +5,98 @@
     <body>
 
         <%- include ("./partials/header.ejs") %>
-
+        
+    
+    
             <!-- Main Content -->
-            <main class="container">
-                <div class="row">
-                    <div class="col">
+        <main class="container">
+            <div class="row">
+               
+               
+                 <div class="col-md-12" class="accountPageTitle">
+                     <h2 id="accountH2" >Welcome to your Account Page</h2>
+                     <p id="accountPara">Any Details are incorrect please contact our customer service <br> Details Found on Contact Page, complete the form and they will be in touch in less than 24 hours</p> <br>
+                 </div> 
+             
+                 
+                <div class="col-md-4"  id="accountleftImageHigher">
 
-                        
+                    <!--img src="../images/account/avatar.jpg" alt="avatar"--> <!--https://avatarmaker.com/female/-->
+                    <img src="../images/account/accountTree.jpg" alt="accountTree"> <br><br><!--https://www.istockphoto.com/photo/woman-walking-near-the-refreshing-waterfall-on-bali-gm2054695501-563514370-->
+                    <img src="../images/account/accountcamel.jpg" alt="accountCamel">  <!-- https://www.istockphoto.com/photo/tourists-on-train-of-camels-in-sahara-led-by-guide-gm155157473-15922631?searchscope=image%2Cfilm-->
+
+                </div>
+                <div class="col-md-8"id="accountRightUpper">
+
+                        <form  class="personalDetailsAccount">
+                            <h3>Personal Details</h3>
+                            <label class="accountLabel" for="name">Name: <span>Sammie</span></label><br>
+                            <label class="accountLabel" for="surname">Surname: <span>Johnson</span></label><br>
+                            <label class="accountLabel" for="email">Email: <span>mytinerartor@gmail.com</span></label><br>
+                            <label class="accountLabel" for="mobileNum">Contact Number:  <span>+353 086 123 9876</span></label><br>
+                            <label class="accountLabel" for="dob">Date Of Birth:  <span>06/071991</span></label><br>
+
+                        </form>
+
+                        <form  class="subscriptionDetailsAccount">
+                            <h3>Subscription Details</h3>
+                            <label class="accountLabel"for="username">UserName: <span>SJTravelLife</span></label><br>
+                            <label class="accountLabel"for="passWord">Password: <span>**************</span> </label><br>
+                            <label class="accountLabel" for="email">Email: <span>mytinerartor@gmail.com</span></label><br>
+                            <label class="accountLabel"for="mobileNum">Contact Number: <span>+353 086 123 9876</span></label><br>
+                            <label class="accountLabel"for="accountPurpose">Purpose Of Account: <span>Travel Blogger Advertures</span></label><br>
+                            <br>
+                            <label class="accountLabel" for="subscriptionType">Subscription Type: <span> MYTINLIFE Subscription</span></label> <br>
+                            <label class="accountLabel"for="subscriptionStartDate">Subscription Start Date: <span>2023-10-10</span></label> <br>
+                            <label class="accountLabel"for="subscriptionEndDate">Subscription Expiry Date: <span>2024-10-09</span></label> <br>      
+                        </form>
+
+                 </div>
+                 <div class="col-md-4" id="accountleftImagelower">
+
+                    <!--img src="../images/account/avatar2.jpg" alt="avatar"--> <!--https://avatarmaker.com/female/-->
+                    <img src="../images/account/accountballoon.jpg" alt="accountBalloon"><br><br><!--https://www.istockphoto.com/photo/romantic-happy-traveling-couple-hugging-together-and-makes-wish-in-scenic-valley-in-gm1499760492-521383852-->   
+                    <img src="../images/account/accountMountain.jpg" alt="accountMountain"><!--https://www.istockphoto.com/photo/hiking-group-in-valley-of-umbalfaelle-on-grossvenediger-with-view-to-mountain-gm1358569473-432149149?searchscope=image%2Cfilm-->
+                </div>
+                <div class="col-md-8" id="accountRightUpper">
+
+                    <form class="subscriptionPaymentDetails">
+                        <h3>Payment Details</h3>
+                        <label class="accountLabel"for="paymentType">Payment Type: <span>Credit Card</span></label><br>
+                        <label class="accountLabel" for="cardDetailNum">Card Number: <span>**** **** **** 5121</span></label><br>
+                        <label class="accountLabel"for="paymentInstalments">Payment instalments: <span>Monthly</span></label><br>
+                        <label class="accountLabel"for="notifyType">Notification End of Plan: <span>Email</span></label><br>                                 
+                    </form>
+
+                    <form class="travelDetails">
+                        <h3>Ideal Travel Details</h3>
+                        <label class="accountLabel"for="favTravelType">Favourite Travel Type: </label><br>
+                            <option class="accOptionValue" value="cityBreak"> - City Break</option>
+                            <option class="accOptionValue"value="beachTrip"> - Beach Trip</option>
+                            <option class="accOptionValue"value="groupTours"> - Solo Group Trips</option>
+                            <option class="accOptionValue"value="hikingTrips"> - Hiking Trips</option><br>
+                        <h4>Most Recent Trip</h4>    
+                        <label class="accountLabel"for="firstTrip">First Trip: <span>Spain</span></label><br>
+                            <option class="accOptionValue"value="firstTripCost">Cost: N/A</option>
+                        <label class="accountLabel"for="lastTrip">Last Trip: <span>France</span></label>    
+                            <option class="accOptionValue"value="lastTripCost">Cost: €1342</option>
+                    </form>
+
+                 </div>
 
 
+            </div>
+        </main>
+
+            <%- include ("./partials/footer.ejs") %>
+                <%- include ("./partials/scriptCollection.ejs") %>
 
 
+    </body>
 
-                        <!--div class="regForm" id="regForm">
+</html>
+
+ <!--div class="regForm" id="regForm">
                              <h1>Register</h1>
                              <form action="">
                                  <input type="text" placeholder="Name" id="nameReg">
@@ -35,16 +114,5 @@
                              </form>
                              <button id="submitLoginBtn" class="btn btn-primary">Login</button>
                              <a href="#" id="regLink">Register</a>
-                             </div
+                             
                         </div-->
-                    </div>
-                </div>
-            </main>
-
-            <%- include ("./partials/footer.ejs") %>
-                <%- include ("./partials/scriptCollection.ejs") %>
-
-
-    </body>
-
-</html>
