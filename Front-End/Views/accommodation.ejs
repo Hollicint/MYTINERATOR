@@ -8,10 +8,35 @@
 
         <!-- Main Content -->
         <main class="container">
-            <div class="row">
+            <div class="col">
                 <div class="col">
                     <h1>Accommodation page</h1>
+                    <img id="accommImage" src="/images/accomm/hotelroom.JPG" alt="">
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <div id="infoCard" class="card p-3 mx-auto">
+                            <h1 class="text-center">Search accommodation</h1>
+
+                            <div class="input-group mb-3">
+                                <input type="text" id="location" class="form-control" placeholder="Enter City">
+                                <div class="input-group-append">
+                                    <button type="button" id="accommBtn" class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h2 id="place" class="card-title"></h2>
+                                    <div class="card-body" id="accommResults">
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </main>
 

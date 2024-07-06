@@ -46,6 +46,15 @@ regBtn.addEventListener('click', function () {
     var name = document.getElementById('nameReg').value;
     var email = document.getElementById('emailReg').value;
     var pWord = document.getElementById('pwordReg').value;
+    let encyryptedName =  caesarCipher(name);
+    let encyryptedEmail = caesarCipher(email);
+    let encyryptedPWord = caesarCipher(pWord);
+    console.log(caesarCipher("A"))
+    console.log("Name Encrypted: " + encyryptedName)
+    console.log("Email Encrypted: " + encyryptedEmail)
+    console.log("Password Encrypted: " + encyryptedPWord)
+
+
 
     if (name === '' || email.value === '' || pWord.value === '') {
         alert('Please enter name, email and password');
@@ -64,6 +73,24 @@ regBtn.addEventListener('click', function () {
     console.log(users)
     alert(`Registered, welcome ` + users[i]['name'] + ` !`);
 });
+
+function caesarCipher(str){
+    var encrypted = "";
+
+    for(var i =0; i<=str.length; i++){
+        var asciiNum = str[i].charCodeAt();
+        console.log(asciiNum);
+        if(asciiNum >= 65 && asciiNum <= 112){
+            encrypted += String.fromCharCode(asciiNum + 10)
+        } else if (asciiNum >=113 && asciiNum <= 90) {
+            encrypted += String.fromCharCode(asciiNum - 10)
+        } else {
+            encrypted += str[i];
+        }
+    }
+    return encrypted;
+
+}
 
 /*
 logLink.addEventListener('click', function(){
