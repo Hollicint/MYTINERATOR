@@ -95,7 +95,7 @@ app.use(express.static(path.join(__dirname, 'front-end', 'css')));
 
 //route and response
 app.get("/", (request, response) => {
-response.render("index", { title: "Mytinerator Home", script: ['js/index.js'], style: ['/style.css']});
+response.render("index", { title: "Mytinerator Home", script: ['/index.js'], style: ['/style.css']});
  /*main*/
 });
 app.get("/budget", (request, response) => {
@@ -106,7 +106,11 @@ app.get("/budgeting", (request, response) => {
     response.render("Budget", { title: "Mytinerator Budget page", script: ['js/budgetCal.js'], style: ['/style.css']});
 });
 app.get("/accommodation", (request, response) => {
-    response.render("accommodation", { title: "Mytinerator Accommodation", script: ['js/accomm.js'], style: ['/style.css']});
+    response.render("accommodation", { title: "Mytinerator Accommodation", script: ['/accomm.js'], style: ['/style.css']});
+});
+app.get("/accommodation/:id", (request, response) => {
+    const id = request.params.id;
+    response.render("singleAccomm", { title: "Mytinerator Hotel", script: ['/singleAccomm.js'], style: ['/style.css']});
 });
 //account
 
@@ -168,9 +172,9 @@ app.post("/destination/flights", (request, response) => {
     let mongoFlight = [];
     let query = '';
     const flights = { destination, departure, departure_date } = request.body;
-    /*const newDate = departure_date.split('T')[0];*/
+
     const newDate = departure_date;
-    Flight.find({ destination, departure})
+    Flight.find({ destination, departure, departure_date})
         .then((result) => {
             response.render("destination", { 
                 title: "Mytinerator Destination", 
