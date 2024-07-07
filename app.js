@@ -1,6 +1,9 @@
 //mongoose connection
 const express = require("express");
 const mongoose = require("mongoose");
+const multer = require("multer");
+const nodemailer = require("nodemailer");
+
 //connection of path
 const path = require('path');
 const methodOverride = require('method-override');
@@ -10,6 +13,21 @@ const bodyParser = require('body-parser');
 
 //create the Express app
 const app = express();
+
+//getting image sent from account page to email
+const storage = multer.diskStorage({
+    destination: function(request, file, cb){
+        cb(null,path.join(__dirname,'upload/'));},
+        filename: function(request, file, cb){
+            cb(null,file.originalname);
+        }
+});
+const upload = multer({storage: storage});
+module.exports = upload;
+const transporter = nodemailer.createTransport({
+    service: 'gmail', 
+    auth:{ user:'mytinerartor@gmail.com', pass:'myt1n3r47t0rP4ssW07224!'}
+});
 
 const { ConnectionPoolClosedEvent } = require("mongodb");
 //connection of DB
@@ -91,9 +109,43 @@ app.get("/accommodation", (request, response) => {
     response.render("accommodation", { title: "Mytinerator Accommodation", script: ['js/accomm.js'], style: ['/style.css']});
 });
 //account
+
 app.get("/account", (request, response) => {
     response.render("account", { title: "Mytinerator Account", script: ['js/account.js'], style: ['/style.css']});
 });
+//
+//app.post('/upload', upload.single('img'), (request, response) =>{
+//    if(!request.file){
+//        return response.status(400).send('No Image uploaded');
+//    }
+//    const mailOption={
+//        from: 'mytinerartor@gmail.com',
+//        to: 'mytinerartor@gmail.com',
+//        subject: 'Account Image to Add',
+//        Text: 'To be added to Users account page',
+//        attachments:
+//        [
+//            {
+//                 filename: request.file.originalname,
+//                 path: request.file.path
+//            }
+//        ]
+//    };
+//
+//    transporter.sendMail(mailOption, function(error, info){
+//        if(error){
+//            console.log(error);
+//            response.status(500).send('Error email is sending');
+//        }
+//        else
+//        {
+//            console.log('Email has been sent: '+info.response);
+//            fs.unlinkSync(request.file.path);
+//            response.send('Image and Email has been sent');
+//        }
+//    })
+//});
+
 //Rentals page
 app.get("/rentals", (request, response) => {
     response.render("rentals", { title: "Mytinerator Rentals", script: ['js/rentals.js'], style: ['/style.css']});
