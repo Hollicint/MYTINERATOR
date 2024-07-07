@@ -25,7 +25,8 @@ npm install cypress
 npx cypress open
 npm install swagger-jsdoc swagger-ui-express --save
 
-
+npm install nodemailer body-parser multer express
+npm install nodemailer multer
 
 ## Run the Project
 Open project in Visual Studio code

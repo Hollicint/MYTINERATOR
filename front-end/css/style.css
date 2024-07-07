@@ -7,11 +7,16 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #7678edff !important;
+  margin: 0;
+  min-height: 100vh;
 }
 
 /*########################## Head ############################ */
 header {
   background-color: #f7b801ff;
+  padding: 1rem;
+  text-align: center;
+
 }
 
 h1 a,
@@ -34,11 +39,15 @@ h1 a:hover {
 .nav-link {
   white-space: nowrap;
 }
-
+/*
 .container-fluid {
   margin-right: 0;
 }
-
+  */
+.container
+{
+  flex: 1;
+}
 nav {
   background-color: #f5a623;
   padding: 2px;
@@ -75,15 +84,18 @@ footer {
 
 /*########################## Main Body ############################ */
 main {
-  margin-top: 0;
+ /* margin-top: 0;
   margin-bottom: 0;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 5rem;
+  padding-bottom: 15rem;
+   justify-content: center;
+  */
   background-color: white;
   flex: 1;
   display: flex;
-  justify-content: center;
+  padding-bottom: 20rem;
   align-items: center;
+  
 }
 
 /*########################## Font/Text Styles ############################ */
@@ -230,7 +242,7 @@ a {
   border-radius: 5px;
   box-shadow: 0px 0px 3px rgb(212, 212, 212);
 }
-
+/*
 .valueBudget {
 }
 
@@ -299,7 +311,7 @@ a {
 
 .listExpenses {
 }
-
+*/
 /*########################## Destination Page ############################ */
 #flightOption {
   display: flex;
@@ -319,6 +331,91 @@ a {
   border-radius: 5px;
   box-shadow: 0px 0px 3px rgb(212, 212, 212);
 }
+
+
+/*########################## Account Page ############################ */
+
+#accountH2
+{
+  text-align: center;
+  font-size: 50px;
+}
+#accountPara
+{
+  font-size: 20px;
+}
+
+.personalDetailsAccount, 
+.subscriptionDetailsAccount, 
+.subscriptionPaymentDetails,
+.travelDetails
+{
+  text-align: left;
+  font-size: 25px;
+ 
+}
+#accountRightUpper
+{
+   border-style: groove;
+   border-width: 5px  5px 5px;
+   border-color: #000;
+   padding: 20px;
+  
+
+  
+}
+
+.personalDetailsAccount h3, 
+.subscriptionDetailsAccount h3, 
+.subscriptionPaymentDetails h3,
+.travelDetails h3,
+.travelDetails h4
+{
+  text-align: center;
+  font-size: 40px;
+
+}
+
+#accountleftImageHigher img,
+#accountleftImagelower img
+{
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  display: block;
+
+}
+#accountPageEnd img
+{
+  max-width: 100%;
+  height: 130%;
+  margin-bottom: 1rem;
+ 
+
+}
+.accountPageEnd img
+{
+  max-width: 100%;
+  height: 60px;
+  margin-bottom: 1rem;
+  display: block;
+}
+#accountColImageLeft{
+  padding: 1rem;
+}
+
+.accountLabel
+{
+  font-weight: bold;
+}
+.accountLabel span
+{
+  font-weight: normal;
+}
+.accOptionValue
+{
+  text-align: center;
+
 /*########################## Accommodation Page ############################ */
 
 #accommImage {
@@ -335,4 +432,5 @@ a {
   color:#00A0C6; 
   text-decoration:none; 
   cursor:pointer;  
+
 }
