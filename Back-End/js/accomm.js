@@ -27,7 +27,12 @@ $(document).ready(function () {
               data.forEach(hotel => {
                 if(hotel.location == choice){
                     const resultDiv = document.createElement('div');
-                    resultDiv.innerHTML = '<h2><a id="hotelLink" href="/accommodation/'+hotel.hotel_id+'">'+hotel.hotel_name+'</h2><p>Room type: '+hotel.room_type+'</p><p>Price per night: '+hotel.price_per_night+'</p>'+'</p><p>Rating: '+hotel.rating+'</p>'+'</p>'+ '<p>Location: '+hotel.location+'</p>'
+                    resultDiv.innerHTML = '<div class="col">' +
+                    '<h2><a id="hotelLink" href="/accommodation/' + hotel.hotel_id + '">'
+                    + hotel.hotel_name + '</h2><p>Room type: ' + hotel.room_type +
+                    '</p><p>Price per night: ' + hotel.price_per_night +
+                    '</p>'+'</p><p>Rating: '+ hotel.rating +
+                    '<p>Location: '+ hotel.location + '</p>' + '</div>'
                     results.appendChild(resultDiv);
                 }
               });

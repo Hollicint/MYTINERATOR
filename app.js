@@ -110,7 +110,7 @@ app.get("/accommodation", (request, response) => {
 });
 app.get("/accommodation/:id", (request, response) => {
     const id = request.params.id;
-    response.render("singleAccomm", { title: "Mytinerator Hotel", script: ['/singleAccomm.js'], style: ['/style.css']});
+    response.render("singleAccomm", { title: "Mytinerator Hotel", script: ['/accomm.js'], style: ['/style.css']});
 });
 //account
 
@@ -164,7 +164,7 @@ app.get("/contact", (request, response) => {
 app.get("/destination", (request, response) => {
 
     Flight.find()
-    .then(result =>response.render("destination", { title: "Mytinerator Destination", script: ['js/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'], Flight: '' }))
+    .then(result =>response.render("destination", { title: "Mytinerator Destination", script: ['/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'], Flight: '' }))
     .catch(error => console.log(error));
 });
 
@@ -201,7 +201,7 @@ app.post("/destination/flights", async (request, response) => {
         const { destination, departure, departure_date } = request.body;
         flights = await Flight.find({ destination: destination, departure: departure, departure_date: departure_date })
         .then(toString(flights))
-        .then((result) => response.render("destination", { Flight: flights, title: "Mytinerator Destination", script: ['/js/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'] }))
+        .then((result) => response.render("destination", { Flight: flights, title: "Mytinerator Destination", script: ['/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'] }))
         .then(console.log(departure, departure_date,  destination))
         .then(console.log(flights))
     } catch (error) {
