@@ -81,11 +81,11 @@ response.render("index", { title: "Mytinerator Home", script: ['/index.js'], sty
  /*main*/
 });
 app.get("/budget", (request, response) => {
-    response.render("Budget", { title: "Mytinerator Budget Page", script: ['js/budgetCal.js'], style: ['/style.css']});
+    response.render("budget", { title: "Mytinerator Budget Page", script: ['/budgetCal.js'], style: ['/style.css']});
 });
 //redirect
 app.get("/budgeting", (request, response) => {
-    response.render("Budget", { title: "Mytinerator Budget page", script: ['js/budgetCal.js'], style: ['/style.css']});
+    response.render("budget", { title: "Mytinerator Budget page", script: ['/budgetCal.js'], style: ['/style.css']});
 });
 app.get("/accommodation", (request, response) => {
     response.render("accommodation", { title: "Mytinerator Accommodation", script: ['/accomm.js'], style: ['/style.css']});
@@ -96,15 +96,15 @@ app.get("/accommodation/:id", (request, response) => {
 });
 //account
 app.get("/account", (request, response) => {
-    response.render("account", { title: "Mytinerator Account", script: ['js/account.js'], style: ['/style.css']});
+    response.render("account", { title: "Mytinerator Account", script: ['/account.js'], style: ['/style.css']});
 });
 //Rentals page
 app.get("/rentals", (request, response) => {
-    response.render("rentals", { title: "Mytinerator Rentals", script: ['js/rentals.js'], style: ['/style.css']});
+    response.render("rentals", { title: "Mytinerator Rentals", script: ['/rentals.js'], style: ['/style.css']});
 });
 //Contact page
 app.get("/contact", (request, response) => {
-    response.render("contact", { title: "Mytinerator Contact", script: ['js/contact.js'], style: ['/style.css']}); 
+    response.render("contact", { title: "Mytinerator Contact", script: ['/contact.js'], style: ['/style.css']}); 
     //response.render("contact", { title: "Mytinerator Contact", style: ['/style.css']});   
 });
 
@@ -144,7 +144,7 @@ app.get("/itinerary", (request, response) => {
    // console.log("Request received for /itinerary");
     Itin.find()
         .then(result => {
-            response.render("itinerary", { title: "Mytinerator itinerary", script: ['js/itineraryJS.js'], style: ['/style.css'], styleTwo: ['/style.css'], Itin: result });
+            response.render("itinerary", { title: "Mytinerator itinerary", script: ['/itineraryJS.js'], style: ['/style.css'], styleTwo: ['/style.css'], Itin: result });
         })
         .catch(error => console.log(error));
 });
@@ -153,7 +153,7 @@ app.get("/itinerary", (request, response) => {
 app.get("/itinerary/:id", (request, response) => {
     const id = request.params.id;
     Itin.findById(id)
-        .then(result => { response.set('Cache-Control', 'no-store'); response.render("singleItinerary", { itin: result, title: "Single Itinerary Details", script: ['js/singleItinerary.js'], style: ['/style.css'], styleTwo: ['/style.css']  });})
+        .then(result => { response.set('Cache-Control', 'no-store'); response.render("singleItinerary", { itin: result, title: "Single Itinerary Details", script: ['/singleItinerary.js'], style: ['/style.css'], styleTwo: ['/style.css']  });})
             .catch((error) => console.log(error));
 });
 
