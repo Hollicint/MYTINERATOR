@@ -11,7 +11,7 @@
                 <div class="col">
                     <!--npm install nodemailer might need this to send form to email-->
                     <!--form id="contactForm" method="post" action="mytinerartor@gmail.com"-->
-                    <form id="contactForm" >
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" >
                     <h3>We want to Hear your Thoughts</h3>
                     <p>Please do not hesitate to contact us with any issue or quaries you may have.
                          We would love to hear from you.</p>
@@ -19,11 +19,12 @@
                         <!-- To clean up the page until its put into the bootstrap format i have added class="form-control"
                             This can be removed and updated for its own layout- Form-control is connected to the itinerary page form 
                         -->
+                        <input type="hidden" name="access_key" value="406a06b2-f6bd-48b1-81cf-a7453efef13f">
                          <input type="text" class="form-control" placeholder="First Name" required name="firstName"><br>
                          <input type="text" class="form-control" placeholder="Surname" required name="lastName"><br>
                          <input type="text" class="form-control" placeholder="Mobile +353 11 111 11 11" required name="mobile"> <br>
                          <input type="email" class="form-control" placeholder="Email ex.Mytinerator@gmail.com" required name="email"> <br>
-                         <textarea id="message-box" rows="4" placeholder="Enter message here"></textarea><br>
+                         <textarea name="message-box" rows="4" placeholder="Enter message here" class="contact-input" required name></textarea><br>
                          <button type="submit" value="Send Email" id="sendRequest" >Send request</button>
                         
 

@@ -441,3 +441,51 @@ a {
     cursor: pointer;
   }
 }
+
+ /*########################## Contact Page ############################ */
+ .contactForm h3{
+  font-weight: 900;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+
+}
+.contactForm p{
+  font-weight: 900;
+}
+
+.contactForm{
+  background: #7678edff;
+  display: flex;
+  flex-direction: column;
+  padding: 3vw 5vw;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.contactForm input, form textarea{
+  font-size: medium;
+  border: 0;
+  outline: none;
+  margin: 5px 0;
+  padding: 5px;
+  width: 500px;
+  background: lightgray;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.contactForm button{
+  padding: 10px;
+  outline: none;
+  cursor: pointer;
+  background-color: #f7b801ff;
+  border-radius: 20px;
+  width: 200px;
+  font-weight: 900;
+}
