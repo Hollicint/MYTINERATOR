@@ -6,7 +6,10 @@ body {
 body {
   display: flex;
   flex-direction: column;
-  background-color: #7678edff !important;
+ background-color: #7678edff !important;
+ background-image: url("/images/background/background2.png");
+ background-repeat: repeat; /* Make the background image repeat */
+  background-size: auto;
 }
 
 /*########################## Head ############################ */

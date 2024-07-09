@@ -5,7 +5,6 @@ const Flight = require('./back-end/models/flights');
 const express = require("express");
 const bodyParser = require('body-parser');
 
-
 //connection of path
 const path = require('path');
 const methodOverride = require('method-override');
@@ -110,63 +109,52 @@ app.get("/rentals", (request, response) => {
 });
 //Contact page
 app.get("/contact", (request, response) => {
-    response.render("contact", { title: "Mytinerator Contact", script: ['js/contact.js'], style: ['/style.css']}); 
-    //response.render("contact", { title: "Mytinerator Contact", style: ['/style.css']});   
+    response.render("contact", { title: "Mytinerator Contact", script: ['js/contact.js'], style: ['/style.css']});
 });
 
 //Destination information page
 app.get("/destination", (request, response) => {
 
     Flight.find()
-    .then(result =>response.render("destination", { title: "Mytinerator Destination", script: ['/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'], Flight: '' }))
+    .then(result =>response.render("destination", { title: "Mytinerator Destination", script: ['js/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'], Flight: '' }))
     .catch(error => console.log(error));
 });
 
 app.post("/destination/flights", (request, response) => {
-    let mongoFlight = [];
-    let query = '';
-    const flights = { destination, departure, departure_date } = request.body;
-<<<<<<< HEAD
-    /*const newDate = departure_date.split('T')[0];*/
-    const newDate = departure_date;
-    Flight.find({ destination, departure})
+    const { destination, departure, departure_date } = request.body;
+    Flight.find({ destination, departure, departure_date })
         .then((result) => {
             response.render("destination", { 
                 title: "Mytinerator Destination", 
-                script: ['/destination.js'], 
+                script: ['js/destination.js'], 
                 style: ['/APIStyle.css'], 
                 styleTwo: ['/style.css'], 
                 Flight: result 
             });
         })
-=======
-    let newDate= departure_date.toString();
-    if(departure_date === ''){
-        query = {
-            destination: destination, 
-            departure: departure, 
-        };
-    } else {
-        query = {
-            destination: destination, 
-            departure: departure, 
-            departure_date: newDate
-        };
-    }
-
-    Flight.find(query)
-    .then((result) => response.render("destination", { 
-        title: "Mytinerator Destination", 
-        script: ['/destination.js'], 
-        style: ['/APIStyle.css'], 
-        styleTwo: ['/style.css'], 
-        Flight: result        
-}))
->>>>>>> 311031b8bdf549c7ad0d9ceb5af67f7cb0fcd278
         .catch((error) => {
             console.error("Error fetching flights:", error);
             response.status(500).send("Error fetching flights");
         });
+});
+
+
+
+
+app.post("/destination/flights", async (request, response) => {
+
+    
+    try {
+        let flights = {}
+        const { destination, departure, departure_date } = request.body;
+        flights = await Flight.find({ destination: destination, departure: departure, departure_date: departure_date })
+        .then(toString(flights))
+        .then((result) => response.render("destination", { Flight: flights, title: "Mytinerator Destination", script: ['/js/destination.js'], style: ['/APIStyle.css'], styleTwo: ['/style.css'] }))
+        .then(console.log(departure, departure_date,  destination))
+        .then(console.log(flights))
+    } catch (error) {
+        console.log(error)
+    }
 });
 
 
