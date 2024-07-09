@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const deleteBtns = document.querySelectorAll("#deleteBtn");
-  const editBtns = document.querySelectorAll("#editBtn");
+  const deleteBtns = document.querySelectorAll(".deleteBtn");
+  const editBtns = document.querySelectorAll(".editBtn");
+  const backBtn = document.getElementById("backBtn");
 
   deleteBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
@@ -15,12 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   editBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      const id = e.target.getAttribute("data-id")S;
+      const id = e.target.getAttribute("data-id");
       document.getElementById("showItin").style.display = "none";
       document.getElementById("editItin").style.display = "block";
-      document.getElementById(
-        "editForm"
-      ).action = `/itinerary/${id}?_method=PUT`;
+      document.getElementById("editForm").action = `/itinerary/${id}?_method=PUT`;
     });
   });
 
@@ -58,8 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inputs.forEach((input) => {
       if (!input.value.trim()) {
         isValid = false;
-        input.classList.add("input-error"); // Optionally add a class to highlight the error
-      } else {
+        input.classList.add("input-error"); 
         input.classList.remove("input-error");
       }
     });
@@ -84,4 +82,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return isValid;
   }
-});
+}); 

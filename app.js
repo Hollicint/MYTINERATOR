@@ -1,15 +1,34 @@
 //mongoose connection
-const mongoose = require("mongoose");
-const Itin = require('./back-end/models/itinerary');
-const Flight = require('./back-end/models/flights');
 const express = require("express");
-const bodyParser = require('body-parser');
+const mongoose = require("mongoose");
+const multer = require("multer");
+const nodemailer = require("nodemailer");
 
 //connection of path
 const path = require('path');
 const methodOverride = require('method-override');
+const Itin = require('./back-end/models/itinerary');
+const Flight = require('./back-end/models/flights');
+const bodyParser = require('body-parser');
+
 //create the Express app
 const app = express();
+
+//getting image sent from account page to email
+const storage = multer.diskStorage({
+    destination: function(request, file, cb){
+        cb(null,path.join(__dirname,'upload/'));},
+        filename: function(request, file, cb){
+            cb(null,file.originalname);
+        }
+});
+const upload = multer({storage: storage});
+module.exports = upload;
+const transporter = nodemailer.createTransport({
+    service: 'gmail', 
+    auth:{ user:'mytinerartor@gmail.com', pass:'myt1n3r47t0rP4ssW07224!'}
+});
+
 const { ConnectionPoolClosedEvent } = require("mongodb");
 //connection of DB
 const dbURI = "mongodb+srv://Group6:pQHbMkTRY2pdRq6G@mytin.hyrbvla.mongodb.net/MytinApp?retryWrites=true&w=majority&appName=mytin";
@@ -18,18 +37,14 @@ mongoose.connect(dbURI)
     .catch((error) => console.log(error));
 
 
-
+app.use(express.static(path.join(__dirname,'public')));
 app.use(bodyParser.json());
-
+/*app.use(express.static(path.join(__dirname, 'public'),{maxAge: 'id', etag:false}));
 //app.use(express.static("public"));
-app.use(express.static(path.join(__dirname, 'back-end', 'js')));
-
+*/
 //retieve data from server
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-
-
-
 
 /*
 //Swagger
@@ -73,43 +88,76 @@ app.set('views', path.join(__dirname, 'front-end', 'Views'));
 
 app.use(express.static(path.join(__dirname, 'front-end')));
 //Directory for back-end files
-app.use(express.static(path.join(__dirname, 'back-end')));
+//app.use(express.static(path.join(__dirname, 'back-end')));
+app.use(express.static(path.join(__dirname, 'back-end', 'js')));
 //Directory for back-end files
 app.use(express.static(path.join(__dirname, 'front-end', 'css')));
 
 //route and response
 app.get("/", (request, response) => {
-/*#####################
-
-Feature/itinerary_Page_&_DB-Connection
-
-commented this line out because was giving problems with the connection
-
-*/
-response.render("index", { title: "Mytinerator Home", script: ['js/index.js'], style: ['/style.css']});
+response.render("index", { title: "Mytinerator Home", script: ['/index.js'], style: ['/style.css']});
  /*main*/
 });
 app.get("/budget", (request, response) => {
-    response.render("Budget", { title: "Mytinerator Budget Page", script: ['js/budgetCal.js'], style: ['/style.css']});
+    response.render("budget", { title: "Mytinerator Budget Page", script: ['/budgetCal.js'], style: ['/style.css']});
 });
 //redirect
 app.get("/budgeting", (request, response) => {
-    response.render("Budget", { title: "Mytinerator Budget page", script: ['js/budgetCal.js'], style: ['/style.css']});
+    response.render("budget", { title: "Mytinerator Budget page", script: ['/budgetCal.js'], style: ['/style.css']});
 });
 app.get("/accommodation", (request, response) => {
-    response.render("accommodation", { title: "Mytinerator Accommodation", script: ['js/accomm.js'], style: ['/style.css']});
+    response.render("accommodation", { title: "Mytinerator Accommodation", script: ['/accomm.js'], style: ['/style.css']});
+});
+app.get("/accommodation/:id", (request, response) => {
+    const id = request.params.id;
+    response.render("singleAccomm", { title: "Mytinerator Hotel", script: ['/singleAccomm.js'], style: ['/style.css']});
 });
 //account
+
 app.get("/account", (request, response) => {
-    response.render("account", { title: "Mytinerator Account", script: ['js/account.js'], style: ['/style.css']});
+    response.render("account", { title: "Mytinerator Account", script: ['/account.js'], style: ['/style.css']});
 });
+//
+//app.post('/upload', upload.single('img'), (request, response) =>{
+//    if(!request.file){
+//        return response.status(400).send('No Image uploaded');
+//    }
+//    const mailOption={
+//        from: 'mytinerartor@gmail.com',
+//        to: 'mytinerartor@gmail.com',
+//        subject: 'Account Image to Add',
+//        Text: 'To be added to Users account page',
+//        attachments:
+//        [
+//            {
+//                 filename: request.file.originalname,
+//                 path: request.file.path
+//            }
+//        ]
+//    };
+//
+//    transporter.sendMail(mailOption, function(error, info){
+//        if(error){
+//            console.log(error);
+//            response.status(500).send('Error email is sending');
+//        }
+//        else
+//        {
+//            console.log('Email has been sent: '+info.response);
+//            fs.unlinkSync(request.file.path);
+//            response.send('Image and Email has been sent');
+//        }
+//    })
+//});
+
 //Rentals page
 app.get("/rentals", (request, response) => {
-    response.render("rentals", { title: "Mytinerator Rentals", script: ['js/rentals.js'], style: ['/style.css']});
+    response.render("rentals", { title: "Mytinerator Rentals", script: ['/rentals.js'], style: ['/style.css']});
 });
 //Contact page
 app.get("/contact", (request, response) => {
-    response.render("contact", { title: "Mytinerator Contact", script: ['js/contact.js'], style: ['/style.css']});
+    response.render("contact", { title: "Mytinerator Contact", script: ['/contact.js'], style: ['/style.css']}); 
+    //response.render("contact", { title: "Mytinerator Contact", style: ['/style.css']});   
 });
 
 //Destination information page
@@ -121,8 +169,12 @@ app.get("/destination", (request, response) => {
 });
 
 app.post("/destination/flights", (request, response) => {
-    const { destination, departure, departure_date } = request.body;
-    Flight.find({ destination, departure, departure_date })
+    let mongoFlight = [];
+    let query = '';
+    const flights = { destination, departure, departure_date } = request.body;
+
+    const newDate = departure_date;
+    Flight.find({ destination, departure, departure_date})
         .then((result) => {
             response.render("destination", { 
                 title: "Mytinerator Destination", 
@@ -164,7 +216,7 @@ app.get("/itinerary", (request, response) => {
    // console.log("Request received for /itinerary");
     Itin.find()
         .then(result => {
-            response.render("itinerary", { title: "Mytinerator itinerary", script: ['js/itineraryJS.js'], style: ['/style.css'], styleTwo: ['/style.css'], Itin: result });
+            response.render("itinerary", { title: "Mytinerator itinerary", script: ['/itineraryJS.js'], style: ['/style.css'], styleTwo: ['/style.css'], Itin: result });
         })
         .catch(error => console.log(error));
 });
@@ -173,8 +225,8 @@ app.get("/itinerary", (request, response) => {
 app.get("/itinerary/:id", (request, response) => {
     const id = request.params.id;
     Itin.findById(id)
-        .then(result => response.render("singleitinerary", { itin: result, title: "Single itinerary details",script: ['.js/singleitinerary.js'], style: ['/style.css'], styleTwo: ['/style.css']  }))
-        .catch((error) => console.log(error));
+        .then(result => { response.set('Cache-Control', 'no-store'); response.render("singleItinerary", { itin: result, title: "Single Itinerary Details", script: ['/singleItinerary.js'], style: ['/style.css'], styleTwo: ['/style.css']  });})
+            .catch((error) => console.log(error));
 });
 
 app.delete("/itinerary/:id", (request, response) => {
@@ -185,13 +237,13 @@ app.delete("/itinerary/:id", (request, response) => {
 app.put("/itinerary/:id", (req, res) => {
     const id = req.params.id;
     Itin.findByIdAndUpdate(id, req.body, { new: true })
-        .then(result => res.redirect(`/itinerary`))
+        .then(result => res.redirect('/itinerary'))
         .catch(error => console.log(error));
 });
 app.post("/itinerary", (req, res) => {
     const itin = new Itin(req.body);
     itin.save()
-        .then(result => res.redirect("/itinerary"))
+        .then(result => res.redirect('/itinerary'))
         .catch(error => console.log(error));
 });
 

@@ -5,19 +5,142 @@
     <body>
 
         <%- include ("./partials/header.ejs") %>
-
+        
+    
+    
             <!-- Main Content -->
-            <main class="container">
-                <div class="row">
-                    <div class="col">
+        <main class="container">
+            <div class="row">
+               
+               
+                 <div class="col-md-12" class="accountPageTitle">
+                     <h2 id="accountH2" >Welcome to your Account Page</h2>
+                     <p id="accountPara">Any Details are incorrect please contact our customer service <br> Details Found on Contact Page, complete the form and they will be in touch in less than 24 hours</p> <br>
+                 </div> 
+             
+                 
+                <div class="col-md-3"  id="accountleftImageHigher">
 
-                        
+                    <img src="../images/account/avatar.jpg" alt="avatar"> <!--https://avatarmaker.com/female/-->
+                  
+                    <img src="../images/account/accountTree.jpg" alt="accountTree"> <br><br><!--https://www.istockphoto.com/photo/woman-walking-near-the-refreshing-waterfall-on-bali-gm2054695501-563514370-->
+                    <img src="../images/account/accountcamel.jpg" alt="accountCamel">  <!-- https://www.istockphoto.com/photo/tourists-on-train-of-camels-in-sahara-led-by-guide-gm155157473-15922631?searchscope=image%2Cfilm-->
+
+                </div>
+                <div class="col-md-6"id="accountRightUpper">
+
+                        <form  class="personalDetailsAccount">
+                            <h3>Personal Details</h3>
+                            <label class="accountLabel" for="name">Name: <span>Sammie</span></label><br>
+                            <label class="accountLabel" for="surname">Surname: <span>Johnson</span></label><br>
+                            <label class="accountLabel" for="email">Email: <span>mytinerartor@gmail.com</span></label><br>
+                            <label class="accountLabel" for="mobileNum">Contact Number:  <span>+353 086 123 9876</span></label><br>
+                            <label class="accountLabel" for="dob">Date Of Birth:  <span>06/071991</span></label><br>
+
+                        </form>
+
+                        <form  class="subscriptionDetailsAccount">
+                            <h3>Subscription Details</h3>
+                            <label class="accountLabel"for="username">UserName: <span>SJTravelLife</span></label><br>
+                            <label class="accountLabel"for="passWord">Password: <span>**************</span> </label><br>
+                            <label class="accountLabel" for="email">Email: <span>mytinerartor@gmail.com</span></label><br>
+                            <label class="accountLabel"for="mobileNum">Contact Number: <span>+353 086 123 9876</span></label><br>
+                            <label class="accountLabel"for="accountPurpose">Purpose Of Account: <span>Travel Blogger Advertures</span></label><br>
+                            <br>
+                            <label class="accountLabel" for="subscriptionType">Subscription Type: <span> MYTINLIFE Subscription</span></label> <br>
+                            <label class="accountLabel"for="subscriptionStartDate">Subscription Start Date: <span>2023-10-10</span></label> <br>
+                            <label class="accountLabel"for="subscriptionEndDate">Subscription Expiry Date: <span>2024-10-09</span></label> <br>   
+                            <label class="accountLabel"for="subscriptionMember">Mytinerator Member since: <span>2024-10-0</span></label> <br>   
+                        </form>
+
+                 </div>
+                 <div class="col-md-3" id="accountleftImagelower">
+
+                    <img src="../images/account/avatar2.jpg" alt="avatar"> <!--https://avatarmaker.com/female/-->
+                    <img src="../images/account/accountballoon.jpg" alt="accountBalloon"><br><br><!--https://www.istockphoto.com/photo/romantic-happy-traveling-couple-hugging-together-and-makes-wish-in-scenic-valley-in-gm1499760492-521383852-->   
+                    <img src="../images/account/accountMountain.jpg" alt="accountMountain"><!--https://www.istockphoto.com/photo/hiking-group-in-valley-of-umbalfaelle-on-grossvenediger-with-view-to-mountain-gm1358569473-432149149?searchscope=image%2Cfilm-->
+                </div>
+                <div class="col-md-3" id="accountleftImagelower">
+
+                    <img src="../images/account/accountImgSpain.jpg" alt="spain"> <!--https://www.pexels.com/photo/man-walking-near-beige-truck-1995538/-->
+                    <img src="../images/account/accountImgUSa.jpg" alt="usa"><br><br><!--https://www.pexels.com/photo/statue-of-liberty-64271/-->   
+                    <img src="../images/account/accountImgThai.jpg" alt="thai1"><!--https://www.pexels.com/photo/people-sitting-on-boat-2108832/-->
+                </div>
+                <div class="col-md-6" id="accountRightUpper">
+
+                    <form class="subscriptionPaymentDetails">
+                        <h3>Payment Details</h3>
+                        <label class="accountLabel"for="paymentType">Payment Type: <span>Credit Card</span></label><br>
+                        <label class="accountLabel" for="cardDetailNum">Card Number: <span>**** **** **** 5121</span></label><br>
+                        <label class="accountLabel"for="paymentInstalments">Payment instalments: <span>Monthly</span></label><br>
+                        <label class="accountLabel"for="notifyType">Notification End of Plan: <span>Email</span></label><br>                                 
+                    </form>
+
+                    <form class="travelDetails">
+                        <h3>Ideal Travel Details</h3>
+                        <label class="accountLabel"for="favTravelType">Favourite Travel Type: </label><br>
+                            <option class="accOptionValue" value="cityBreak"> &#9675; City Break</option>
+                            <option class="accOptionValue"value="beachTrip"> &#9675; Beach Trip</option>
+                            <option class="accOptionValue"value="groupTours"> &#9675; Solo Group Trips</option>
+                            <option class="accOptionValue"value="hikingTrips"> &#9675; Hiking Trips</option><br>
+                        <h4>Most Recent Trip</h4>    
+                        <label class="accountLabel"for="firstTrip">First Trip Logged on Site: </label><br>
+                            <option class="accOptionValue"value="firstTripLoc"> &#9675; <span>Spain</span></option>
+                            <option class="accOptionValue"value="firstTripCost">&#9675; Cost: 800</option>
+                            <option class="accOptionValue"value="firstTripType"> &#9675; <span>Beach Trip</span></option>
+                            <option class="accOptionValue"value="firstTripRating"> &#9675; <span>☆★★★</span></option>
+                        <label class="accountLabel"for="lastTrip">Last Trip Logged on Site: </label>    
+                            <option class="accOptionValue"value="lastTripCost">&#9675; <span>France</span></option>
+                            <option class="accOptionValue"value="lastTripLoc">&#9675; Cost: €1342</option>
+                            <option class="accOptionValue"value="lastTripType"> &#9675; <span>City Trip</span></option>
+                            <option class="accOptionValue"value="lastTripRating"> &#9675; <span>☆★★★</span></option>
+                    </form> 
+
+                 </div>
+                 <div class="col-md-3" id="accountleftImagelower">
+
+                   <img src="../images/account/accountImgSpain2.jpg" alt="Spain2"> <!--https://www.pexels.com/photo/woman-in-black-dress-in-arch-building-3365379/-->
+                    <img src="../images/account/accountImgUSa2.jpg" alt="usa2"><br><br><!--https://www.pexels.com/photo/lighted-high-rise-buildings-3030647/-->   
+                    <img src="../images/account//accountImgThai2.jpg" alt="thai2"><!--https://www.pexels.com/photo/close-up-of-man-driving-tuk-tuk-1682751/-->
+                </div>
+
+                <div class="col-md-12" id="accountPageEnd"> 
+                    <img src="../images/account/accountImaFrance.jpg" alt="France1"> <!--https://www.pexels.com/photo/black-and-white-wooden-house-1796721/-->
+                    <img src="../images/account/accountImaFrance2.jpg" alt="France2"> <!--https://www.pexels.com/photo/people-outside-louvre-museum-2739078/-->
+
+                </div>    
+                <div class="col-md-6" id="accountPageAddImage"> 
+                   <!-- <h3>Add Image to your account page ...</h3>
+
+                    <form id="uploadima" action="/upload" method="post" enctype="multipart/form-data">
+                        <label for="img">Select Image:</label>
+                        <input type="file" class="img" name="img" accept="image/*" required>
+                        <br>
+                        <input type="submit" value="Upload">
+                    </form>
+                    
+                </div> 
+                <script src="/js/account.js"></script>
+            -->
+                <!--div class="col-md-2" id="accountPageEnd"> 
+                 
+                    <img src="../images/account/accountImaFrance2.jpg" alt="France2"--> <!--https://www.pexels.com/photo/people-outside-louvre-museum-2739078/-->
+
+                <!--/div -->
 
 
+            </div>
+        </main>
+
+            <%- include ("./partials/footer.ejs") %>
+                <%- include ("./partials/scriptCollection.ejs") %>
 
 
+    </body>
 
-                        <!--div class="regForm" id="regForm">
+</html>
+
+ <!--div class="regForm" id="regForm">
                              <h1>Register</h1>
                              <form action="">
                                  <input type="text" placeholder="Name" id="nameReg">
@@ -35,16 +158,5 @@
                              </form>
                              <button id="submitLoginBtn" class="btn btn-primary">Login</button>
                              <a href="#" id="regLink">Register</a>
-                             </div
+                             
                         </div-->
-                    </div>
-                </div>
-            </main>
-
-            <%- include ("./partials/footer.ejs") %>
-                <%- include ("./partials/scriptCollection.ejs") %>
-
-
-    </body>
-
-</html>

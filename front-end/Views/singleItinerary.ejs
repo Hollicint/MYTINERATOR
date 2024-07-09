@@ -11,29 +11,18 @@
             <div class="row">
                 <div class="col">
                     <div id="singleIntinerary">
-                        <h1>
-                            <%= itin.Destination %> - Itinerary Details
-                        </h1>
-                        <p>Date: <%= itin.Date %>
-                        </p>
-                        <p>Length Of Stay: <%= itin.LengthOfStay %>
-                        </p>
-                        <p>Total Cost: <%= itin.TotalCost %>
-                        </p>
-                        <p>Accommodation Type: <%= itin.AccommodationType %>
-                        </p>
-                        <p>Accommodation Name: <%= itin.AccommodationName %>
-                        </p>
-                        <p>Accommodation Cost: <%= itin.AccommodationCost %>
-                        </p>
-                        <p>Rental: <%= itin.Rental %>
-                        </p>
-                        <p>Rental Type: <%= itin.RentalType %>
-                        </p>
-                        <p>Rental Cost: <%= itin.RentalCost %>
-                        </p>
-                        <button id="deleteBtn" data-id="<%= itin._id %>">Delete Itinerary</button>
-                        <button id="editBtn" data-id="<%= itin._id %>">Edit Itinerary</button>
+                        <h1>  <%= itin.Destination %> - Itinerary Details </h1>
+                        <p>Date: <%= itin.Date %></p>                       
+                        <p>Length Of Stay: <%= itin.LengthOfStay %></p>                       
+                        <p>Total Cost: <%= itin.TotalCost %></p>                      
+                        <p>Accommodation Type: <%= itin.AccommodationType %></p>                       
+                        <p>Accommodation Name: <%= itin.AccommodationName %></p>                   
+                        <p>Accommodation Cost: <%= itin.AccommodationCost %></p>                   
+                        <p>Rental: <%= itin.Rental %></p>                      
+                        <p>Rental Type: <%= itin.RentalType %></p>
+                        <p>Rental Cost: <%= itin.RentalCost %></p>
+                        <button class="deleteBtn" data-id="<%= itin._id %>">Delete Itinerary</button>
+                        <button class="editBtn" data-id="<%= itin._id %>">Edit Itinerary</button>
                         <button id="backBtn">Back to Itinerary</button>
                     </div>
                     <div id="editItin" hidden>
@@ -76,15 +65,18 @@
                             </div><br>
                             <button id="saveBtn">Save Itinerary</button>
                         </form>
+                       
                     </div>
                 </div>
+                
             </div>
+            <br>
+            <img src="/images/index/planeCloud.png" alt="planeCloud">
         </main>
 
         <%- include ("./partials/footer.ejs") %>
         <%- include ("./partials/scriptCollection.ejs") %>
-        <script src="/back-end/js/itineraryJS.js"></script>
-            
+       <!--SCript src="/back-end/js/singleItinerary.js"></SCript-->
     </body>
 
 </html>

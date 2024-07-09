@@ -6,15 +6,20 @@ body {
 body {
   display: flex;
   flex-direction: column;
- background-color: #7678edff !important;
- background-image: url("/images/background/background2.png");
- background-repeat: repeat; /* Make the background image repeat */
+  background-color: #7678edff !important;
+  margin: 0;
+  min-height: 100vh;
+  background-image: url("/images/background/background2.png");
+  background-repeat: repeat;
   background-size: auto;
 }
 
 /*########################## Head ############################ */
 header {
   background-color: #f7b801ff;
+  padding: 1rem;
+  text-align: center;
+
 }
 
 h1 a,
@@ -38,8 +43,13 @@ h1 a:hover {
   white-space: nowrap;
 }
 
+/*
 .container-fluid {
   margin-right: 0;
+}
+  */
+.container {
+  flex: 1;
 }
 
 nav {
@@ -78,15 +88,18 @@ footer {
 
 /*########################## Main Body ############################ */
 main {
-  margin-top: 0;
+  /* margin-top: 0;
   margin-bottom: 0;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 5rem;
+  padding-bottom: 15rem;
+   justify-content: center;
+  */
   background-color: white;
   flex: 1;
   display: flex;
-  justify-content: center;
+  padding-bottom: 20rem;
   align-items: center;
+
 }
 
 /*########################## Font/Text Styles ############################ */
@@ -103,7 +116,7 @@ main {
 }
 
 .logForm {
-  display:block;
+  display: block;
 }
 
 
@@ -153,7 +166,8 @@ a {
 }*/
 
 .currency-input input {
-  padding-left: 25px; /* Adjust the padding to ensure the text doesn't overlap with the currency symbol */
+  padding-left: 25px;
+  /* Adjust the padding to ensure the text doesn't overlap with the currency symbol */
 }
 
 .input-error {
@@ -211,6 +225,7 @@ a {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 #editItin h3 {
   margin-bottom: 20px;
 }
@@ -218,13 +233,16 @@ a {
 .itinInfo {
   margin-top: 20px;
 }
+
 .itin-card {
   margin-bottom: 20px;
 }
+
 .itin-card a {
   color: inherit;
   text-decoration: none;
 }
+
 .itin-card a:hover {
   text-decoration: underline;
 }
@@ -234,6 +252,7 @@ a {
   box-shadow: 0px 0px 3px rgb(212, 212, 212);
 }
 
+/*
 .valueBudget {
 }
 
@@ -302,7 +321,7 @@ a {
 
 .listExpenses {
 }
-
+*/
 /*########################## Destination Page ############################ */
 #flightOption {
   display: flex;
@@ -314,6 +333,7 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
 #flight-card a:hover {
   text-decoration: underline;
 }
@@ -321,4 +341,103 @@ a {
 #card {
   border-radius: 5px;
   box-shadow: 0px 0px 3px rgb(212, 212, 212);
+}
+
+
+/*########################## Account Page ############################ */
+
+#accountH2 {
+  text-align: center;
+  font-size: 50px;
+}
+
+#accountPara {
+  font-size: 20px;
+}
+
+.personalDetailsAccount,
+.subscriptionDetailsAccount,
+.subscriptionPaymentDetails,
+.travelDetails {
+  text-align: left;
+  font-size: 25px;
+
+}
+
+#accountRightUpper {
+  border-style: groove;
+  border-width: 5px 5px 5px;
+  border-color: #000;
+  padding: 20px;
+
+
+
+}
+
+.personalDetailsAccount h3,
+.subscriptionDetailsAccount h3,
+.subscriptionPaymentDetails h3,
+.travelDetails h3,
+.travelDetails h4 {
+  text-align: center;
+  font-size: 40px;
+
+}
+
+#accountleftImageHigher img,
+#accountleftImagelower img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  display: block;
+
+}
+
+#accountPageEnd img {
+  max-width: 100%;
+  height: 130%;
+  margin-bottom: 1rem;
+
+
+}
+
+.accountPageEnd img {
+  max-width: 100%;
+  height: 60px;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+#accountColImageLeft {
+  padding: 1rem;
+}
+
+.accountLabel {
+  font-weight: bold;
+}
+
+.accountLabel span {
+  font-weight: normal;
+}
+
+.accOptionValue {
+  text-align: center;
+
+  /*########################## Accommodation Page ############################ */
+
+  #accommImage {
+    width: 100%;
+    height: 300px;
+  }
+
+  #hotelLink {
+    color: black;
+    text-decoration: none;
+  }
+
+  #hotelLink:hover {
+    color: #00A0C6;
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
