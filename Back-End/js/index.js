@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', function() {
+
 let users = [];
 
 const loginBtn = document.getElementById('submitLoginBtn');
@@ -28,47 +30,44 @@ loginBtn.addEventListener('click', function () {
 
     //need to connect with database, add more validation
     //check if details are stored inside users array.
-    for (let i = 0; i <= users.length; i++) {
-        if (caesarDecrypt(users[i]['email']) === emailLog && caesarDecrypt(users[i]['pWord']) === pWordLog) {
-            alert(`welcome ` + caesarDecrypt(users[i]['name']) + ` !`);
+
+    users.forEach((user) => {
+        if (caesarDecrypt(user.email) === emailLog && caesarDecrypt(user.pWord) === pWordLog) {
+            alert(`welcome ` + caesarDecrypt(users[i][name]) + ` !`);
             return;
         } else {
             alert('Sorry, email or password is incorrect. Please try again.');
         }
-    }
+    })
 });
-
-
 //need to connect with database, add more validation
 regBtn.addEventListener('click', function () {
     //get values of registration, encrypt them.
-    var name = caesarEncrypt(document.getElementById('nameReg').value);
-    var email = caesarEncrypt(document.getElementById('emailReg').value)
-    var pWord = caesarEncrypt(document.getElementById('pwordReg').value)
-
     
-    //console.log(caesarEncrypt("a")) // == 97 ascii
-    //console.log(caesarEncrypt("z")) // == 122 ascii
+    var name = caesarEncrypt(document.getElementById('nameReg').value);
+    var email = caesarEncrypt(document.getElementById('emailReg').value);
+    var pWord = caesarEncrypt(document.getElementById('pwordReg').value);
+    
 
     console.log("Name Encrypted: " + name)
     console.log("Email Encrypted: " + email)
     console.log("Password Encrypted: " + pWord)
 
 
-    if (name.valueOf === '' || email.valueOf === '' || pWord.valueOf === '') {
+    if (name === '' || email === '' || pWord === '') {
         alert('Please enter name, email and password');
         return;
     }
 
-    for (let i = 0; i < users.length; i++) {
-        if (users[i]['email'] === email) {
+    users.forEach((user) => {
+        if(user.email === email) {
             alert(`Email already in use.`);
             return;
         }
-    }
+    })
 
     try {
-        let user = { name, email, pWord };
+        let user = { name: name, email: email, pWord: pWord };
         users.push(user);
     
         console.log("All users: " + JSON.stringify(users))
@@ -77,8 +76,8 @@ regBtn.addEventListener('click', function () {
     } catch (error) {
         console.log(error)
     }
-});
 
+});
 function caesarEncrypt(str){
     var encrypted = "";
 
@@ -94,6 +93,7 @@ function caesarEncrypt(str){
     }
     return encrypted;
 }
+
 function caesarDecrypt(str){
     var decrypted = "";
 
@@ -122,11 +122,7 @@ regLink.addEventListener('click', function(){
   regForm.style.display = 'inline';
 });*/
 
-document.addEventListener('DOMContentLoaded', function() {
-    var logLink = document.getElementById('logLink');
-    var regLink = document.getElementById('regLink');
-    var logForm = document.getElementById('logForm');
-    var regForm = document.getElementById('regForm');
+
 
     logLink.addEventListener('click', function(event) {
         event.preventDefault();
