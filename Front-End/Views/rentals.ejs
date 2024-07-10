@@ -7,12 +7,44 @@
         <%- include ("./partials/header.ejs") %>
 
         <!-- Main Content -->
-        <main class="container">
-            <div class="row">
-                <div class="col">
-                    <h1>Rentals page</h1>
+       <!-- Main Content -->
+       <main class="container">
+        <div class="col">
+            <div class="col">
+                <h1>Renatls page</h1>
+                <h1>*You must be Subscribed to Access this Feature*</h1>
+                <div class="card p-3 mx-auto">
+                    <img id="rentalPic" src="/images/rentals/cars.JPG" alt="">
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <div id="infoCard" class="card p-3 mx-auto">
+                        <h1 class="text-center">Find your Rentals</h1>
+
+                        <div class="input-group mb-3">
+                            <input type="text" id="location" class="form-control" placeholder="Enter City">
+                            <input type="text" id="type" class="form-control" placeholder="Enter type .ie car or bike">
+                            <input type="text" id="length" class="form-control" placeholder="Enter length of time">
+                            <div class="input-group-append">
+                                <button type="button" id="rentalBtn" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h2 id="place" class="card-title"></h2>
+                                <div class="card-body" class="card p-3 mx-auto" id="rentalResults">
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
         </main>
 
         <%- include ("./partials/footer.ejs") %>
