@@ -9,6 +9,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 const Itin = require('./back-end/models/itinerary');
 const Flight = require('./back-end/models/flights');
+const Account = require('./Back-End/models/accounts');
 const bodyParser = require('body-parser');
 
 //create the Express app
@@ -94,10 +95,25 @@ app.use(express.static(path.join(__dirname, 'back-end', 'js')));
 app.use(express.static(path.join(__dirname, 'front-end', 'css')));
 
 //route and response
-app.get("/", (request, response) => {
-response.render("index", { title: "Mytinerator Home", script: ['/index.js'], style: ['/style.css']});
+app.get("/", async (request, response) => {
+var accounts = await Account.find();
+response.render("index", { title: "Mytinerator Home", script: ['/index.js'], style: ['/style.css'], Account: accounts});
  /*main*/
 });
+
+app.post("/register", async (request, response) => {
+    const details = {Name, Password, DateOfBirth, Email, DreamTrip, ContactNum} = request.body;
+    //check if user exists
+    const existingUser = await Account.findOne({Email: details.Email})
+    if(existingUser) {
+        return response.status(400).send('User already exists.')
+    } else {
+        const newUser = new Account(details);
+        newUser.save();
+        return response.send('User added! Welcome, ')
+    }
+});
+
 app.get("/budget", (request, response) => {
     response.render("budget", { title: "Mytinerator Budget Page", script: ['/budgetCal.js'], style: ['/style.css']});
 });

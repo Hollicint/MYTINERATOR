@@ -1,8 +1,12 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const itinSchema = new Schema({
+const accountSchema = new Schema({
     Name: {
+        type: String,
+        required: true
+    },
+    Password: {
         type: String,
         required: true
     },
@@ -24,6 +28,6 @@ const itinSchema = new Schema({
     },
 }, { timestamps: true });
 
-const Itin = mongoose.model("itin", itinSchema);
+const Account = mongoose.model("account", accountSchema);
 
-module.exports = Itin;
+module.exports = Account;
