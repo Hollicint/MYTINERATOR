@@ -7,6 +7,9 @@ $(document).ready(function () {
     const departure_date = departureDate.split('T')[0];
     const destination = document.getElementById("destination").value;
     const backEndPoint = `/destination/flights`;
+    const ContactNum = '';
+    const DateOfBirth = '';
+    const DreamTrip = '';
 
     try {
       const response = await fetch(backEndPoint, {

@@ -1,22 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-let users = [];
-
 const loginBtn = document.getElementById('submitLoginBtn');
 const regBtn = document.getElementById('submitRegBtn');
 
 const regLink = document.getElementById('regLink');
 const logLink = document.getElementById('logLink');
 
-/*const logFrom = document.getElementById('logFrom');
-const regFrom = document.getElementById('regFrom');*/
-
 const logForm = document.getElementById('logForm');
 const regForm = document.getElementById('regForm');
 
 
 loginBtn.addEventListener('click', function () {
-    console.log(JSON.stringify(users));
 
     //get values from login fields
     const emailLog = document.getElementById('emailLogin').value;
@@ -41,43 +35,49 @@ loginBtn.addEventListener('click', function () {
     })
 });
 //need to connect with database, add more validation
-regBtn.addEventListener('click', function () {
+regBtn.addEventListener('click', async function () {
+
+    const backEndPoint = `/register`;
+    const ContactNum = ' ';
+    const DreamTrip = ' ';
+
     //get values of registration, encrypt them.
-    
     var name = caesarEncrypt(document.getElementById('nameReg').value);
     var email = caesarEncrypt(document.getElementById('emailReg').value);
     var pWord = caesarEncrypt(document.getElementById('pwordReg').value);
-    
-
-    console.log("Name Encrypted: " + name)
-    console.log("Email Encrypted: " + email)
-    console.log("Password Encrypted: " + pWord)
+    var DOB = document.getElementById('DOBReg').value;
 
 
-    if (name === '' || email === '' || pWord === '') {
+    if (name === '' || email === '' || pWord === '' || DOB === '') {
         alert('Please enter name, email and password');
         return;
     }
-
-    users.forEach((user) => {
-        if(user.email === email) {
-            alert(`Email already in use.`);
-            return;
-        }
-    })
-
+ 
+    //send Register details to backend, check if exists, add to MongoDB.
     try {
-        let user = { name: name, email: email, pWord: pWord };
-        users.push(user);
-    
-        console.log("All users: " + JSON.stringify(users))
-        var decryptName = caesarDecrypt(name)
-        alert(`Registered, welcome ` + decryptName + ` !`);
+      const response = await fetch(backEndPoint, {
+        method: "POST",
+        headers: {
+          Accept: 'application/json',
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            Name: name, Email: email, Password: pWord, DateOfBirth: DOB, ContactNum: ContactNum, DreamTrip: DreamTrip
+        }),
+      });
+      
+       if (!response.ok) {
+        const error = await response.text();
+        alert(error);
+      } else {
+        const responseText = await response.text();
+        alert(responseText + caesarDecrypt(name));
+      }
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
-
 });
+
 function caesarEncrypt(str){
     var encrypted = "";
 
