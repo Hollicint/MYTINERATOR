@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+
 const loginBtn = document.getElementById('submitLoginBtn');
 const regBtn = document.getElementById('submitRegBtn');
 
@@ -10,29 +11,42 @@ const logForm = document.getElementById('logForm');
 const regForm = document.getElementById('regForm');
 
 
-loginBtn.addEventListener('click', function () {
+loginBtn.addEventListener('click', async function () {
 
     //get values from login fields
     const emailLog = document.getElementById('emailLogin').value;
     const pWordLog = document.getElementById('pwordLogin').value;
+    const backEndPoint = `/login`;
+
 
     //check if fields are not empty
-    if (emailLog.valueOf === '' || pWordLog.valueOf === '') {
+    if (emailLog === '' || pWordLog === '') {
         alert('Please enter both email and password');
         return;
-    }
-
-    //need to connect with database, add more validation
-    //check if details are stored inside users array.
-
-    users.forEach((user) => {
-        if (caesarDecrypt(user.email) === emailLog && caesarDecrypt(user.pWord) === pWordLog) {
-            alert(`welcome ` + caesarDecrypt(users[i][name]) + ` !`);
-            return;
+    } else {
+    try {
+        const response = await fetch(backEndPoint, {
+          method: "POST",
+          headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            Email: emailLog, Password: pWordLog
+          }),
+        });
+        
+         if (!response.ok) {
+          const error = await response.text();
+          alert(error);
         } else {
-            alert('Sorry, email or password is incorrect. Please try again.');
+          const responseText = await response.text();
+          alert(responseText)
         }
-    })
+      } catch (error) {
+        console.log(error);
+      }
+    }
 });
 //need to connect with database, add more validation
 regBtn.addEventListener('click', async function () {
@@ -42,9 +56,9 @@ regBtn.addEventListener('click', async function () {
     const DreamTrip = ' ';
 
     //get values of registration, encrypt them.
-    var name = caesarEncrypt(document.getElementById('nameReg').value);
-    var email = caesarEncrypt(document.getElementById('emailReg').value);
-    var pWord = caesarEncrypt(document.getElementById('pwordReg').value);
+    var name = document.getElementById('nameReg').value;
+    var email = document.getElementById('emailReg').value;
+    var pWord = document.getElementById('pwordReg').value;
     var DOB = document.getElementById('DOBReg').value;
 
 
@@ -71,13 +85,13 @@ regBtn.addEventListener('click', async function () {
         alert(error);
       } else {
         const responseText = await response.text();
-        alert(responseText + caesarDecrypt(name));
+        alert(responseText + name);
       }
     } catch (error) {
       console.log(error);
     }
 });
-
+ /*
 function caesarEncrypt(str){
     var encrypted = "";
 
@@ -110,8 +124,7 @@ function caesarDecrypt(str){
     }
     return decrypted;
 }
-
-/*
+*/
 logLink.addEventListener('click', function(){
   logForm.style.display = 'inline';
   regForm.style.display = 'none';
@@ -120,7 +133,7 @@ logLink.addEventListener('click', function(){
 regLink.addEventListener('click', function(){
   logForm.style.display = 'none';
   regForm.style.display = 'inline';
-});*/
+});
 
 
 

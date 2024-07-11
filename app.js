@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 const multer = require("multer");
 const nodemailer = require("nodemailer");
 
+//import encrytion JS file
+const {caesarDecrypt, caesarEncrypt } = require('./Back-End/js/encryption');
+
 //connection of path
 const path = require('path');
 const methodOverride = require('method-override');
@@ -11,6 +14,8 @@ const Itin = require('./back-end/models/itinerary');
 const Flight = require('./back-end/models/flights');
 const Account = require('./Back-End/models/accounts');
 const bodyParser = require('body-parser');
+
+
 
 //create the Express app
 const app = express();
@@ -104,13 +109,34 @@ response.render("index", { title: "Mytinerator Home", script: ['/index.js'], sty
 app.post("/register", async (request, response) => {
     const details = {Name, Password, DateOfBirth, Email, DreamTrip, ContactNum} = request.body;
     //check if user exists
-    const existingUser = await Account.findOne({Email: details.Email})
+    const existingUser = await Account.findOne({Email: caesarEncrypt(details.Email)})
     if(existingUser) {
-        return response.status(400).send('User already exists.')
+        return response.status(400).send('Email already in use.')
     } else {
-        const newUser = new Account(details);
+        const newUser = new Account({
+            Name: caesarEncrypt(details.Name), 
+            Password: caesarEncrypt(details.Password), 
+            DateOfBirth: details.DateOfBirth, 
+            Email: caesarEncrypt(details.Email), 
+            DreamTrip: details.DreamTrip, 
+            ContactNum: details.ContactNum});
         newUser.save();
         return response.send('User added! Welcome, ')
+    }
+});
+
+app.post("/login", async (request, response) => {
+    const details = {Email, Password} = request.body;
+    //check if user exists
+    const existingUser = await Account.findOne({Email : caesarEncrypt(details.Email)})
+
+    if(!existingUser) {
+        return response.status(400).send('User does not exist.')
+    }
+    if (details.Password === existingUser.Password) {
+        return response.send('User Signed in.')
+    } else {
+        return response.send('Password incorrect.')
     }
 });
 
