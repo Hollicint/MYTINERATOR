@@ -137,6 +137,16 @@ input {
   margin: auto;
 }
 
+.sublife, .subever {
+  padding: 10px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 3px rgb(212, 212, 212);
+  margin: auto 20px;
+}
+
+.sublife h3, .subever h3{
+  text-align: center;
+}
 
 /* styled by bootstrap inline 
 button {
@@ -232,6 +242,11 @@ a {
 
 .itinInfo {
   margin-top: 20px;
+  text-align: center;
+}
+
+.itinInfo .row {
+  justify-content: center;
 }
 
 .itin-card {

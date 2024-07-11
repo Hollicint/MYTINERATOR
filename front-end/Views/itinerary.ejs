@@ -7,7 +7,7 @@
         <%- include ("./partials/header.ejs") %>
 
         <!-- Main Content -->
-        <main class="container">
+        <main class="container justify-content-center">
             <div class="row">
                 <div class="col">
                     <h1>Itinerary</h1>
@@ -29,11 +29,20 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <div class="currency-input">
-                                        <span class="currency-symbol">€</span>
-                                        <input type="text" class="form-control" placeholder="   Total Cost" required name="TotalCost">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">€</span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Total Cost" required name="TotalCost">
                                     </div>
                                 </div>
+
+
+
+
+
+
+
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
@@ -43,9 +52,11 @@
                                     <input type="text" class="form-control" placeholder="Accommodation Name" required name="AccommodationName">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <div class="currency-input">
-                                        <span class="currency-symbol">€</span>
-                                        <input type="text" class="form-control" placeholder="   Accommodation Cost" required name="AccommodationCost">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">€</span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Accommodation Cost" required name="AccommodationCost">
                                     </div>
                                 </div>
                             </div>
@@ -61,8 +72,10 @@
                                     <input type="text" class="form-control" placeholder="Rental Type" required name="RentalType" id="rentalType">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <div class="currency-input">
-                                        <span class="currency-symbol">€</span>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">€</span>
+                                        </div>
                                         <input type="text" class="form-control" placeholder="Rental Cost" required name="RentalCost" id="rentalCost">
                                     </div>
                                 </div>
@@ -76,7 +89,8 @@
                         <p>You will be able to Edit and Delete</p>
                     </div>
 
-                    <div id="showItin" class="itinInfo">
+
+                    <div id="showItin" class="itinInfo justify-content-center">
                         <% if (Itin.length) { %>
                             <div class="row">
                                 <% Itin.forEach(item => { %>
