@@ -6,77 +6,167 @@
 
         <%- include ("./partials/header.ejs") %>
 
-        <!-- Main Content -->
-        <main class="container">
-            <div class="row">
-                <div class="col">
-                    <div id="singleIntinerary">
-                        <h1>  <%= itin.Destination %> - Itinerary Details </h1>
-                        <p>Date: <%= itin.Date %></p>                       
-                        <p>Length Of Stay: <%= itin.LengthOfStay %></p>                       
-                        <p>Total Cost: <%= itin.TotalCost %></p>                      
-                        <p>Accommodation Type: <%= itin.AccommodationType %></p>                       
-                        <p>Accommodation Name: <%= itin.AccommodationName %></p>                   
-                        <p>Accommodation Cost: <%= itin.AccommodationCost %></p>                   
-                        <p>Rental: <%= itin.Rental %></p>                      
-                        <p>Rental Type: <%= itin.RentalType %></p>
-                        <p>Rental Cost: <%= itin.RentalCost %></p>
-                        <button class="deleteBtn" data-id="<%= itin._id %>">Delete Itinerary</button>
-                        <button class="editBtn" data-id="<%= itin._id %>">Edit Itinerary</button>
-                        <button id="backBtn">Back to Itinerary</button>
-                    </div>
-                    <div id="editItin" hidden>
-                        <h3>Edit Itinerary</h3>
-                        <form method="POST" action="/itinerary/<%= itin._id %>?_method=PUT">
-                            <label>Destination</label><br>
-                            <input type="text" required name="Destination" value="<%= itin.Destination %>"><br>
-                            <label>Date</label><br>
-                            <input type="date" required name="Date" value="<%= itin.Date %>"><br>
-                            <label>Length Of Stay</label><br>
-                            <select required name="LengthOfStay">
-                                <% for (let i = 1; i <= 30; i++) { %>
-                                    <option value="<%= i %>" <%= itin.LengthOfStay == i ? 'selected' : '' %>><%= i %> days</option>
-                                <% } %>
-                            </select><br>
-                            <label>Total Cost</label><br>
-                            <div class="currency-input">
-                                <span class="currency-symbol">€</span>
-                                <input type="text" required name="TotalCost" value="<%= itin.TotalCost %>">
-                            </div><br>
-                            <label>Accommodation Type</label><br>
-                            <input type="text" required name="AccommodationType" value="<%= itin.AccommodationType %>"><br>
-                            <label>Accommodation Name</label><br>
-                            <input type="text" required name="AccommodationName" value="<%= itin.AccommodationName %>"><br>
-                            <label>Accommodation Cost</label><br>
-                            <div class="currency-input">
-                                <span class="currency-symbol">€</span>
-                                <input type="text" required name="AccommodationCost" value="<%= itin.AccommodationCost %>">
-                            </div><br>
-                            <label>Rental</label><br>
-                            <!--input type="text" required name="Rental" value="<%= itin.Rental %>"><br-->
-                            <input type="radio" id="rentalYes" name="Rental" value="Yes" <%= itin.Rental === 'Yes' ? 'checked' : '' %>> Yes
-                            <input type="radio" id="rentalNo" name="Rental" value="No" <%= itin.Rental === 'No' ? 'checked' : '' %>> No<br>
-                            <label>Rental Type</label><br>
-                            <input type="text" class="form-control" placeholder="Rental Type" required name="RentalType" id="rentalType">
-                            <label>Rental Cost</label><br>
-                            <div class="currency-input">
-                                <span class="currency-symbol">€</span>
-                                <input type="text" class="form-control" placeholder="Rental Cost" required name="RentalCost" id="rentalCost">
-                            </div><br>
-                            <button id="saveBtn">Save Itinerary</button>
-                        </form>
-                       
-                    </div>
-                </div>
-                
-            </div>
-            <br>
-            <img src="/images/index/planeCloud.png" alt="planeCloud">
-        </main>
+            <!-- Main Content -->
+            <main class="container">
+                <div class="row">
+                    <div class="col">
+                        <div id="singleIntinerary">
+                            <h1>
+                                <%= itin.Destination %> - Itinerary Details
+                            </h1>
+                            <h2>Welcome to your Itinerary Page</h2>
+                            <p>
+                                This Page allows you to be able amend your Itinerary Page, you are able to edit, delete
+                                and go back to your collection. <br>
+                                Leo a diam sollicitudin tempor id eu. Sem viverra aliquet eget sit amet tellus cras.
+                                Commodo nulla facilisi nullam vehicula ipsum.
+                                Diam in arcu cursus euismod quis viverra nibh. Neque aliquam vestibulum morbi blandit
+                                cursus risus at. Congue eu consequat ac felis donec.
+                                Adipiscing tristique risus nec feugiat in fermentum posuere urna nec.
+                            </p>
+                            <p>Date: <%= itin.Date %>
+                            </p>
+                            <p>Length Of Stay: <%= itin.LengthOfStay %>
+                            </p>
+                            <p>Total Cost: <%= itin.TotalCost %>
+                            </p>
+                            <p>Accommodation Type: <%= itin.AccommodationType %>
+                            </p>
+                            <p>Accommodation Name: <%= itin.AccommodationName %>
+                            </p>
+                            <p>Accommodation Cost: <%= itin.AccommodationCost %>
+                            </p>
+                            <p>Rental: <%= itin.Rental %>
+                            </p>
+                            <p>Rental Type: <%= itin.RentalType %>
+                            </p>
+                            <p>Rental Cost: <%= itin.RentalCost %>
+                            </p>
+                            <button class="deleteBtn" data-id="<%= itin._id %>">Delete Itinerary</button>
+                            <button class="editBtn" data-id="<%= itin._id %>">Edit Itinerary</button>
+                            <button id="backBtn">Back to Itinerary</button>
+                        </div>
+                        <div id="editItin" hidden>
+                            <h3>Edit Itinerary</h3>
+                            <form method="POST" action="/itinerary/<%= itin._id %>?_method=PUT">
+                                <label>Destination</label><br>
+                                <input type="text" required name="Destination" value="<%= itin.Destination %>"><br>
+                                <label>Date</label><br>
+                                <input type="date" required name="Date" value="<%= itin.Date %>"><br>
+                                <label>Length Of Stay</label><br>
+                                <select required name="LengthOfStay">
+                                    <% for (let i=1; i <=30; i++) { %>
+                                        <option value="<%= i %>" <%=itin.LengthOfStay==i ? 'selected' : '' %>><%= i %>
+                                                days</option>
+                                        <% } %>
+                                </select><br>
+                                <label>Total Cost</label><br>
+                                <div class="currency-input">
+                                    <span class="currency-symbol">€</span>
+                                    <input type="text" required name="TotalCost" value="<%= itin.TotalCost %>">
+                                </div><br>
+                                <label>Accommodation Type</label><br>
+                                <input type="text" required name="AccommodationType"
+                                    value="<%= itin.AccommodationType %>"><br>
+                                <label>Accommodation Name</label><br>
+                                <input type="text" required name="AccommodationName"
+                                    value="<%= itin.AccommodationName %>"><br>
+                                <label>Accommodation Cost</label><br>
+                                <div class="currency-input">
+                                    <span class="currency-symbol">€</span>
+                                    <input type="text" required name="AccommodationCost"
+                                        value="<%= itin.AccommodationCost %>">
+                                </div><br>
+                                <label>Rental</label><br>
+                                <!--input type="text" required name="Rental" value="<%= itin.Rental %>"><br-->
+                                <input type="radio" id="rentalYes" name="Rental" value="Yes" <%=itin.Rental==='Yes'
+                                    ? 'checked' : '' %>> Yes
+                                <input type="radio" id="rentalNo" name="Rental" value="No" <%=itin.Rental==='No'
+                                    ? 'checked' : '' %>> No<br>
+                                <label>Rental Type</label><br>
+                                <input type="text" class="form-control" placeholder="Rental Type" required
+                                    name="RentalType" id="rentalType">
+                                <label>Rental Cost</label><br>
+                                <div class="currency-input">
+                                    <span class="currency-symbol">€</span>
+                                    <input type="text" class="form-control" placeholder="Rental Cost" required
+                                        name="RentalCost" id="rentalCost">
+                                </div><br>
+                                <button id="saveBtn">Save Itinerary</button>
+                            </form>
 
-        <%- include ("./partials/footer.ejs") %>
-        <%- include ("./partials/scriptCollection.ejs") %>
-       <!--SCript src="/back-end/js/singleItinerary.js"></SCript-->
+                        </div>
+
+                        <br>
+
+                        <img src="/images/itinearys/singItinArrDep.jpg" alt="ArrDeo">
+                        <!--https://www.istockphoto.com/photo/departure-arrival-sign-jet-airplane-take-off-airport-gm491941069-40063220?utm_campaign=srp_photos_limitedresults&utm_content=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fitinerary%2F&utm_medium=affiliate&utm_source=pexels&utm_term=itinerary-->
+                        <br>
+                        <p>
+                            Nisl rhoncus mattis rhoncus urna neque viverra justo nec. Dapibus ultrices in iaculis nunc
+                            sed augue. Euismod in pellentesque massa placerat duis ultricies lacus sed.
+                            Justo laoreet sit amet cursus sit. Ac odio tempor orci dapibus ultrices in iaculis nunc sed.
+                            Nulla facilisi morbi tempus iaculis urna. Ligula ullamcorper malesuada proin
+                            libero nunc consequat interdum varius. Cursus sit amet dictum sit amet. In massa tempor nec
+                            feugiat nisl pretium fusce id velit. Vestibulum lectus mauris ultrices eros in cursus.
+                            Volutpat odio facilisis mauris sit amet massa vitae tortor. Eu lobortis elementum nibh
+                            tellus. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis. Etiam sit
+                            amet
+                            nisl purus in mollis nunc sed id. Arcu risus quis varius quam quisque. Id nibh tortor id
+                            aliquet lectus proin nibh nisl. Et tortor consequat id porta nibh. Velit euismod in
+                            pellentesque
+                            massa placerat duis ultricies lacus. Dignissim diam quis enim lobortis scelerisque.
+                            Consectetur adipiscing elit duis tristique sollicitudin nibh.
+                        </p>
+                        <img src="/images/itinearys/singItinGroup.jpg"
+                            alt="group"><!--https://www.pexels.com/photo/people-silhouette-during-sunset-853168/-->
+                        <img src="/images/itinearys/singItinFlares.jpg"
+                            alt="flare"><!--https://www.pexels.com/photo/people-throwing-pins-433452/-->
+                        <img src="/images/itinearys/singleItinGroup2.jpg" alt="group2">
+                        <!--https://www.pexels.com/photo/men-s-brown-dress-shirt-1820485/-->
+                        <br>
+                        <p>In massa tempor nec feugiat nisl. Velit sed ullamcorper morbi tincidunt ornare. Euismod
+                            elementum nisi quis eleifend quam. Sed vulputate odio ut enim blandit. Ornare quam viverra
+                            orci sagittis eu
+                            volutpat odio facilisis mauris. Neque convallis a cras semper auctor neque vitae tempus
+                            quam. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci. Eget egestas
+                            purus viverra accumsan
+                            in nisl nisi scelerisque eu. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim
+                            cras tincidunt. Varius sit amet mattis vulputate enim. Cum sociis natoque penatibus et
+                            magnis dis. Mauris
+                            commodo quis imperdiet massa tincidunt nunc. <br>
+                            Ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Faucibus vitae
+                            aliquet nec ullamcorper sit. Volutpat sed cras ornare arcu dui vivamus arcu. Pellentesque
+                            nec nam aliquam
+                            sem et tortor consequat id. Eu non diam phasellus vestibulum lorem sed risus ultricies
+                            tristique. Elit duis tristique sollicitudin nibh sit. Etiam non quam lacus suspendisse
+                            faucibus interdum posuere
+                            lorem ipsum. Ac tortor dignissim convallis aenean. At risus viverra adipiscing at.
+                            Pellentesque nec nam aliquam sem et tortor consequat id porta. Lectus proin nibh nisl
+                            condimentum id venenatis a
+                            condimentum vitae. Accumsan lacus vel facilisis volutpat est velit egestas. Id eu nisl nunc
+                            mi ipsum faucibus vitae aliquet. Phasellus vestibulum lorem sed risus ultricies tristique.
+                            Purus non enim
+                            praesent elementum facilisis. Blandit massa enim nec dui. Nisi vitae suscipit tellus mauris
+                            a diam maecenas. Pretium aenean pharetra magna ac.
+                            <!--https://loremipsum.io/generator/?n=10&t=p-->
+                        </p>
+                        <p>
+                            ** If you feel like our Itinerary is missing something that will help improve our service
+                            please let us know.
+                            Please send us a message via our contact us page, we will review your request and advise as
+                            soon as possible what we can do for you.
+                        </p>
+                    </div>
+
+                </div>
+
+
+            </main>
+
+            <%- include ("./partials/footer.ejs") %>
+                <%- include ("./partials/scriptCollection.ejs") %>
+                    <!--SCript src="/back-end/js/singleItinerary.js"></SCript-->
     </body>
 
 </html>
