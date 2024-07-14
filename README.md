@@ -87,7 +87,7 @@ This page is an API that will display the weather in a certain location along wi
 The rentals page is yet to be complete but will display rental options for the User in their destination location or any deals that the site has with companies that are located in the area
 
       
-
+## Database Connection
 
 
 ## Include Credits

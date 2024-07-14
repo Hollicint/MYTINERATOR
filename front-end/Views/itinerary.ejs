@@ -11,8 +11,20 @@
             <div class="row">
                 <div class="col">
                     <h1>Itinerary</h1>
+                    <h4>
+                        Welcome to your itinerary collector, the best way to keep your past and present holiday in the one location.
+                    </h4>
+                    <p>To be able to store the information of your holiday, please complete the form below. Once the form is inputted you will be able to save.
+                        Once it is saved you will see it a the lower end of the page. But do not worry if you added information incorrectly, just find the holiday location
+                        and click on it. You will be brought to a new page where you will have to options to edit, delete or come back to your list of Itinerarys.
+                        Just the best way to keep track of all your holiday information.
+                    </p>
+                    <!--
+                    Code below creates the form for the User to input their Itinerary
+                    -->
                     <div id="editItin">
                         <h3 class="text-center">Create Itinerary</h3>
+                        
                         <form method="POST">
                             <div class="form-row">
                                 <div class="form-group col-md-3">
@@ -36,12 +48,6 @@
                                         <input type="text" class="form-control" placeholder="Total Cost" required name="TotalCost">
                                     </div>
                                 </div>
-
-
-
-
-
-
 
                             </div>
                             <div class="form-row">
@@ -89,7 +95,7 @@
                         <p>You will be able to Edit and Delete</p>
                     </div>
 
-
+                    <!--This is the db connection that you will be able to click on it an edit and change the page, it does send you to a single itinerary page to do this-->
                     <div id="showItin" class="itinInfo justify-content-center">
                         <% if (Itin.length) { %>
                             <div class="row">
@@ -112,8 +118,35 @@
                         <% } %>
                     </div>
                 </div>
+      
+                <div class="col-md-12" id="itinEndText"> 
+                    <p>A stressless holiday is our goal <br>
+                        Leo a diam sollicitudin tempor id eu. Sem viverra aliquet eget sit amet tellus cras. Commodo nulla facilisi nullam vehicula ipsum. Diam in arcu cursus euismod quis viverra nibh.
+                        Neque aliquam vestibulum morbi blandit cursus risus at. Congue eu consequat ac felis donec. Adipiscing tristique risus nec feugiat in fermentum posuere urna nec. Mollis nunc sed id semper risus in hendrerit gravida rutrum.
+                        Mollis nunc sed id semper risus. Scelerisque eleifend donec pretium vulputate sapien nec sagittis. Phasellus vestibulum lorem sed risus. Sed id semper risus in hendrerit gravida. Id diam vel quam elementum pulvinar etiam.
+                        Non sodales neque sodales ut etiam sit. Ullamcorper malesuada proin libero nunc consequat. Orci porta non pulvinar neque laoreet suspendisse. <br>
+                        Mattis nunc sed blandit libero. Egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Varius morbi enim nunc faucibus a pellentesque sit amet. Id consectetur purus ut faucibus pulvinar. Nulla facilisi cras fermentum odio eu.
+                         Tincidunt id aliquet risus feugiat in ante metus. Nibh nisl condimentum id venenatis a condimentum vitae sapien pellentesque. Nibh cras pulvinar mattis nunc. Facilisi nullam vehicula ipsum a. Nunc sed blandit libero volutpat. Quam vulputate dignissim 
+                         suspendisse in. In arcu cursus euismod quis viverra. Nunc sed velit dignissim sodales. <br>
+                        Habitant morbi tristique senectus et netus. Eleifend quam adipiscing vitae proin sagittis nisl rhoncus mattis. Tincidunt ornare massa eget egestas purus viverra. Tincidunt dui ut ornare lectus sit amet est placerat. Leo urna molestie at elementum eu.
+                         Arcu bibendum at varius vel pharetra vel turpis. Sit amet purus gravida quis blandit turpis cursus in hac. At consectetur lorem donec massa sapien. A pellentesque sit amet porttitor eget dolor. Cras tincidunt lobortis feugiat vivamus at. Rutrum tellus
+                          pellentesque eu tincidunt tortor aliquam nulla.
+                          <!--https://loremipsum.io/generator/?n=5&t=p-->
+                    <br>
+               
+                   ** <br> If you feel like our Itinerary is missing something that will help improve our service please let us know.
+                    Please send us a message via our contact us page, we will review your request and advise as soon as possible what we can do for you.
+                    <br>**
+                    </p>
+                   
+                </div>
+                <div class="col-md-12" id="itinImages"> 
+                    <img src="images/itinearys/itinCalImg.jpg" alt="itinCalander"> <!--https://www.pexels.com/photo/writings-in-a-planner-636246/-->
+                    <img src="images/itinearys/itinPaperPlaneImg.jpg" alt="itinPaperPlane"> <!--https://www.pexels.com/photo/silhouette-photo-of-man-throw-paper-plane-1262304/-->
+                    <img src="images/itinearys/itinCarimg.jpg" alt="itinCar"> <!--https://www.pexels.com/photo/selective-focus-photography-of-yellow-school-bus-die-cast-386009/-->
+                </div>
             </div>
-            <img src="/images/index/planeCloud.png" alt="planeCloud">
+          
         </main>
 
         <%- include ("./partials/footer.ejs") %>

@@ -226,6 +226,31 @@ a {
   float: right;
 }
 
+#budCalImg
+{
+  max-width: 100%;
+  height: 130%;
+  margin-bottom: 1rem;
+}
+
+.input-group
+{
+  font-weight: bold;
+  font-size: 30px;
+}
+
+#remainingAmount
+{
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.bcButtonAdd, .bcButtonSub
+{
+  font-weight: bold;
+  font-size: 30px;
+}
+
 /*########################## Itinerary Page ############################ */
 #editItin {
   max-width: 100%;
@@ -265,6 +290,13 @@ a {
 .card {
   border-radius: 5px;
   box-shadow: 0px 0px 3px rgb(212, 212, 212);
+}
+
+#itinImages
+{
+  max-width: 100%;
+  height: 130%;
+  margin-bottom: 1rem;
 }
 
 /*
