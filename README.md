@@ -48,7 +48,8 @@ Once the site is running the User will be shown these nav options.
 
 ### Home [index page]
 User will be able to Register Account or Login to their account.
-![image](https://github.com/Hollicint/MYTINERATOR/assets/138527285/d002dd0d-8ec5-4aaf-8754-57bad8ce6607)
+<!--![image](https://github.com/Hollicint/MYTINERATOR/assets/138527285/d002dd0d-8ec5-4aaf-8754-57bad8ce6607)-->
+![image](https://github.com/user-attachments/assets/5833531a-6716-4b14-98e5-a15d9830bced)
 This page also informs the user of their Subscription packages
 ### Itinerary
 User will be able to complete a form which will store their past, present and future ItineraryDetails
@@ -69,14 +70,17 @@ Total will be € 300
 
 ### Accommodation
 The accommodation page is yet to be complete but will display Accommodation options for the User in their destination location or any deals that the site has with companies that are located in the area
+![image](https://github.com/user-attachments/assets/4ec234c7-bf70-4c61-871e-c72e1225db30)
 
 ### Account
 The account page will display the information that they have added at registration.
 This will also display the Users personal image or avatar.
+![image](https://github.com/user-attachments/assets/2d13a73d-3eb6-4815-966a-e0e66423ec99)
 
 ### Contact
 The contact page will allow the User to send a message to the Customer support team that will respond to the customer via the information inputted in the form
-![image](https://github.com/Hollicint/MYTINERATOR/assets/138527285/f25a2677-f09a-4415-b75b-4e1a6831baf2)
+<!--![image](https://github.com/Hollicint/MYTINERATOR/assets/138527285/f25a2677-f09a-4415-b75b-4e1a6831baf2)-->
+![image](https://github.com/user-attachments/assets/0abacdd7-4aab-401c-bd09-69f64cda3fb9)
 
 
 ### Destination
@@ -85,9 +89,39 @@ This page is an API that will display the weather in a certain location along wi
 
 ### Rentals
 The rentals page is yet to be complete but will display rental options for the User in their destination location or any deals that the site has with companies that are located in the area
+![image](https://github.com/user-attachments/assets/eacaeeb9-1add-45bc-a63f-e0efe4de5de4)
 
       
-## Database Connection
+# Database Connection
+
+### Create the database
+CREATE DATABASE MytinApp;
+
+### Use the database
+USE MytinApp;
+
+### Create the table for Itineraries
+CREATE TABLE Itins (
+    ItinID INT AUTO_INCREMENT PRIMARY KEY,
+    Destination VARCHAR(255) NOT NULL,
+    Date DATE NOT NULL,
+    LengthOfStay INT NOT NULL,
+    TotalCost DECIMAL(10, 2) NOT NULL,
+    AccommodationType VARCHAR(255) NOT NULL,
+    AccommodationName VARCHAR(255) NOT NULL,
+    AccommodationCost DECIMAL(10, 2) NOT NULL,
+    Rental ENUM('Yes', 'No') NOT NULL,
+    RentalType VARCHAR(255),
+    RentalCost DECIMAL(10, 2)
+);
+
+### Insert sample data into the Itins table
+INSERT INTO Itins (Destination, Date, LengthOfStay, TotalCost, AccommodationType, AccommodationName, AccommodationCost, Rental, RentalType, RentalCost) 
+VALUES 
+('Paris', '2023-06-15', 7, 1200.00, 'Hotel', 'Hotel Paris', 700.00, 'Yes', 'Car', 200.00),
+('New York', '2023-12-20', 10, 2500.00, 'Apartment', 'NYC Apartment', 1500.00, 'No', NULL, NULL);
+
+![image](https://github.com/user-attachments/assets/73e46209-faea-4d0e-8742-9a5d28344aec)
 
 
 ## Include Credits
@@ -95,4 +129,4 @@ The rentals page is yet to be complete but will display rental options for the U
 HOLLY DOWLING : X21150117 - x21150117@student.ncirl.ie
 SHANE BURK : X21110018  - x21110018@student.ncirl.ie
 ALEX REGINELLI : X20232357 - x20232357@student.ncirl.ie
-NALADUN CONNAUGHTON : X20239262	 -X20239262@student.ncirl.ie	
+NALADUN CONNAUGHTON : X20239262 - X20239262@student.ncirl.ie	
