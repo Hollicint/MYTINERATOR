@@ -197,7 +197,7 @@ a {
 }
 
 /*########################## Budget Page ############################ */
-.budgetContainer {
+/*.budgetContainer {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -207,7 +207,7 @@ a {
   position: relative;
   height: 100vh;
   font-weight: 400;
-}
+}*/
 
 #budgetCalTitle {
   font-size: 18px;
@@ -251,6 +251,28 @@ a {
   font-size: 30px;
 }
 
+.budCal {
+  padding: 10px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 5px rgb(110, 110, 110);
+  margin: auto;
+}
+
+.bcButtonAdd {
+  background-color: rgb(23, 190, 93);
+}
+
+.bcButtonAdd:hover {
+  background-color: rgb(28, 131, 71);
+}
+
+.bcButtonSub {
+  background-color: red;
+}
+
+.bcButtonSub:hover {
+  background-color: rgb(194, 3, 3);
+}
 /*########################## Itinerary Page ############################ */
 #editItin {
   max-width: 100%;
@@ -258,7 +280,7 @@ a {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0 0.1);
 }
 
 #editItin h3 {
@@ -390,6 +412,12 @@ a {
   box-shadow: 0px 0px 3px rgb(212, 212, 212);
 }
 
+.card-bodyFlight {
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px rgb(187, 187, 187);
+  padding: 20px;
+}
+
 
 /*########################## Account Page ############################ */
 
@@ -412,11 +440,14 @@ a {
 }
 
 #accountRightUpper {
-  border-style: groove;
+  /*border-style: groove;
   border-width: 5px 5px 5px;
   border-color: #000;
-  padding: 20px;
-
+  padding: 20px;*/
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px rgb(170, 170, 170);
+  margin: auto;
 
 
 }
@@ -545,3 +576,24 @@ a {
   font-weight: 900;
 }
 
+.contact-input {
+  margin: auto auto 20px;
+    width: 100%; /* Fixed width */
+    height: 150px; /* Fixed height */
+    resize: none; /* Disable resizing */
+    padding: 10px; /* Inner padding */
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+
+}
+
+.contact-input:focus {
+  border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+}
+
+
+ /*########################## Rentals Page ############################ */
+
+ 

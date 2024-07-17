@@ -1,84 +1,105 @@
+<!DOCTYPE html>
 <html lang="en">
 <!--partial for the head tag -->
 <%- include ("./partials/head.ejs") %>
-<!--link rel="stylesheet" href="../css/budgetCal.css"-->
-<body>
+    <!--link rel="stylesheet" href="../css/budgetCal.css"-->
 
-    <%- include ("./partials/header.ejs") %>
+    <body>
 
-        <!-- Main Content -->
-        <main class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="budgetContainer">
-                        <div class="calTop">
-                            <!--Calculators Title-->
-                            <div id="budgetCalTitle">
-                                <h2> Your Budget Calculator </h2>
-                                <p> A help tool for updating your Itinerary information with the correct costing</p>
-                                <p>
-                                    It's very simple calculator to use, first enter your budget amount, then enter the description of what you are paying out, and after that if its a subtraction
-                                    make sure to  add - [subtraction sign] and hit the add or subtract button. This will now show below what you paid out and how much left of your budget there is.
+        <%- include ("./partials/header.ejs") %>
 
-                                </p>
+            <!-- Main Content -->
+            <main class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="budgetContainer">
+                            <div class="calTop">
+                                <!--Calculators Title-->
+                                <div id="budgetCalTitle">
+                                    <h1> Your Budget Calculator </h1>
+                                    <p> A help tool for updating your Itinerary information with the correct costing</p>
+                                    <p>
+                                        It's very simple calculator to use, first enter your budget amount, then enter
+                                        the description of what you are paying out, and after that if its a subtraction
+                                        make sure to add - [subtraction sign] and hit the add or subtract button. This
+                                        will now show below what you paid out and how much left of your budget there is.
+
+                                    </p>
+                                </div>
+
+                                <div class="budCal col-8">
+                                    <div class="input-group">
+                                        <label for="limitAmount">Set Limit: </label>
+                                        <input type="number" id="limitAmountId" placeholder="Enter limit amount">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="detailsLabel">Details: </label>
+                                        <input type="text" id="detailsId" placeholder="Enter details">
+                                    </div>
+                                    <p>Please make sure to add a (-) subtraction sign when adding in an expenditure cost
+                                    </p>
+                                    <div class="input-group">
+                                        <label for="costInput">Cost: </label>
+                                        <input type="number" id="costInputAmount" placeholder="Enter cost amount">
+                                    </div>
+
+                                    <button onclick="addTransaction()" class="bcButtonAdd">Add +</button><br><br>
+                                    <button onclick="subtractTransaction()" class="bcButtonSub">Subtract -</button>
+                                    <br><br>
+                                    <h2>Remaining Amount: <span id="remainingAmount">€ 0</span></h2>
+                                    <ul id="transactionList"></ul>
+                                </div><br>
+
+
                             </div>
+                            <p>The History of our Budget Calculator <br>Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget
+                                dolor morbi non arcu risus quis varius. Et tortor consequat id porta nibh venenatis
+                                cras.
+                                Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices. Ornare massa eget
+                                egestas purus viverra. Elementum curabitur vitae nunc sed velit dignissim sodales.
+                                Turpis tincidunt id aliquet risus feugiat in. Proin nibh nisl condimentum id.
+                                Pulvinar etiam non quam lacus suspendisse faucibus interdum. Neque egestas congue
+                                quisque egestas diam. Nibh praesent tristique magna sit amet. Arcu bibendum at varius
+                                vel pharetra vel. Non blandit massa enim nec dui nunc mattis. Consequat id porta
+                                nibh venenatis. Pulvinar elementum integer enim neque volutpat ac tincidunt. <br>
+                                Why ours is the best on the market <br>
+                                Tortor at auctor urna nunc id cursus metus aliquam eleifend. Morbi leo urna molestie at
+                                elementum. Enim tortor at auctor urna nunc id cursus metus. Risus nullam eget felis eget
+                                nunc lobortis mattis aliquam faucibus.
+                                Eu mi bibendum neque egestas congue quisque egestas. Tellus in metus vulputate eu.
+                                Egestas quis ipsum suspendisse ultrices. Vitae suscipit tellus mauris a. Neque vitae
+                                tempus quam pellentesque nec. Enim facilisis gravida neque convallis.
+                                Nisl rhoncus mattis rhoncus urna neque viverra justo nec ultrices. Tincidunt vitae
+                                semper quis lectus nulla. Rhoncus mattis rhoncus urna neque viverra justo nec ultrices
+                                dui. Feugiat in fermentum posuere urna nec tincidunt praesent semper feugiat.
+                                Sed arcu non odio euismod lacinia at quis risus sed. Euismod quis viverra nibh cras. Est
+                                placerat in egestas erat imperdiet sed. Nunc faucibus a pellentesque sit amet porttitor
+                                eget. Tortor vitae purus faucibus ornare suspendisse sed nisi lacus.
+                                <!--https://loremipsum.io/generator/?n=5&t=p-->
 
-                            
-                            <div class="input-group">
-                                <label for="limitAmount">Set Limit: </label>
-                                <input type="number" id="limitAmountId" placeholder="Enter limit amount">
+                            <div>
+                                <img src="images/budgetCal/budCalCalImg.jpg" alt="budCalCal">
+                                <!--https://www.pexels.com/photo/calculator-and-notepad-placed-on-usa-dollars-stack-4386366/-->
+                                <img src="images/budgetCal/bcNotesimg.jpg"
+                                    alt="bcNotesimg"><!--https://www.pexels.com/photo/close-up-photography-of-eyeglasses-near-crumpled-papers-963056/-->
+                                <img src="images/budgetCal/bcMoneyBank.jpg"
+                                    alt="bcMoneyPig"><!--https://www.pexels.com/photo/person-putting-coin-in-a-piggy-bank-1602726/-->
+                                <br>
                             </div>
-                            <div class="input-group">
-                                <label for="detailsLabel">Details: </label>
-                                <input type="text" id="detailsId" placeholder="Enter details">
-                            </div>
-                            <p>Please make sure to add a (-) subtraction sign when adding in an expenditure cost</p>
-                            <div class="input-group">
-                                <label for="costInput">Cost: </label> 
-                                <input type="number" id="costInputAmount" placeholder="Enter cost amount">
-                            </div>
-                           
-                            <button onclick="addTransaction()" class="bcButtonAdd">Add +</button><br><br>
-                            <button onclick="subtractTransaction()" class="bcButtonSub">Subtract -</button>
-                            <br><br>
-                            <h2>Remaining Amount: <span id="remainingAmount">€ 0</span></h2>
-                            <ul id="transactionList"></ul>
-
-                      
-
-                        </div>
-                            <p>The History of our Budget Calculator <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget dolor morbi non arcu risus quis varius. Et tortor consequat id porta nibh venenatis cras.
-                              Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices. Ornare massa eget egestas purus viverra. Elementum curabitur vitae nunc sed velit dignissim sodales. Turpis tincidunt id aliquet risus feugiat in. Proin nibh nisl condimentum id.
-                              Pulvinar etiam non quam lacus suspendisse faucibus interdum. Neque egestas congue quisque egestas diam. Nibh praesent tristique magna sit amet. Arcu bibendum at varius vel pharetra vel. Non blandit massa enim nec dui nunc mattis. Consequat id porta 
-                              nibh venenatis. Pulvinar elementum integer enim neque volutpat ac tincidunt. <br>
-                              Why ours is the best on the market <br>
-                             Tortor at auctor urna nunc id cursus metus aliquam eleifend. Morbi leo urna molestie at elementum. Enim tortor at auctor urna nunc id cursus metus. Risus nullam eget felis eget nunc lobortis mattis aliquam faucibus.
-                              Eu mi bibendum neque egestas congue quisque egestas. Tellus in metus vulputate eu. Egestas quis ipsum suspendisse ultrices. Vitae suscipit tellus mauris a. Neque vitae tempus quam pellentesque nec. Enim facilisis gravida neque convallis. 
-                              Nisl rhoncus mattis rhoncus urna neque viverra justo nec ultrices. Tincidunt vitae semper quis lectus nulla. Rhoncus mattis rhoncus urna neque viverra justo nec ultrices dui. Feugiat in fermentum posuere urna nec tincidunt praesent semper feugiat.
-                               Sed arcu non odio euismod lacinia at quis risus sed. Euismod quis viverra nibh cras. Est placerat in egestas erat imperdiet sed. Nunc faucibus a pellentesque sit amet porttitor eget. Tortor vitae purus faucibus ornare suspendisse sed nisi lacus.
-                             <!--https://loremipsum.io/generator/?n=5&t=p-->
- 
-                            </p>
-                            <img src="images/budgetCal/budCalCalImg.jpg" alt="budCalCal"> <!--https://www.pexels.com/photo/calculator-and-notepad-placed-on-usa-dollars-stack-4386366/-->
-                            <img src="images/budgetCal/bcNotesimg.jpg" alt="bcNotesimg"><!--https://www.pexels.com/photo/close-up-photography-of-eyeglasses-near-crumpled-papers-963056/-->
-                            <img src="images/budgetCal/bcMoneyBank.jpg" alt="bcMoneyPig"><!--https://www.pexels.com/photo/person-putting-coin-in-a-piggy-bank-1602726/-->
-                           <br>
                             <p>
-                                ** If you feel like our Itinerary is missing something that will help improve our service please let us know.
-                                Please send us a message via our contact us page, we will review your request and advise as soon as possible what we can do for you.
-                           </p>
-                                
-                          
-                      
+                                ** If you feel like our Itinerary is missing something that will help improve our
+                                service please let us know.
+                                Please send us a message via our contact us page, we will review your request and advise
+                                as soon as possible what we can do for you.
+                            </p>
+                        </div>
                     </div>
-                    
-
                 </div>
-        </main>
+            </main>
 
-        <%- include ("./partials/footer.ejs") %>
-        <%- include ("./partials/scriptCollection.ejs") %>
-         <script src="/back-end/js/budgetCal.js"></script>
-        
-</body>
+            <%- include ("./partials/footer.ejs") %>
+                <%- include ("./partials/scriptCollection.ejs") %>
+                    <script src="/back-end/js/budgetCal.js"></script>
+    </body>
 </html>
