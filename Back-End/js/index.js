@@ -39,9 +39,16 @@ loginBtn.addEventListener('click', async function () {
          if (!response.ok) {
           const error = await response.text();
           alert(error);
-        } else {
+          return
+        } else if (response.status === 200) {
           const responseText = await response.text();
           alert(responseText)
+          window.location.href = '/account';
+          return
+        } else if (response.status === 400) {
+          const responseText = await response.text();
+          alert(responseText)  
+          return        
         }
       } catch (error) {
         console.log(error);
