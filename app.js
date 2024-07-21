@@ -134,9 +134,9 @@ app.post("/login", async (request, response) => {
         return response.status(400).send('User does not exist.')
     }
     if (details.Password === caesarDecrypt(existingUser.Password)) {
-        return response.send('User Signed in.')
-    } else {
-        return response.send('Password incorrect.')
+        return response.status(200).send('User Signed in.')
+    } else if (details.Password != caesarDecrypt(existingUser.Password)) {
+        return response.status(400).send('Password incorrect.')
     }
 });
 
